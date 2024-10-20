@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“I have uploaded the names of anyone I worked with on the problem set here” <strong>Genevieve Madigan</strong> (2 point)</p></li>
 <li><p>Late coins used this pset: <strong>01</strong> Late coins left after submission: <strong>02</strong></p></li>
 </ol>
-<div id="2f21a6a2" class="cell" data-execution_count="1">
+<div id="01ba521e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -129,12 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_19701/3115072065.py:5: DtypeWarning:
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_3056/3115072065.py:5: DtypeWarning:
 
 Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="222">
+<div class="cell-output cell-output-display" data-execution_count="140">
 <div>
 
 
@@ -297,7 +297,7 @@ Columns (7) have mixed types. Specify dtype option on import or set low_memory=F
 <h2 class="anchored" data-anchor-id="section-one-data-cleaning">Section One: Data cleaning</h2>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1.1</h3>
-<div id="9c178a72" class="cell" data-execution_count="2">
+<div id="06affc94" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NA_counter(df):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    na_counts <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Column Name'</span>: df.columns,</span>
@@ -356,7 +356,7 @@ violation_description              0
 </section>
 <section id="section-2" class="level3">
 <h3 class="anchored" data-anchor-id="section-2">1.3</h3>
-<div id="043ed842" class="cell" data-execution_count="3">
+<div id="691e4c08" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">##I could not understand what this question is asking and Genevieve helped me here!</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I am going to find all rows whose in "violation desc" cell I can </span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># find the word "sticker"</span></span>
@@ -370,7 +370,7 @@ violation_description              0
 <pre><code>['0964125' '0976170' '0964125B' '0964125C' '0964125D']</code></pre>
 </div>
 </div>
-<div id="845d544d" class="cell" data-execution_count="4">
+<div id="f6f73f79" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'issue_date'</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ], <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>, </span>
@@ -408,7 +408,7 @@ violation_description              0
 </section>
 <section id="section-3" class="level3">
 <h3 class="anchored" data-anchor-id="section-3">1.4</h3>
-<div id="3d218360" class="cell" data-execution_count="5">
+<div id="c96998c6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#these will be the codes I will be checking that are less than 16k lbs, </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and only include missing or improper (not improper solely)</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>violation_codes_light <span class="op">=</span> [<span class="st">'0964125'</span>, <span class="st">'0976170'</span>, <span class="st">'0964125B'</span>]</span>
@@ -432,7 +432,7 @@ violation_description              0
 <section id="section-two-revenue-increase-from-missing-city-sticker-tickets" class="level2">
 <h2 class="anchored" data-anchor-id="section-two-revenue-increase-from-missing-city-sticker-tickets">Section Two: Revenue increase from “missing city sticker” tickets</h2>
 <p>###2.1</p>
-<div id="a6176d0f" class="cell" data-execution_count="6">
+<div id="a973f5c0" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">##so I want to create a dummy variable for sticker</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># violation to make life easier for myself and you!</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_codes_light)</span>
@@ -514,7 +514,7 @@ violation_description              0
 [137 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div id="76f3d74b" class="cell" data-execution_count="7">
+<div id="a43d5a72" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">##now I am going to plot it I will have 12 months on the </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X axis and then use mark_line to create different years!</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
@@ -534,23 +534,23 @@ violation_description              0
 <div class="cell-output cell-output-display">
 
 <style>
-  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed {
+  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed details,
-  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed details summary {
+  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed details,
+  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669"></div>
+<div id="altair-viz-5949673df72b495591e2c192a473145a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669") {
-      outputDiv = document.getElementById("altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669");
+    if (outputDiv.id !== "altair-viz-5949673df72b495591e2c192a473145a") {
+      outputDiv = document.getElementById("altair-viz-5949673df72b495591e2c192a473145a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -603,7 +603,7 @@ violation_description              0
 <section id="section-4" class="level3">
 <h3 class="anchored" data-anchor-id="section-4">2.2</h3>
 <p>I want to label each quarter so here is what I do:</p>
-<div id="c83594ff" class="cell" data-execution_count="8">
+<div id="0de50330" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I have to create a mark_rule chart with the months 3,6,9 and 12</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quarters <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">12</span>]  <span class="co"># End of each quarter</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>quarter_lines <span class="op">=</span> alt.Chart(pd.DataFrame({<span class="st">'month'</span>: quarters})</span>
@@ -614,26 +614,26 @@ violation_description              0
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">##now we put the two charts on top of each other: </span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>guided_chart<span class="op">=</span> total_ticket_count_month_year <span class="op">+</span> quarter_lines</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>guided_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="229">
+<div class="cell-output cell-output-display" data-execution_count="147">
 
 <style>
-  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed {
+  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed details,
-  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed details summary {
+  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed details,
+  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-647683a4e4704679b5e2158ebd6d07ae"></div>
+<div id="altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-647683a4e4704679b5e2158ebd6d07ae") {
-      outputDiv = document.getElementById("altair-viz-647683a4e4704679b5e2158ebd6d07ae");
+    if (outputDiv.id !== "altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66") {
+      outputDiv = document.getElementById("altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -687,7 +687,7 @@ violation_description              0
 </section>
 <section id="section-5" class="level3">
 <h3 class="anchored" data-anchor-id="section-5">2.3</h3>
-<div id="4ec48730" class="cell" data-execution_count="9">
+<div id="612a722e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I will filter only the year 2011 and find out the sum of veriables</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with the sticker dummy column equalling 1</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sticker_parking_2011 <span class="op">=</span> parking_df[(</span>
@@ -712,7 +712,7 @@ violation_description              0
 </section>
 <section id="section-6" class="level3">
 <h3 class="anchored" data-anchor-id="section-6">2.4</h3>
-<div id="ec1fc029" class="cell" data-execution_count="10">
+<div id="79e676f3" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I first want to see what is the payment fraction for 2011</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>issued_tickets_pre <span class="op">=</span> parking_df[parking_df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">2011</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>paid_tickets_pre <span class="op">=</span> issued_tickets_pre[issued_tickets_pre[<span class="st">'ticket_queue'</span>] <span class="op">==</span> <span class="st">'Paid'</span>]</span>
@@ -750,7 +750,7 @@ The fraction of tickets paid in 2012 is: 0.70
 </section>
 <section id="section-7" class="level3">
 <h3 class="anchored" data-anchor-id="section-7">2.5</h3>
-<div id="2d3928d2" class="cell" data-execution_count="11">
+<div id="f1c6add5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first, I want to create a paid dummy variable as well!</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sticker_parking_df[<span class="st">'paid_dummy'</span>] <span class="op">=</span> sticker_parking_df[<span class="st">'ticket_queue'</span>].<span class="bu">apply</span>(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Paid'</span> <span class="cf">else</span> <span class="dv">0</span></span>
@@ -776,7 +776,7 @@ The fraction of tickets paid in 2012 is: 0.70
 11  2018        0.201449</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_19701/3313706562.py:2: SettingWithCopyWarning:
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_3056/3313706562.py:2: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame.
@@ -786,7 +786,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </code></pre>
 </div>
 </div>
-<div id="dfd35f10" class="cell" data-execution_count="12">
+<div id="7c59dd90" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now I will plot this</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>payment_rate_trend <span class="op">=</span> alt.Chart(repayment_rates).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'year:O'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Year'</span>)),</span>
@@ -803,26 +803,26 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dif_in_dif<span class="op">=</span> payment_rate_trend <span class="op">+</span> policy_cutoff</span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>dif_in_dif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="233">
+<div class="cell-output cell-output-display" data-execution_count="151">
 
 <style>
-  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed {
+  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed details,
-  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed details summary {
+  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed details,
+  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-a294298772a7496abce35ce5076cb8f7"></div>
+<div id="altair-viz-beadbf8ed314459c8a6f03d2a7074097"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a294298772a7496abce35ce5076cb8f7") {
-      outputDiv = document.getElementById("altair-viz-a294298772a7496abce35ce5076cb8f7");
+    if (outputDiv.id !== "altair-viz-beadbf8ed314459c8a6f03d2a7074097") {
+      outputDiv = document.getElementById("altair-viz-beadbf8ed314459c8a6f03d2a7074097");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -876,7 +876,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 <section id="section-8" class="level3">
 <h3 class="anchored" data-anchor-id="section-8">2.6</h3>
-<div id="950301d0" class="cell" data-execution_count="13">
+<div id="d9d01c34" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I am oging to find the three most repeated violation_code</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> parking_df[<span class="st">'violation_code'</span>].value_counts()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>top_three <span class="op">=</span> counts.nlargest(<span class="dv">3</span>)</span>
@@ -914,6 +914,152 @@ Name: count, dtype: int64
  'NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.']</code></pre>
 </div>
 </div>
+<p>so looking at the three highest paid violations I can see where the decision to raise the sticker ticket comes from as they are all sticker-related.</p>
+<div id="14d83271" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'issue_date' is parsed as datetime</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(parking_df[<span class="st">'issue_date'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'violation_code' and 'ticket_queue', counting occurrences</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>viol_rating <span class="op">=</span> parking_df.groupby([<span class="st">"violation_description"</span>, <span class="st">"ticket_queue"</span>])[<span class="st">"Unnamed: 0"</span>].count().reset_index()</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the count column for clarity</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>viol_rating <span class="op">=</span> viol_rating.rename(columns<span class="op">=</span>{<span class="st">"Unnamed: 0"</span>: <span class="st">"violation_count"</span>})</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivot the table to have 'ticket_queue' values as columns</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>viol_rating <span class="op">=</span> viol_rating.pivot(</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span><span class="st">'violation_description'</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span><span class="st">'ticket_queue'</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">'violation_count'</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values with 0</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>viol_rating <span class="op">=</span> viol_rating.fillna(<span class="dv">0</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the total number of tickets across all statuses</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>viol_rating[<span class="st">"total_ticket"</span>] <span class="op">=</span> viol_rating[</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Bankruptcy"</span>, <span class="st">"Court"</span>, <span class="st">"Define"</span>, <span class="st">"Dismissed"</span>, <span class="st">"Hearing Req"</span>, <span class="st">"Notice"</span>, <span class="st">"Paid"</span>]</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>viol_rating[<span class="st">"repayment_rate"</span>] <span class="op">=</span> viol_rating[<span class="st">"Paid"</span>] <span class="op">/</span> viol_rating[<span class="st">"total_ticket"</span>]</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>viol_rating[<span class="st">'repayment_rate'</span>] <span class="op">=</span> viol_rating[<span class="st">'repayment_rate'</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(viol_rating.head(<span class="dv">5</span>))</span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>top_ten_violations <span class="op">=</span> viol_rating.nlargest(<span class="dv">10</span>, <span class="st">'total_ticket'</span>)</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot for total tickets</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>ticket_plot <span class="op">=</span> alt.Chart(top_ten_violations).mark_bar(</span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'green'</span>, opacity<span class="op">=</span><span class="dv">1</span>).encode(</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'violation_description:N'</span>, sort<span class="op">=</span>alt.EncodingSortField(field<span class="op">=</span><span class="st">'total_ticket'</span>, order<span class="op">=</span><span class="st">'descending'</span>)),</span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'total_ticket:Q'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Total Tickets'</span>))</span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">600</span>, height<span class="op">=</span><span class="dv">400</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot for paid tickets</span></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>paid_plot <span class="op">=</span> alt.Chart(top_ten_violations).mark_bar(</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'orange'</span>, opacity<span class="op">=</span><span class="fl">0.8</span>).encode(</span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'violation_description:N'</span>, sort<span class="op">=</span>alt.EncodingSortField(field<span class="op">=</span><span class="st">'total_ticket'</span>, order<span class="op">=</span><span class="st">'descending'</span>)),</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'Paid:Q'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Paid Tickets'</span>))</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine both plots</span></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>comparison_chart <span class="op">=</span> ticket_plot <span class="op">+</span> paid_plot</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the chart</span></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>comparison_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ticket_queue                    violation_description  Bankruptcy  Court  \
+0             2 REAR TRAILER LAMPS REQ'D VISIBLE 500'         0.0    0.0   
+1                                     20'OF CROSSWALK         2.0    0.0   
+2                                   3-7 AM SNOW ROUTE         3.0    3.0   
+3             ABANDONED VEH. FOR 7 DAYS OR INOPERABLE         7.0    4.0   
+4                   BACK-UP LAMP LIT DURING OPERATION         0.0    0.0   
+
+ticket_queue  Define  Dismissed  Hearing Req  Notice   Paid  total_ticket  \
+0                1.0        1.0          0.0     1.0    1.0           4.0   
+1               20.0       66.0          0.0    21.0  284.0         393.0   
+2               99.0       43.0          0.0    94.0  597.0         839.0   
+3              358.0      200.0          0.0   263.0  272.0        1104.0   
+4                0.0        0.0          0.0     0.0    2.0           2.0   
+
+ticket_queue  repayment_rate  
+0                   0.250000  
+1                   0.722646  
+2                   0.711561  
+3                   0.246377  
+4                   1.000000  </code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="153">
+
+<style>
+  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed details,
+  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d") {
+      outputDiv = document.getElementById("altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"mark": {"type": "bar", "color": "green", "opacity": 1}, "encoding": {"x": {"field": "violation_description", "sort": {"field": "total_ticket", "order": "descending"}, "type": "nominal"}, "y": {"axis": {"title": "Total Tickets"}, "field": "total_ticket", "type": "quantitative"}}}, {"mark": {"type": "bar", "color": "orange", "opacity": 0.8}, "encoding": {"x": {"field": "violation_description", "sort": {"field": "total_ticket", "order": "descending"}, "type": "nominal"}, "y": {"axis": {"title": "Paid Tickets"}, "field": "Paid", "type": "quantitative"}}}], "data": {"name": "data-a4bd0a57249643752a0baa90f722600b"}, "height": 400, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-a4bd0a57249643752a0baa90f722600b": [{"violation_description": "EXPIRED PLATES OR TEMPORARY REGISTRATION", "Bankruptcy": 789.0, "Court": 8.0, "Define": 4720.0, "Dismissed": 4578.0, "Hearing Req": 0.0, "Notice": 7634.0, "Paid": 27082.0, "total_ticket": 44811.0, "repayment_rate": 0.604360536475419}, {"violation_description": "STREET CLEANING", "Bankruptcy": 132.0, "Court": 22.0, "Define": 1679.0, "Dismissed": 993.0, "Hearing Req": 4.0, "Notice": 2579.0, "Paid": 23303.0, "total_ticket": 28712.0, "repayment_rate": 0.8116118696015603}, {"violation_description": "RESIDENTIAL PERMIT PARKING", "Bankruptcy": 133.0, "Court": 51.0, "Define": 1685.0, "Dismissed": 1734.0, "Hearing Req": 4.0, "Notice": 2497.0, "Paid": 17579.0, "total_ticket": 23683.0, "repayment_rate": 0.7422623822995398}, {"violation_description": "EXP. METER NON-CENTRAL BUSINESS DISTRICT", "Bankruptcy": 98.0, "Court": 53.0, "Define": 1077.0, "Dismissed": 1428.0, "Hearing Req": 3.0, "Notice": 1607.0, "Paid": 16334.0, "total_ticket": 20600.0, "repayment_rate": 0.7929126213592232}, {"violation_description": "PARKING/STANDING PROHIBITED ANYTIME", "Bankruptcy": 143.0, "Court": 38.0, "Define": 1863.0, "Dismissed": 1582.0, "Hearing Req": 2.0, "Notice": 2183.0, "Paid": 13942.0, "total_ticket": 19753.0, "repayment_rate": 0.705816837948666}, {"violation_description": "EXPIRED METER OR OVERSTAY", "Bankruptcy": 98.0, "Court": 0.0, "Define": 1113.0, "Dismissed": 1225.0, "Hearing Req": 0.0, "Notice": 1196.0, "Paid": 15124.0, "total_ticket": 18756.0, "repayment_rate": 0.8063552996374493}, {"violation_description": "REAR AND FRONT PLATE REQUIRED", "Bankruptcy": 233.0, "Court": 0.0, "Define": 3911.0, "Dismissed": 1215.0, "Hearing Req": 1.0, "Notice": 2072.0, "Paid": 8397.0, "total_ticket": 15829.0, "repayment_rate": 0.5304820266599279}, {"violation_description": "NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.", "Bankruptcy": 559.0, "Court": 67.0, "Define": 1136.0, "Dismissed": 1775.0, "Hearing Req": 3.0, "Notice": 5031.0, "Paid": 5675.0, "total_ticket": 14246.0, "repayment_rate": 0.39835743366559034}, {"violation_description": "RUSH HOUR PARKING", "Bankruptcy": 53.0, "Court": 16.0, "Define": 967.0, "Dismissed": 506.0, "Hearing Req": 3.0, "Notice": 1202.0, "Paid": 9218.0, "total_ticket": 11965.0, "repayment_rate": 0.7704137066443795}, {"violation_description": "NO CITY STICKER OR IMPROPER DISPLAY", "Bankruptcy": 232.0, "Court": 0.0, "Define": 827.0, "Dismissed": 1338.0, "Hearing Req": 0.0, "Notice": 2523.0, "Paid": 5853.0, "total_ticket": 10773.0, "repayment_rate": 0.5433027011974381}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>following a conversation I had with a friend, I realized we have got two different things for this question and thus I tried it myself as well. when looking at this, we can conclude that “expired or temporary plate” has the highest number of tickets while the payment rate is also relatively higher</p>
 </section>
 </section>
 

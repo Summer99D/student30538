@@ -312,6 +312,62 @@ top3_paid_viol= parking_df[parking_df['violation_code'].isin(three_highest_paid_
 print(top3_paid_viol['violation_description'].unique())
 ```
 
-so looking at the three highest paid violations I can see where the decision to raise the sticker ticker comes from as they are all sticker-related. 
+so looking at the three highest paid violations I can see where the decision to raise the sticker ticket comes from as they are all sticker-related. 
 
-$$ARGUMENT LEFT$$
+
+```{python}
+import pandas as pd
+
+# Ensure 'issue_date' is parsed as datetime
+parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coerce')
+
+# Group by 'violation_code' and 'ticket_queue', counting occurrences
+viol_rating = parking_df.groupby(["violation_description", "ticket_queue"])["Unnamed: 0"].count().reset_index()
+
+# Rename the count column for clarity
+viol_rating = viol_rating.rename(columns={"Unnamed: 0": "violation_count"})
+
+# Pivot the table to have 'ticket_queue' values as columns
+viol_rating = viol_rating.pivot(
+    index='violation_description',
+    columns='ticket_queue',
+    values='violation_count'
+).reset_index()
+
+# Fill NaN values with 0
+viol_rating = viol_rating.fillna(0)
+
+# Calculating the total number of tickets across all statuses
+viol_rating["total_ticket"] = viol_rating[
+    ["Bankruptcy", "Court", "Define", "Dismissed", "Hearing Req", "Notice", "Paid"]
+].sum(axis=1)
+viol_rating["repayment_rate"] = viol_rating["Paid"] / viol_rating["total_ticket"]
+
+viol_rating['repayment_rate'] = viol_rating['repayment_rate'].fillna(0)
+print(viol_rating.head(5))
+top_ten_violations = viol_rating.nlargest(10, 'total_ticket')
+
+# Bar plot for total tickets
+ticket_plot = alt.Chart(top_ten_violations).mark_bar(
+    color='green', opacity=1).encode(
+    x=alt.X('violation_description:N', sort=alt.EncodingSortField(field='total_ticket', order='descending')),
+    y=alt.Y('total_ticket:Q', axis=alt.Axis(title='Total Tickets'))
+).properties(
+    width=600, height=400
+)
+
+# Bar plot for paid tickets
+paid_plot = alt.Chart(top_ten_violations).mark_bar(
+    color='orange', opacity=0.8).encode(
+    x=alt.X('violation_description:N', sort=alt.EncodingSortField(field='total_ticket', order='descending')),
+    y=alt.Y('Paid:Q', axis=alt.Axis(title='Paid Tickets'))
+)
+
+# Combine both plots
+comparison_chart = ticket_plot + paid_plot
+
+# Display the chart
+comparison_chart
+```
+
+following a conversation I had with a friend, I realized we have got two different things for this question and thus I tried it myself as well. when looking at this, we can conclude that "expired or temporary plate" has the highest number of tickets while the payment rate is also relatively higher
