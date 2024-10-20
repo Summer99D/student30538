@@ -1,0 +1,169 @@
+---
+title: "problem set II"
+author: "Summer Negahdar"
+date: "10/19/2024"
+format:
+  html:
+    code-fold: False
+jupyter: python3
+---
+
+
+This submission is my work alone and complies with the 30538 integrity policy.” Add
+your initials to indicate your agreement: **SN**
+
+2. “I have uploaded the names of anyone I worked with on the problem set here” **Genevieve Madigan**
+(2 point)
+
+3. Late coins used this pset: **01** Late coins left after submission: **02**
+
+
+```{python}
+import time
+import pandas as pd
+import numpy as np
+import altair as alt
+parking_df= pd.read_csv('data/parking_tickets_one_percent.csv')
+#I am just going to take a brief look at 
+# the heads to see whether I imported the 
+# right thing or not. 
+parking_df.head()
+```
+
+## Section One: Data cleaning
+### 1.1
+
+```{python}
+
+def NA_counter(df):
+    na_counts = pd.DataFrame({
+        'Column Name': df.columns,
+        'Number of NAs': df.isna().sum().values
+    })
+
+    return na_counts
+
+
+NA_table = NA_counter(parking_df)
+print(NA_table.to_string(index=False)) 
+#I removed the index by to_string command
+```
+
+### 1.2
+
+#### Zipcode:
+this might be due to the fact that many car plat numbers are out-of state (which was discussed in the essay) or it might be an error of manually entering the zip codes!
+
+#### Hearing Disposition: 
+If the ticket was not contested this field is blank. this also makes sense since 
+
+#### Notice Level: 
+the cells that have no notice level(NAs) mean there was no notice sent! this means that a huge majority of ticket receivers were not even notified(which is in accordance with the argument propublica is making)
+
+
+
+### 1.3
+
+```{python}
+
+
+##I could not understand what this question is asking and Genevieve helped me here!
+# I am going to find all rows whose in "violation desc" cell I can 
+# find the word "sticker"
+city_sticker_violations = parking_df[parking_df['violation_description'
+].str.contains('city sticker', 
+case=False, na=False)]
+print(city_sticker_violations[
+    'violation_code'].unique())
+## so these are the one that involve "sticker" let's see what they each are:
+```
+
+```{python}
+parking_df['issue_date'] = pd.to_datetime(
+    parking_df['issue_date'
+    ], format='mixed', 
+    errors='coerce')
+
+city_sticker_violations = parking_df[parking_df['violation_description'
+].str.contains(
+    'city sticker', case=False, na=False)]
+
+sorted_city_sticker_violations = city_sticker_violations.sort_values(by='issue_date')
+
+unique_city_sticker_codes = sorted_city_sticker_violations[
+    ['violation_code', 'violation_description',
+ 'issue_date']
+ ].drop_duplicates(subset='violation_code')
+
+print(unique_city_sticker_codes)
+```
+
+the explanation goes like this: 
+for 0964125 and 0976170 there is no weight of vehicle involved(these are the old ones)
+for 0964125B and 0964125C which are new ones, there is a factor of weight. and 0964125D is for those who have a sticker but they display it improparly. (I am going to eliminate these ones form not having sticker violation!)
+
+### 1.4
+
+```{python}
+#these will be the codes I will be checking that are less than 16k lbs, 
+# and only include missing or improper (not improper solely)
+violation_codes_light = ['0964125', '0976170', '0964125B']
+
+# Filter the DataFrame for the specified violation codes
+sticker_fines = parking_df[parking_df[
+    'violation_code'].isin(violation_codes_light)]
+
+# Get the unique initial offense costs for each code
+fine_amounts_lev1 = sticker_fines[['violation_code', 'fine_level1_amount']
+].drop_duplicates()
+
+# Display the result
+print(fine_amounts_lev1)
+```
+
+#as we can see here, the fine amounts used to be 120$ in the past but is 200 right now(the article also mentioned these numbers)
+
+## Section Two: Revenue increase from “missing city sticker” tickets
+
+###2.1
+
+```{python}
+import numpy as np
+import altair as alt
+##so I want to create a dummy variable for sticker
+# violation to make life easier for myself and you!
+print(violation_codes_light)
+
+# Using apply to create the dummy column
+parking_df['sticker_violation_dummy'] = parking_df[
+    'violation_code'].apply(
+    lambda x: 1 if x in 
+    violation_codes_light else 0
+)
+
+print(parking_df[['violation_code', 
+'sticker_violation_dummy']].head(20))
+
+##Now I will create three new columns using date column
+# one for showing day, one for showing month and one for
+#showing year!
+parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coerce')
+
+parking_df['month'] = parking_df['issue_date'].dt.month
+parking_df['day'] = parking_df['issue_date'].dt.day
+parking_df['year'] = parking_df['issue_date'].dt.year
+print(parking_df[['issue_date', 'month', 'day', 'year']].head())
+
+sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
+
+alt.data_transformers.disable_max_rows()
+##now I am going to plot it I will have 12 months on the X axis and then use mark_line to create different years!
+line_chart = alt.Chart(sticker_parking_df).mark_line().encode(
+    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], title='Month'),
+    y=alt.Y('count()', title='Total Number of Tickets'),
+    color=alt.Color('year:N', title='Year')
+).properties(
+    title='Monthly Tickets each month Over Years'
+)
+line_chart.display()
+```
