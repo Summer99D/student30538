@@ -113,11 +113,7 @@ violation_codes_light = ['0964125', '0976170', '0964125B']
 sticker_fines = parking_df[parking_df[
     'violation_code'].isin(violation_codes_light)]
 
-# Get the unique initial offense costs for each code
-fine_amounts_lev1 = sticker_fines[['violation_code', 'fine_level1_amount']
-].drop_duplicates()
-
-# Display the result
+fine_amounts_lev1 = sticker_fines[['violation_code', 'fine_level1_amount']].drop_duplicates()
 print(fine_amounts_lev1)
 ```
 
@@ -152,18 +148,24 @@ parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coer
 parking_df['month'] = parking_df['issue_date'].dt.month
 parking_df['day'] = parking_df['issue_date'].dt.day
 parking_df['year'] = parking_df['issue_date'].dt.year
-print(parking_df[['issue_date', 'month', 'day', 'year']].head())
-
+print(parking_df[['issue_date', 'month', 'day', 'year']].head(20))
 sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
 
 alt.data_transformers.disable_max_rows()
-##now I am going to plot it I will have 12 months on the X axis and then use mark_line to create different years!
-line_chart = alt.Chart(sticker_parking_df).mark_line().encode(
-    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], title='Month'),
-    y=alt.Y('count()', title='Total Number of Tickets'),
+##now I am going to plot it I will have 12 months on the 
+# X axis and then use mark_line to create different years!
+```
+
+```{python}
+sum_tickets = alt.Chart(sticker_parking_df).mark_line().encode(
+    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 
+    'July', 'August', 'September', 'October', 'November', 'December'], 
+    title='Month'),
+    y=alt.Y('count()', 
+    title='Total Number of Tickets'),
     color=alt.Color('year:N', title='Year')
 ).properties(
     title='Monthly Tickets each month Over Years'
 )
-line_chart.display()
+sum_tickets
 ```

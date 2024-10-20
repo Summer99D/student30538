@@ -115,22 +115,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“I have uploaded the names of anyone I worked with on the problem set here” <strong>Genevieve Madigan</strong> (2 point)</p></li>
 <li><p>Late coins used this pset: <strong>01</strong> Late coins left after submission: <strong>02</strong></p></li>
 </ol>
-<div id="66d9c3a5" class="cell" data-execution_count="1">
+<div id="69b6e772" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>parking_df<span class="op">=</span> pd.read_csv(<span class="st">'data/parking_tickets_one_percent.csv'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#I am just going to take a brief look at </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the heads to see whether I imported the </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>parking_df<span class="op">=</span> pd.read_csv(<span class="st">'data/parking_tickets_one_percent.csv'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#I am just going to take a brief look at </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the heads to see whether I imported the </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="section-one-data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="section-one-data-cleaning">Section One: Data cleaning</h2>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1.1</h3>
-<div id="2a119c26" class="cell" data-execution_count="2">
+<div id="96d8380f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NA_counter(df):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    na_counts <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Column Name'</span>: df.columns,</span>
@@ -162,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="section-2" class="level3">
 <h3 class="anchored" data-anchor-id="section-2">1.3</h3>
-<div id="22814124" class="cell" data-execution_count="3">
+<div id="fa435c97" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##I could not understand what this question is asking and Genevieve helped me here!</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I am going to find all rows whose in "violation desc" cell I can </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># find the word "sticker"</span></span>
@@ -173,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].unique())</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">## so these are the one that involve "sticker" let's see what they each are:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="60806a33" class="cell" data-execution_count="4">
+<div id="1df30292" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'issue_date'</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ], <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>, </span>
@@ -196,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="section-3" class="level3">
 <h3 class="anchored" data-anchor-id="section-3">1.4</h3>
-<div id="2fbda4bb" class="cell" data-execution_count="5">
+<div id="ee7d8537" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#these will be the codes I will be checking that are less than 16k lbs, </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and only include missing or improper (not improper solely)</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>violation_codes_light <span class="op">=</span> [<span class="st">'0964125'</span>, <span class="st">'0976170'</span>, <span class="st">'0964125B'</span>]</span>
@@ -205,12 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>sticker_fines <span class="op">=</span> parking_df[parking_df[</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].isin(violation_codes_light)]</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the unique initial offense costs for each code</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>fine_amounts_lev1 <span class="op">=</span> sticker_fines[[<span class="st">'violation_code'</span>, <span class="st">'fine_level1_amount'</span>]</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>].drop_duplicates()</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fine_amounts_lev1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>fine_amounts_lev1 <span class="op">=</span> sticker_fines[[<span class="st">'violation_code'</span>, <span class="st">'fine_level1_amount'</span>]].drop_duplicates()</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fine_amounts_lev1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>#as we can see here, the fine amounts used to be 120$ in the past but is 200 right now(the article also mentioned these numbers)</p>
 </section>
@@ -218,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="section-two-revenue-increase-from-missing-city-sticker-tickets" class="level2">
 <h2 class="anchored" data-anchor-id="section-two-revenue-increase-from-missing-city-sticker-tickets">Section Two: Revenue increase from “missing city sticker” tickets</h2>
 <p>###2.1</p>
-<div id="38ba423c" class="cell" data-execution_count="6">
+<div id="eb038797" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">##so I want to create a dummy variable for sticker</span></span>
@@ -243,21 +238,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'month'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.month</span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'day'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.day</span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'year'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.year</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'issue_date'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]].head())</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>sticker_parking_df<span class="op">=</span> parking_df[parking_df[<span class="st">'sticker_violation_dummy'</span>]<span class="op">==</span> <span class="dv">1</span>]</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>alt.data_transformers.disable_max_rows()</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">##now I am going to plot it I will have 12 months on the X axis and then use mark_line to create different years!</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>line_chart <span class="op">=</span> alt.Chart(sticker_parking_df).mark_line().encode(</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'month:O'</span>, sort<span class="op">=</span>[<span class="st">'January'</span>, <span class="st">'February'</span>, <span class="st">'March'</span>, <span class="st">'April'</span>, <span class="st">'May'</span>, <span class="st">'June'</span>, <span class="st">'July'</span>, <span class="st">'August'</span>, <span class="st">'September'</span>, <span class="st">'October'</span>, <span class="st">'November'</span>, <span class="st">'December'</span>], title<span class="op">=</span><span class="st">'Month'</span>),</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'count()'</span>, title<span class="op">=</span><span class="st">'Total Number of Tickets'</span>),</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span>alt.Color(<span class="st">'year:N'</span>, title<span class="op">=</span><span class="st">'Year'</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>).properties(</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Monthly Tickets each month Over Years'</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>line_chart.display()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'issue_date'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]].head(<span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<pre class="{Python}"><code>sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
+
+alt.data_transformers.disable_max_rows()
+##now I am going to plot it I will have 12 months on the 
+# X axis and then use mark_line to create different years!
+sum_tickets = alt.Chart(sticker_parking_df).mark_line().encode(
+    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 
+    'July', 'August', 'September', 'October', 'November', 'December'], 
+    title='Month'),
+    y=alt.Y('count()', 
+    title='Total Number of Tickets'),
+    color=alt.Color('year:N', title='Year')
+).properties(
+    title='Monthly Tickets each month Over Years'
+)
+sum_tickets</code></pre>
 </section>
 
 </main>
