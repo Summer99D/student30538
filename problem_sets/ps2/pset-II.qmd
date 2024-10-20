@@ -478,7 +478,7 @@ since they need to see how people react to change in fine amount, I would take t
 
 ## Section Four: Understanding the structure of the data and summarizing it
 
-4.1
+### 4.1.
 
 ```{python}
 print(parking_df.dtypes)
@@ -487,11 +487,101 @@ print(parking_df.dtypes)
 
 #Now I am going to create a new column to see the ratio between first and second round of fines, and I am using subset_df since it already ocntains those with more
 #than 100 citations
-subset_df.columns = subset_df.columns.str.strip()
-subset_df['fine_ratio']= subset_df['fine_level2_amount'] / subset_df['fine_level1_amount']
+# Create the 'total_ticket' column with ticket counts for each violation code
+parking_df['total_ticket'] = parking_df['violation_description'].map(parking_df['violation_description'].value_counts())
+print(parking_df.head())
+subset_df_Q3= parking_df[parking_df['total_ticket'] >= 100]
+
+subset_df_Q3['fine_ratio']= subset_df_Q3['fine_level2_amount'] / subset_df_Q3['fine_level1_amount']
 #Now I will see if there are any rows where 
 # fine ratio !=2
+non_double= subset_df_Q3[subset_df_Q3['fine_ratio'] !=2]
+non_double_sorted = non_double.sort_values(
+    by='fine_level1_amount', ascending=False
+)
+print(non_double_sorted[['violation_description', 'fine_level1_amount', 
+                         'fine_level2_amount', 'fine_ratio']].head(5))
+```
 
-non_double= subset_df[subset_df['fine_ratio'] !=2]
 
+```{python}
+non_double_sorted['fine_increase']= non_double_sorted['fine_level2_amount'] - non_double_sorted['fine_level1_amount']
+
+subset_df = parking_df.groupby('violation_code').filter(lambda x: len(x) >= 100)
+subset_df['fine_ratio'] = subset_df['fine_level2_amount'] / subset_df['fine_level1_amount']
+
+non_double_fines = subset_df[subset_df['fine_ratio'] != 2]
+
+non_double_fines['fine_increase'] = non_double_fines['fine_level2_amount'] - non_double_fines['fine_level1_amount']
+fine_increase_summary = non_double_sorted.groupby('violation_description').agg(
+    avg_fine_level1=('fine_level1_amount', 'mean'),
+    avg_fine_level2=('fine_level2_amount', 'mean'),
+    avg_fine_increase=('fine_increase', 'mean')
+)
+fine_increase_summary
+```
+
+### 4.2
+
+```{python}
+from PIL import Image
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Load the images
+image1 = Image.open("1.png")
+image2 = Image.open("2.png")
+
+# Create a figure and display the images side-by-side
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+# Plot the first image
+axes[0].imshow(image1)
+axes[0].axis('off')  # Hide the axis
+axes[0].set_title("Image 1")
+
+# Plot the second image
+axes[1].imshow(image2)
+axes[1].axis('off')  # Hide the axis
+axes[1].set_title("Image 2")
+
+# Display the plot
+plt.show()
+```
+
+### 4.3
+
+```{python}
+
+aggregated_df_4 = subset_df_Q3.groupby('violation_description').agg(
+    paid_fraction=('paid_dummy', 'mean'),  # Fraction of paid tickets
+    avg_fine=('fine_level1_amount', 'mean'),  # Average fine (level 1)
+    total_ticket=('violation_code', 'count')  # Total tickets issued
+).reset_index()
+
+# Create the 'non_common_viol' column for grouping less common violations
+aggregated_df_4['non_common_viol'] = np.where(
+    aggregated_df_4['total_ticket'] < aggregated_df_4['total_ticket'].nlargest(11).min(),
+    'Other',
+    aggregated_df_4['violation_description']
+)
+
+# Disable Altair's row limit restriction
+alt.data_transformers.disable_max_rows()
+
+# Create the scatter plot
+scatter_plot_Q4 = alt.Chart(aggregated_df_4).mark_point().encode(
+    x=alt.X('avg_fine:Q', title="Average Fine Amount (USD)"),
+    y=alt.Y('paid_fraction:Q', title="Repayment Rate"),
+    color=alt.Color(
+        'non_common_viol:N', 
+        legend=alt.Legend(title="Violation Description")
+    )
+).properties(
+    width=500,
+    height=200,
+    title="Relationship Between Fine Amount and Repayment Rate"
+)
+
+scatter_plot_Q4
 ```
