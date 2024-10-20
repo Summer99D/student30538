@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“I have uploaded the names of anyone I worked with on the problem set here” <strong>Genevieve Madigan</strong> (2 point)</p></li>
 <li><p>Late coins used this pset: <strong>01</strong> Late coins left after submission: <strong>02</strong></p></li>
 </ol>
-<div id="01ba521e" class="cell" data-execution_count="1">
+<div id="8c1ad560" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -129,12 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_3056/3115072065.py:5: DtypeWarning:
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_5184/3115072065.py:5: DtypeWarning:
 
 Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="140">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -297,7 +297,7 @@ Columns (7) have mixed types. Specify dtype option on import or set low_memory=F
 <h2 class="anchored" data-anchor-id="section-one-data-cleaning">Section One: Data cleaning</h2>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1.1</h3>
-<div id="06affc94" class="cell" data-execution_count="2">
+<div id="4ee61e4f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NA_counter(df):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    na_counts <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Column Name'</span>: df.columns,</span>
@@ -356,7 +356,7 @@ violation_description              0
 </section>
 <section id="section-2" class="level3">
 <h3 class="anchored" data-anchor-id="section-2">1.3</h3>
-<div id="691e4c08" class="cell" data-execution_count="3">
+<div id="02c3e78f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">##I could not understand what this question is asking and Genevieve helped me here!</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I am going to find all rows whose in "violation desc" cell I can </span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># find the word "sticker"</span></span>
@@ -370,7 +370,7 @@ violation_description              0
 <pre><code>['0964125' '0976170' '0964125B' '0964125C' '0964125D']</code></pre>
 </div>
 </div>
-<div id="f6f73f79" class="cell" data-execution_count="4">
+<div id="b2a7dd1b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'issue_date'</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ], <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>, </span>
@@ -408,7 +408,7 @@ violation_description              0
 </section>
 <section id="section-3" class="level3">
 <h3 class="anchored" data-anchor-id="section-3">1.4</h3>
-<div id="c96998c6" class="cell" data-execution_count="5">
+<div id="9309d628" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#these will be the codes I will be checking that are less than 16k lbs, </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and only include missing or improper (not improper solely)</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>violation_codes_light <span class="op">=</span> [<span class="st">'0964125'</span>, <span class="st">'0976170'</span>, <span class="st">'0964125B'</span>]</span>
@@ -432,7 +432,7 @@ violation_description              0
 <section id="section-two-revenue-increase-from-missing-city-sticker-tickets" class="level2">
 <h2 class="anchored" data-anchor-id="section-two-revenue-increase-from-missing-city-sticker-tickets">Section Two: Revenue increase from “missing city sticker” tickets</h2>
 <p>###2.1</p>
-<div id="a973f5c0" class="cell" data-execution_count="6">
+<div id="59934300" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">##so I want to create a dummy variable for sticker</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># violation to make life easier for myself and you!</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_codes_light)</span>
@@ -514,7 +514,7 @@ violation_description              0
 [137 rows x 3 columns]</code></pre>
 </div>
 </div>
-<div id="a43d5a72" class="cell" data-execution_count="7">
+<div id="64c0ca01" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">##now I am going to plot it I will have 12 months on the </span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X axis and then use mark_line to create different years!</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
@@ -534,23 +534,23 @@ violation_description              0
 <div class="cell-output cell-output-display">
 
 <style>
-  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed {
+  #altair-viz-7f00abf263b642299d6a8dab22a213d7.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed details,
-  #altair-viz-5949673df72b495591e2c192a473145a.vega-embed details summary {
+  #altair-viz-7f00abf263b642299d6a8dab22a213d7.vega-embed details,
+  #altair-viz-7f00abf263b642299d6a8dab22a213d7.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-5949673df72b495591e2c192a473145a"></div>
+<div id="altair-viz-7f00abf263b642299d6a8dab22a213d7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5949673df72b495591e2c192a473145a") {
-      outputDiv = document.getElementById("altair-viz-5949673df72b495591e2c192a473145a");
+    if (outputDiv.id !== "altair-viz-7f00abf263b642299d6a8dab22a213d7") {
+      outputDiv = document.getElementById("altair-viz-7f00abf263b642299d6a8dab22a213d7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -603,7 +603,7 @@ violation_description              0
 <section id="section-4" class="level3">
 <h3 class="anchored" data-anchor-id="section-4">2.2</h3>
 <p>I want to label each quarter so here is what I do:</p>
-<div id="0de50330" class="cell" data-execution_count="8">
+<div id="95105f09" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I have to create a mark_rule chart with the months 3,6,9 and 12</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quarters <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">12</span>]  <span class="co"># End of each quarter</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>quarter_lines <span class="op">=</span> alt.Chart(pd.DataFrame({<span class="st">'month'</span>: quarters})</span>
@@ -614,26 +614,26 @@ violation_description              0
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">##now we put the two charts on top of each other: </span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>guided_chart<span class="op">=</span> total_ticket_count_month_year <span class="op">+</span> quarter_lines</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>guided_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div class="cell-output cell-output-display" data-execution_count="46">
 
 <style>
-  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed {
+  #altair-viz-8c59145f2e51475eacd3cb0a224d48c7.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed details,
-  #altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66.vega-embed details summary {
+  #altair-viz-8c59145f2e51475eacd3cb0a224d48c7.vega-embed details,
+  #altair-viz-8c59145f2e51475eacd3cb0a224d48c7.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66"></div>
+<div id="altair-viz-8c59145f2e51475eacd3cb0a224d48c7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66") {
-      outputDiv = document.getElementById("altair-viz-39b7be6aee6a4ca486dca7c0a77d2c66");
+    if (outputDiv.id !== "altair-viz-8c59145f2e51475eacd3cb0a224d48c7") {
+      outputDiv = document.getElementById("altair-viz-8c59145f2e51475eacd3cb0a224d48c7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -687,7 +687,7 @@ violation_description              0
 </section>
 <section id="section-5" class="level3">
 <h3 class="anchored" data-anchor-id="section-5">2.3</h3>
-<div id="612a722e" class="cell" data-execution_count="9">
+<div id="11ab53e5" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I will filter only the year 2011 and find out the sum of veriables</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with the sticker dummy column equalling 1</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sticker_parking_2011 <span class="op">=</span> parking_df[(</span>
@@ -712,7 +712,7 @@ violation_description              0
 </section>
 <section id="section-6" class="level3">
 <h3 class="anchored" data-anchor-id="section-6">2.4</h3>
-<div id="79e676f3" class="cell" data-execution_count="10">
+<div id="61a881bb" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I first want to see what is the payment fraction for 2011</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>issued_tickets_pre <span class="op">=</span> parking_df[parking_df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">2011</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>paid_tickets_pre <span class="op">=</span> issued_tickets_pre[issued_tickets_pre[<span class="st">'ticket_queue'</span>] <span class="op">==</span> <span class="st">'Paid'</span>]</span>
@@ -750,7 +750,7 @@ The fraction of tickets paid in 2012 is: 0.70
 </section>
 <section id="section-7" class="level3">
 <h3 class="anchored" data-anchor-id="section-7">2.5</h3>
-<div id="f1c6add5" class="cell" data-execution_count="11">
+<div id="b5841db8" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first, I want to create a paid dummy variable as well!</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sticker_parking_df[<span class="st">'paid_dummy'</span>] <span class="op">=</span> sticker_parking_df[<span class="st">'ticket_queue'</span>].<span class="bu">apply</span>(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Paid'</span> <span class="cf">else</span> <span class="dv">0</span></span>
@@ -776,7 +776,7 @@ The fraction of tickets paid in 2012 is: 0.70
 11  2018        0.201449</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_3056/3313706562.py:2: SettingWithCopyWarning:
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_5184/3313706562.py:2: SettingWithCopyWarning:
 
 
 A value is trying to be set on a copy of a slice from a DataFrame.
@@ -786,7 +786,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </code></pre>
 </div>
 </div>
-<div id="7c59dd90" class="cell" data-execution_count="12">
+<div id="47b81f94" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now I will plot this</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>payment_rate_trend <span class="op">=</span> alt.Chart(repayment_rates).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'year:O'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Year'</span>)),</span>
@@ -803,26 +803,26 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dif_in_dif<span class="op">=</span> payment_rate_trend <span class="op">+</span> policy_cutoff</span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>dif_in_dif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="151">
+<div class="cell-output cell-output-display" data-execution_count="50">
 
 <style>
-  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed {
+  #altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed details,
-  #altair-viz-beadbf8ed314459c8a6f03d2a7074097.vega-embed details summary {
+  #altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a.vega-embed details,
+  #altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-beadbf8ed314459c8a6f03d2a7074097"></div>
+<div id="altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-beadbf8ed314459c8a6f03d2a7074097") {
-      outputDiv = document.getElementById("altair-viz-beadbf8ed314459c8a6f03d2a7074097");
+    if (outputDiv.id !== "altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a") {
+      outputDiv = document.getElementById("altair-viz-bfaf1c7c06e1446d8993ae7e11e8560a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -876,7 +876,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </section>
 <section id="section-8" class="level3">
 <h3 class="anchored" data-anchor-id="section-8">2.6</h3>
-<div id="d9d01c34" class="cell" data-execution_count="13">
+<div id="c82a06c3" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I am oging to find the three most repeated violation_code</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> parking_df[<span class="st">'violation_code'</span>].value_counts()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>top_three <span class="op">=</span> counts.nlargest(<span class="dv">3</span>)</span>
@@ -915,7 +915,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <p>so looking at the three highest paid violations I can see where the decision to raise the sticker ticket comes from as they are all sticker-related.</p>
-<div id="14d83271" class="cell" data-execution_count="14">
+<div id="bf668112" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure 'issue_date' is parsed as datetime</span></span>
@@ -962,12 +962,9 @@ Name: count, dtype: int64
 <span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'violation_description:N'</span>, sort<span class="op">=</span>alt.EncodingSortField(field<span class="op">=</span><span class="st">'total_ticket'</span>, order<span class="op">=</span><span class="st">'descending'</span>)),</span>
 <span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'Paid:Q'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Paid Tickets'</span>))</span>
 <span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine both plots</span></span>
-<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>comparison_chart <span class="op">=</span> ticket_plot <span class="op">+</span> paid_plot</span>
-<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the chart</span></span>
-<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>comparison_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>comparison_chart <span class="op">=</span> ticket_plot <span class="op">+</span> paid_plot</span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>comparison_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ticket_queue                    violation_description  Bankruptcy  Court  \
 0             2 REAR TRAILER LAMPS REQ'D VISIBLE 500'         0.0    0.0   
@@ -990,26 +987,26 @@ ticket_queue  repayment_rate
 3                   0.246377  
 4                   1.000000  </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="153">
+<div class="cell-output cell-output-display" data-execution_count="52">
 
 <style>
-  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed {
+  #altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed details,
-  #altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d.vega-embed details summary {
+  #altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe.vega-embed details,
+  #altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d"></div>
+<div id="altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d") {
-      outputDiv = document.getElementById("altair-viz-bdb65c89b138401eb8b9e52dd62dfa2d");
+    if (outputDiv.id !== "altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe") {
+      outputDiv = document.getElementById("altair-viz-e62cf539b68d4fdc93736c1bf81a5fbe");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1059,8 +1056,381 @@ ticket_queue  repayment_rate
 </script>
 </div>
 </div>
-<p>following a conversation I had with a friend, I realized we have got two different things for this question and thus I tried it myself as well. when looking at this, we can conclude that “expired or temporary plate” has the highest number of tickets while the payment rate is also relatively higher</p>
+<p>following a conversation I had with a friend, I realized we have got two different things for this question and thus I tried it myself as well. when looking at this, we can conclude that “expired or temporary plate” has the highest number of tickets while the payment rate is also relatively higher.(I think the city officials did it my way and therefore thought of charging more for sticker biolations!)</p>
 </section>
+</section>
+<section id="section-three-headlines-and-sub-message" class="level2">
+<h2 class="anchored" data-anchor-id="section-three-headlines-and-sub-message">Section Three: Headlines and sub-message</h2>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">3.1</h3>
+<div id="9844a89a" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I had created paid dummy for sticker partking, </span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#now I am going to do it for the whole df</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the 'paid_dummy' column: 1 if 'PAID', else 0</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'paid_dummy'</span>] <span class="op">=</span> parking_df[<span class="st">'ticket_queue'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Paid'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by 'violation_description' to calculate metrics</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>violation_summary <span class="op">=</span> parking_df.groupby(<span class="st">'violation_description'</span>).agg(</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    paid_fraction<span class="op">=</span>(<span class="st">'paid_dummy'</span>, <span class="st">'mean'</span>),  <span class="co"># Fraction of paid tickets</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    avg_fine<span class="op">=</span>(<span class="st">'fine_level1_amount'</span>, <span class="st">'mean'</span>),  <span class="co"># Average fine (level 1)</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    total_tickets<span class="op">=</span>(<span class="st">'violation_code'</span>, <span class="st">'count'</span>)  <span class="co"># Total tickets issued</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by 'total_tickets' in descending order</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>violation_summary <span class="op">=</span> violation_summary.sort_values(by<span class="op">=</span><span class="st">'total_tickets'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the top 6 most common violation descriptions</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_summary.head(<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        violation_description  paid_fraction   avg_fine  \
+23   EXPIRED PLATES OR TEMPORARY REGISTRATION       0.604361  54.968869   
+101                           STREET CLEANING       0.811612  54.004249   
+90                 RESIDENTIAL PERMIT PARKING       0.742262  66.338302   
+19   EXP. METER NON-CENTRAL BUSINESS DISTRICT       0.792913  46.598058   
+81        PARKING/STANDING PROHIBITED ANYTIME       0.705817  66.142864   
+21                  EXPIRED METER OR OVERSTAY       0.806355  50.000000   
+
+     total_tickets  
+23           44811  
+101          28712  
+90           23683  
+19           20600  
+81           19753  
+21           18756  </code></pre>
+</div>
+</div>
+<p>###3.2</p>
+<div id="3747a6bd" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first I will subset a df with at least 100 tickets:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset the DataFrame for violation types with at least 100 tickets</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> violation_summary[violation_summary[<span class="st">'total_tickets'</span>] <span class="op">&gt;=</span> <span class="dv">100</span>]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">##I have to remove the outlier, I plotted the </span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># scatterplot and then saw the outlier, I can subset my </span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># df for all fines less than 400 and be safe, but I </span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># asked GPT for a general way to do it without </span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># running a plot once</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> subset_df[subset_df[<span class="st">'avg_fine'</span>] <span class="op">&lt;</span> subset_df[<span class="st">'avg_fine'</span>].quantile(<span class="fl">0.99</span>)]</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co">##it got rid of all fines that are above </span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># the 0.99 quartile</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>scatter_plot <span class="op">=</span> alt.Chart(subset_df).mark_point(color<span class="op">=</span><span class="st">'green'</span>).encode(</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'avg_fine:Q'</span>, title<span class="op">=</span><span class="st">"Average Fine Amount (USD)"</span>),</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'paid_fraction:Q'</span>, title<span class="op">=</span><span class="st">"Repayment Rate"</span>),</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'violation_description'</span>, <span class="st">'total_tickets'</span>, <span class="st">'avg_fine'</span>, <span class="st">'paid_fraction'</span>]</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Relationship Between Fine Amount and Repayment Rate"</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>scatter_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+
+<style>
+  #altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9.vega-embed details,
+  #altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9") {
+      outputDiv = document.getElementById("altair-viz-a8e74d522acc4e0aaf9147c4da84c4d9");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-58e75cc895a2191b04c032b4592ab5ce"}, "mark": {"type": "point", "color": "green"}, "encoding": {"tooltip": [{"field": "violation_description", "type": "nominal"}, {"field": "total_tickets", "type": "quantitative"}, {"field": "avg_fine", "type": "quantitative"}, {"field": "paid_fraction", "type": "quantitative"}], "x": {"field": "avg_fine", "title": "Average Fine Amount (USD)", "type": "quantitative"}, "y": {"field": "paid_fraction", "title": "Repayment Rate", "type": "quantitative"}}, "height": 200, "title": "Relationship Between Fine Amount and Repayment Rate", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-58e75cc895a2191b04c032b4592ab5ce": [{"violation_description": "EXPIRED PLATES OR TEMPORARY REGISTRATION", "paid_fraction": 0.604360536475419, "avg_fine": 54.96886925085359, "total_tickets": 44811}, {"violation_description": "STREET CLEANING", "paid_fraction": 0.8116118696015603, "avg_fine": 54.00424909445528, "total_tickets": 28712}, {"violation_description": "RESIDENTIAL PERMIT PARKING", "paid_fraction": 0.7422623822995398, "avg_fine": 66.33830173542204, "total_tickets": 23683}, {"violation_description": "EXP. METER NON-CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7929126213592232, "avg_fine": 46.59805825242719, "total_tickets": 20600}, {"violation_description": "PARKING/STANDING PROHIBITED ANYTIME", "paid_fraction": 0.705816837948666, "avg_fine": 66.14286437503164, "total_tickets": 19753}, {"violation_description": "EXPIRED METER OR OVERSTAY", "paid_fraction": 0.8063552996374493, "avg_fine": 50.0, "total_tickets": 18756}, {"violation_description": "REAR AND FRONT PLATE REQUIRED", "paid_fraction": 0.5304820266599279, "avg_fine": 54.61052498578558, "total_tickets": 15829}, {"violation_description": "NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.", "paid_fraction": 0.39835743366559034, "avg_fine": 200.0, "total_tickets": 14246}, {"violation_description": "RUSH HOUR PARKING", "paid_fraction": 0.7704137066443795, "avg_fine": 68.20977852068533, "total_tickets": 11965}, {"violation_description": "NO CITY STICKER OR IMPROPER DISPLAY", "paid_fraction": 0.5433027011974381, "avg_fine": 120.0, "total_tickets": 10773}, {"violation_description": "EXPIRED METER CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7416803615447822, "avg_fine": 62.60836072308957, "total_tickets": 9736}, {"violation_description": "NO STANDING/PARKING TIME RESTRICTED", "paid_fraction": 0.7511574074074074, "avg_fine": 75.03819444444444, "total_tickets": 8640}, {"violation_description": "WITHIN 15' OF FIRE HYDRANT", "paid_fraction": 0.6754587155963303, "avg_fine": 116.07961992136305, "total_tickets": 6104}, {"violation_description": "PARK OR STAND IN BUS/TAXI/CARRIAGE STAND", "paid_fraction": 0.663724183877415, "avg_fine": 98.29447035309794, "total_tickets": 6004}, {"violation_description": "TRUCK,RV,BUS, OR TAXI RESIDENTIAL STREET", "paid_fraction": 0.6949258717895176, "avg_fine": 37.75840467738568, "total_tickets": 4789}, {"violation_description": "STREET CLEANING OR SPECIAL EVENT", "paid_fraction": 0.7875370919881306, "avg_fine": 50.0, "total_tickets": 3370}, {"violation_description": "DOUBLE PARKING OR STANDING", "paid_fraction": 0.5902203856749312, "avg_fine": 100.0, "total_tickets": 2904}, {"violation_description": "EXPIRED PLATE OR TEMPORARY REGISTRATION", "paid_fraction": 0.4077205882352941, "avg_fine": 60.0, "total_tickets": 2720}, {"violation_description": "STOP SIGN OR TRAFFIC SIGNAL", "paid_fraction": 0.8073938840712004, "avg_fine": 57.77955271565495, "total_tickets": 2191}, {"violation_description": "PARK OR BLOCK ALLEY", "paid_fraction": 0.5253658536585366, "avg_fine": 150.0, "total_tickets": 2050}, {"violation_description": "DISABLED PARKING ZONE", "paid_fraction": 0.5417895771878073, "avg_fine": 216.98623402163224, "total_tickets": 2034}, {"violation_description": "PARK OR STAND ON CROSSWALK", "paid_fraction": 0.7112135176651305, "avg_fine": 58.55094726062468, "total_tickets": 1953}, {"violation_description": "NONCOMPLIANT PLATE(S)", "paid_fraction": 0.6088541666666667, "avg_fine": 54.770833333333336, "total_tickets": 1920}, {"violation_description": "SMOKED/TINTED WINDOWS PARKED/STANDING", "paid_fraction": 0.6246317030053035, "avg_fine": 151.0901591043017, "total_tickets": 1697}, {"violation_description": "BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE", "paid_fraction": 0.6421785940468651, "avg_fine": 141.59278024065864, "total_tickets": 1579}, {"violation_description": "OBSTRUCT ROADWAY", "paid_fraction": 0.50285351934052, "avg_fine": 75.0, "total_tickets": 1577}, {"violation_description": "STAND, PARK, OR OTHER USE OF BUS LANE", "paid_fraction": 0.5936739659367397, "avg_fine": 90.0, "total_tickets": 1233}, {"violation_description": "CURB LOADING ZONE", "paid_fraction": 0.7053941908713693, "avg_fine": 58.12448132780083, "total_tickets": 1205}, {"violation_description": "WRONG DIRECTION OR 12'' FROM CURB", "paid_fraction": 0.774977497749775, "avg_fine": 25.0, "total_tickets": 1111}, {"violation_description": "ABANDONED VEH. FOR 7 DAYS OR INOPERABLE", "paid_fraction": 0.2463768115942029, "avg_fine": 72.46376811594203, "total_tickets": 1104}, {"violation_description": "PARK OR STAND ON SIDEWALK", "paid_fraction": 0.6853281853281853, "avg_fine": 58.59073359073359, "total_tickets": 1036}, {"violation_description": "MISSING/NONCOMPLIANT FRONT AND/OR REAR PLATE", "paid_fraction": 0.322265625, "avg_fine": 60.0, "total_tickets": 1024}, {"violation_description": "PARK ALLEY", "paid_fraction": 0.40981963927855714, "avg_fine": 150.0, "total_tickets": 998}, {"violation_description": "SAFETY BELTS REQUIRED", "paid_fraction": 0.7125382262996942, "avg_fine": 25.0, "total_tickets": 981}, {"violation_description": "3-7 AM SNOW ROUTE", "paid_fraction": 0.7115613825983313, "avg_fine": 55.60190703218117, "total_tickets": 839}, {"violation_description": "PARK VEHICLE SOLE PURPOSE OF DISPLAYING FOR SALE", "paid_fraction": 0.1927710843373494, "avg_fine": 100.0, "total_tickets": 664}, {"violation_description": "WINDOWS MISSING OR CRACKED BEYOND 6", "paid_fraction": 0.6059027777777778, "avg_fine": 25.0, "total_tickets": 576}, {"violation_description": "PARK OR STAND ON PARKWAY", "paid_fraction": 0.7232323232323232, "avg_fine": 59.23232323232323, "total_tickets": 495}, {"violation_description": "SPECIAL EVENTS RESTRICTION", "paid_fraction": 0.7748917748917749, "avg_fine": 59.95670995670996, "total_tickets": 462}, {"violation_description": "TRUCK,MOTOR HOME, BUS BUSINESS STREET", "paid_fraction": 0.6907894736842105, "avg_fine": 27.30263157894737, "total_tickets": 456}, {"violation_description": "TWO HEAD LAMPS REQUIRED VISIBLE 1000'", "paid_fraction": 0.5914221218961625, "avg_fine": 25.0, "total_tickets": 443}, {"violation_description": "DISABLED CURB CUT", "paid_fraction": 0.7706422018348624, "avg_fine": 75.0, "total_tickets": 436}, {"violation_description": "IMPROPER DISPLAY OF CITY STICKER", "paid_fraction": 0.7644110275689223, "avg_fine": 30.0, "total_tickets": 399}, {"violation_description": "20'OF CROSSWALK", "paid_fraction": 0.72264631043257, "avg_fine": 58.040712468193384, "total_tickets": 393}, {"violation_description": "NO PARK IN PRIVATE LOT", "paid_fraction": 0.582010582010582, "avg_fine": 25.0, "total_tickets": 378}, {"violation_description": "REAR PLATE REQUIRED MOTORCYCLE/TRAILER", "paid_fraction": 0.5710227272727273, "avg_fine": 59.43181818181818, "total_tickets": 352}, {"violation_description": "HAZARDOUS DILAPITATED VEHICLE", "paid_fraction": 0.23154362416107382, "avg_fine": 69.12751677852349, "total_tickets": 298}, {"violation_description": "PARK OUTSIDE METERED SPACE", "paid_fraction": 0.5935251798561151, "avg_fine": 49.10071942446043, "total_tickets": 278}, {"violation_description": "OBSTRUCTED OR IMPROPERLY TINTED WINDOWS", "paid_fraction": 0.5535055350553506, "avg_fine": 156.18081180811808, "total_tickets": 271}, {"violation_description": "PARK OR STAND IN VIADUCT/UNDERPASS", "paid_fraction": 0.708502024291498, "avg_fine": 75.0, "total_tickets": 247}, {"violation_description": "PARK/STAND ON BICYCLE PATH", "paid_fraction": 0.6567796610169492, "avg_fine": 143.4322033898305, "total_tickets": 236}, {"violation_description": "PARK IN CITY LOT WHEN CLOSED", "paid_fraction": 0.7022222222222222, "avg_fine": 47.0, "total_tickets": 225}, {"violation_description": "PARK OR STAND ON CITY PROPERTY", "paid_fraction": 0.41530054644808745, "avg_fine": 48.36065573770492, "total_tickets": 183}, {"violation_description": "LAMPS BROKEN OR INOPERABLE", "paid_fraction": 0.5987654320987654, "avg_fine": 25.0, "total_tickets": 162}, {"violation_description": "TRUCK TRAILOR/SEMI/TRAILER PROHIBITED", "paid_fraction": 0.4394904458598726, "avg_fine": 125.0, "total_tickets": 157}, {"violation_description": "HAZARDOUS DILAPIDATED VEHICLE", "paid_fraction": 0.24324324324324326, "avg_fine": 75.0, "total_tickets": 148}, {"violation_description": "TRUCK OR SEMI-TRAILER PROHIBITED", "paid_fraction": 0.5310344827586206, "avg_fine": 125.0, "total_tickets": 145}, {"violation_description": "SNOW ROUTE: 2'' OF SNOW OR MORE", "paid_fraction": 0.7083333333333334, "avg_fine": 60.0, "total_tickets": 144}, {"violation_description": "INDUSTRIAL PERMIT PARKING", "paid_fraction": 0.8333333333333334, "avg_fine": 50.0, "total_tickets": 120}, {"violation_description": "NO PARK IN PUBLIC LOT", "paid_fraction": 0.2857142857142857, "avg_fine": 48.319327731092436, "total_tickets": 119}, {"violation_description": "RED REAR LAMP REQUIRED VISIBLE 500'", "paid_fraction": 0.5565217391304348, "avg_fine": 25.0, "total_tickets": 115}, {"violation_description": "OUTSIDE DIAGONAL MARKINGS", "paid_fraction": 0.7363636363636363, "avg_fine": 45.45454545454545, "total_tickets": 110}, {"violation_description": "REAR PLATE LIT AND LEGIBLE FOR 50'", "paid_fraction": 0.5636363636363636, "avg_fine": 25.0, "total_tickets": 110}, {"violation_description": "BURGLAR ALARM SOUNDING OVER 4 MINUTES", "paid_fraction": 0.7549019607843137, "avg_fine": 41.42156862745098, "total_tickets": 102}, {"violation_description": "NON PYMT/NON-COM VEH PARKED IN COM LOADING ZONE", "paid_fraction": 0.45, "avg_fine": 140.0, "total_tickets": 100}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<section id="headline" class="level4">
+<h4 class="anchored" data-anchor-id="headline">headline:</h4>
+<p>the highest payment rate is for fines less than 80$</p>
+</section>
+<section id="submessage" class="level4">
+<h4 class="anchored" data-anchor-id="submessage">submessage:</h4>
+<p>the repayment rate has no solid patterns as fine amount increases!</p>
+<div id="f4b3461f" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">##now a box plot!</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>box_plot <span class="op">=</span> alt.Chart(subset_df).mark_boxplot(color<span class="op">=</span><span class="st">'green'</span>).encode(</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'avg_fine:Q'</span>, title<span class="op">=</span><span class="st">"Average Fine Amount (USD)"</span>),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'paid_fraction:Q'</span>, title<span class="op">=</span><span class="st">"Repayment Rate"</span>),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'violation_description'</span>, <span class="st">'total_tickets'</span>, <span class="st">'avg_fine'</span>, <span class="st">'paid_fraction'</span>]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Relationship Between Fine Amount and Repayment Rate"</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>box_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+
+<style>
+  #altair-viz-84756cc01db84b58a26c9bfbdb709ac8.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-84756cc01db84b58a26c9bfbdb709ac8.vega-embed details,
+  #altair-viz-84756cc01db84b58a26c9bfbdb709ac8.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-84756cc01db84b58a26c9bfbdb709ac8"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-84756cc01db84b58a26c9bfbdb709ac8") {
+      outputDiv = document.getElementById("altair-viz-84756cc01db84b58a26c9bfbdb709ac8");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-58e75cc895a2191b04c032b4592ab5ce"}, "mark": {"type": "boxplot", "color": "green"}, "encoding": {"tooltip": [{"field": "violation_description", "type": "nominal"}, {"field": "total_tickets", "type": "quantitative"}, {"field": "avg_fine", "type": "quantitative"}, {"field": "paid_fraction", "type": "quantitative"}], "x": {"field": "avg_fine", "title": "Average Fine Amount (USD)", "type": "quantitative"}, "y": {"field": "paid_fraction", "title": "Repayment Rate", "type": "quantitative"}}, "height": 200, "title": "Relationship Between Fine Amount and Repayment Rate", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-58e75cc895a2191b04c032b4592ab5ce": [{"violation_description": "EXPIRED PLATES OR TEMPORARY REGISTRATION", "paid_fraction": 0.604360536475419, "avg_fine": 54.96886925085359, "total_tickets": 44811}, {"violation_description": "STREET CLEANING", "paid_fraction": 0.8116118696015603, "avg_fine": 54.00424909445528, "total_tickets": 28712}, {"violation_description": "RESIDENTIAL PERMIT PARKING", "paid_fraction": 0.7422623822995398, "avg_fine": 66.33830173542204, "total_tickets": 23683}, {"violation_description": "EXP. METER NON-CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7929126213592232, "avg_fine": 46.59805825242719, "total_tickets": 20600}, {"violation_description": "PARKING/STANDING PROHIBITED ANYTIME", "paid_fraction": 0.705816837948666, "avg_fine": 66.14286437503164, "total_tickets": 19753}, {"violation_description": "EXPIRED METER OR OVERSTAY", "paid_fraction": 0.8063552996374493, "avg_fine": 50.0, "total_tickets": 18756}, {"violation_description": "REAR AND FRONT PLATE REQUIRED", "paid_fraction": 0.5304820266599279, "avg_fine": 54.61052498578558, "total_tickets": 15829}, {"violation_description": "NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.", "paid_fraction": 0.39835743366559034, "avg_fine": 200.0, "total_tickets": 14246}, {"violation_description": "RUSH HOUR PARKING", "paid_fraction": 0.7704137066443795, "avg_fine": 68.20977852068533, "total_tickets": 11965}, {"violation_description": "NO CITY STICKER OR IMPROPER DISPLAY", "paid_fraction": 0.5433027011974381, "avg_fine": 120.0, "total_tickets": 10773}, {"violation_description": "EXPIRED METER CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7416803615447822, "avg_fine": 62.60836072308957, "total_tickets": 9736}, {"violation_description": "NO STANDING/PARKING TIME RESTRICTED", "paid_fraction": 0.7511574074074074, "avg_fine": 75.03819444444444, "total_tickets": 8640}, {"violation_description": "WITHIN 15' OF FIRE HYDRANT", "paid_fraction": 0.6754587155963303, "avg_fine": 116.07961992136305, "total_tickets": 6104}, {"violation_description": "PARK OR STAND IN BUS/TAXI/CARRIAGE STAND", "paid_fraction": 0.663724183877415, "avg_fine": 98.29447035309794, "total_tickets": 6004}, {"violation_description": "TRUCK,RV,BUS, OR TAXI RESIDENTIAL STREET", "paid_fraction": 0.6949258717895176, "avg_fine": 37.75840467738568, "total_tickets": 4789}, {"violation_description": "STREET CLEANING OR SPECIAL EVENT", "paid_fraction": 0.7875370919881306, "avg_fine": 50.0, "total_tickets": 3370}, {"violation_description": "DOUBLE PARKING OR STANDING", "paid_fraction": 0.5902203856749312, "avg_fine": 100.0, "total_tickets": 2904}, {"violation_description": "EXPIRED PLATE OR TEMPORARY REGISTRATION", "paid_fraction": 0.4077205882352941, "avg_fine": 60.0, "total_tickets": 2720}, {"violation_description": "STOP SIGN OR TRAFFIC SIGNAL", "paid_fraction": 0.8073938840712004, "avg_fine": 57.77955271565495, "total_tickets": 2191}, {"violation_description": "PARK OR BLOCK ALLEY", "paid_fraction": 0.5253658536585366, "avg_fine": 150.0, "total_tickets": 2050}, {"violation_description": "DISABLED PARKING ZONE", "paid_fraction": 0.5417895771878073, "avg_fine": 216.98623402163224, "total_tickets": 2034}, {"violation_description": "PARK OR STAND ON CROSSWALK", "paid_fraction": 0.7112135176651305, "avg_fine": 58.55094726062468, "total_tickets": 1953}, {"violation_description": "NONCOMPLIANT PLATE(S)", "paid_fraction": 0.6088541666666667, "avg_fine": 54.770833333333336, "total_tickets": 1920}, {"violation_description": "SMOKED/TINTED WINDOWS PARKED/STANDING", "paid_fraction": 0.6246317030053035, "avg_fine": 151.0901591043017, "total_tickets": 1697}, {"violation_description": "BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE", "paid_fraction": 0.6421785940468651, "avg_fine": 141.59278024065864, "total_tickets": 1579}, {"violation_description": "OBSTRUCT ROADWAY", "paid_fraction": 0.50285351934052, "avg_fine": 75.0, "total_tickets": 1577}, {"violation_description": "STAND, PARK, OR OTHER USE OF BUS LANE", "paid_fraction": 0.5936739659367397, "avg_fine": 90.0, "total_tickets": 1233}, {"violation_description": "CURB LOADING ZONE", "paid_fraction": 0.7053941908713693, "avg_fine": 58.12448132780083, "total_tickets": 1205}, {"violation_description": "WRONG DIRECTION OR 12'' FROM CURB", "paid_fraction": 0.774977497749775, "avg_fine": 25.0, "total_tickets": 1111}, {"violation_description": "ABANDONED VEH. FOR 7 DAYS OR INOPERABLE", "paid_fraction": 0.2463768115942029, "avg_fine": 72.46376811594203, "total_tickets": 1104}, {"violation_description": "PARK OR STAND ON SIDEWALK", "paid_fraction": 0.6853281853281853, "avg_fine": 58.59073359073359, "total_tickets": 1036}, {"violation_description": "MISSING/NONCOMPLIANT FRONT AND/OR REAR PLATE", "paid_fraction": 0.322265625, "avg_fine": 60.0, "total_tickets": 1024}, {"violation_description": "PARK ALLEY", "paid_fraction": 0.40981963927855714, "avg_fine": 150.0, "total_tickets": 998}, {"violation_description": "SAFETY BELTS REQUIRED", "paid_fraction": 0.7125382262996942, "avg_fine": 25.0, "total_tickets": 981}, {"violation_description": "3-7 AM SNOW ROUTE", "paid_fraction": 0.7115613825983313, "avg_fine": 55.60190703218117, "total_tickets": 839}, {"violation_description": "PARK VEHICLE SOLE PURPOSE OF DISPLAYING FOR SALE", "paid_fraction": 0.1927710843373494, "avg_fine": 100.0, "total_tickets": 664}, {"violation_description": "WINDOWS MISSING OR CRACKED BEYOND 6", "paid_fraction": 0.6059027777777778, "avg_fine": 25.0, "total_tickets": 576}, {"violation_description": "PARK OR STAND ON PARKWAY", "paid_fraction": 0.7232323232323232, "avg_fine": 59.23232323232323, "total_tickets": 495}, {"violation_description": "SPECIAL EVENTS RESTRICTION", "paid_fraction": 0.7748917748917749, "avg_fine": 59.95670995670996, "total_tickets": 462}, {"violation_description": "TRUCK,MOTOR HOME, BUS BUSINESS STREET", "paid_fraction": 0.6907894736842105, "avg_fine": 27.30263157894737, "total_tickets": 456}, {"violation_description": "TWO HEAD LAMPS REQUIRED VISIBLE 1000'", "paid_fraction": 0.5914221218961625, "avg_fine": 25.0, "total_tickets": 443}, {"violation_description": "DISABLED CURB CUT", "paid_fraction": 0.7706422018348624, "avg_fine": 75.0, "total_tickets": 436}, {"violation_description": "IMPROPER DISPLAY OF CITY STICKER", "paid_fraction": 0.7644110275689223, "avg_fine": 30.0, "total_tickets": 399}, {"violation_description": "20'OF CROSSWALK", "paid_fraction": 0.72264631043257, "avg_fine": 58.040712468193384, "total_tickets": 393}, {"violation_description": "NO PARK IN PRIVATE LOT", "paid_fraction": 0.582010582010582, "avg_fine": 25.0, "total_tickets": 378}, {"violation_description": "REAR PLATE REQUIRED MOTORCYCLE/TRAILER", "paid_fraction": 0.5710227272727273, "avg_fine": 59.43181818181818, "total_tickets": 352}, {"violation_description": "HAZARDOUS DILAPITATED VEHICLE", "paid_fraction": 0.23154362416107382, "avg_fine": 69.12751677852349, "total_tickets": 298}, {"violation_description": "PARK OUTSIDE METERED SPACE", "paid_fraction": 0.5935251798561151, "avg_fine": 49.10071942446043, "total_tickets": 278}, {"violation_description": "OBSTRUCTED OR IMPROPERLY TINTED WINDOWS", "paid_fraction": 0.5535055350553506, "avg_fine": 156.18081180811808, "total_tickets": 271}, {"violation_description": "PARK OR STAND IN VIADUCT/UNDERPASS", "paid_fraction": 0.708502024291498, "avg_fine": 75.0, "total_tickets": 247}, {"violation_description": "PARK/STAND ON BICYCLE PATH", "paid_fraction": 0.6567796610169492, "avg_fine": 143.4322033898305, "total_tickets": 236}, {"violation_description": "PARK IN CITY LOT WHEN CLOSED", "paid_fraction": 0.7022222222222222, "avg_fine": 47.0, "total_tickets": 225}, {"violation_description": "PARK OR STAND ON CITY PROPERTY", "paid_fraction": 0.41530054644808745, "avg_fine": 48.36065573770492, "total_tickets": 183}, {"violation_description": "LAMPS BROKEN OR INOPERABLE", "paid_fraction": 0.5987654320987654, "avg_fine": 25.0, "total_tickets": 162}, {"violation_description": "TRUCK TRAILOR/SEMI/TRAILER PROHIBITED", "paid_fraction": 0.4394904458598726, "avg_fine": 125.0, "total_tickets": 157}, {"violation_description": "HAZARDOUS DILAPIDATED VEHICLE", "paid_fraction": 0.24324324324324326, "avg_fine": 75.0, "total_tickets": 148}, {"violation_description": "TRUCK OR SEMI-TRAILER PROHIBITED", "paid_fraction": 0.5310344827586206, "avg_fine": 125.0, "total_tickets": 145}, {"violation_description": "SNOW ROUTE: 2'' OF SNOW OR MORE", "paid_fraction": 0.7083333333333334, "avg_fine": 60.0, "total_tickets": 144}, {"violation_description": "INDUSTRIAL PERMIT PARKING", "paid_fraction": 0.8333333333333334, "avg_fine": 50.0, "total_tickets": 120}, {"violation_description": "NO PARK IN PUBLIC LOT", "paid_fraction": 0.2857142857142857, "avg_fine": 48.319327731092436, "total_tickets": 119}, {"violation_description": "RED REAR LAMP REQUIRED VISIBLE 500'", "paid_fraction": 0.5565217391304348, "avg_fine": 25.0, "total_tickets": 115}, {"violation_description": "OUTSIDE DIAGONAL MARKINGS", "paid_fraction": 0.7363636363636363, "avg_fine": 45.45454545454545, "total_tickets": 110}, {"violation_description": "REAR PLATE LIT AND LEGIBLE FOR 50'", "paid_fraction": 0.5636363636363636, "avg_fine": 25.0, "total_tickets": 110}, {"violation_description": "BURGLAR ALARM SOUNDING OVER 4 MINUTES", "paid_fraction": 0.7549019607843137, "avg_fine": 41.42156862745098, "total_tickets": 102}, {"violation_description": "NON PYMT/NON-COM VEH PARKED IN COM LOADING ZONE", "paid_fraction": 0.45, "avg_fine": 140.0, "total_tickets": 100}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="headline-1" class="level4">
+<h4 class="anchored" data-anchor-id="headline-1">headline:</h4>
+<p>the fines around 75 USD vary a lot in their payment rate(people react very differently to this amount)</p>
+</section>
+<section id="submessage-1" class="level4">
+<h4 class="anchored" data-anchor-id="submessage-1">submessage:</h4>
+<p>by using the box plot we can see how variant the payment rate reacts to fine amount. for examply for higher fine rates(around 200) there isn’t much divergence in payment rate and it stays pretty ocnstant (more predictable)</p>
+<div id="58ffd2ca" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">##and finally a line plot</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>line_plot <span class="op">=</span> alt.Chart(subset_df).mark_line(color<span class="op">=</span><span class="st">'green'</span>).encode(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'avg_fine:Q'</span>, title<span class="op">=</span><span class="st">"Average Fine Amount (USD)"</span>),</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'paid_fraction:Q'</span>, title<span class="op">=</span><span class="st">"Repayment Rate"</span>),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'violation_description'</span>, <span class="st">'total_tickets'</span>, <span class="st">'avg_fine'</span>, <span class="st">'paid_fraction'</span>]</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Relationship Between Fine Amount and Repayment Rate"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>line_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+
+<style>
+  #altair-viz-452a0a04dac44ada9be342db7432c66d.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-452a0a04dac44ada9be342db7432c66d.vega-embed details,
+  #altair-viz-452a0a04dac44ada9be342db7432c66d.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-452a0a04dac44ada9be342db7432c66d"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-452a0a04dac44ada9be342db7432c66d") {
+      outputDiv = document.getElementById("altair-viz-452a0a04dac44ada9be342db7432c66d");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-58e75cc895a2191b04c032b4592ab5ce"}, "mark": {"type": "line", "color": "green"}, "encoding": {"tooltip": [{"field": "violation_description", "type": "nominal"}, {"field": "total_tickets", "type": "quantitative"}, {"field": "avg_fine", "type": "quantitative"}, {"field": "paid_fraction", "type": "quantitative"}], "x": {"field": "avg_fine", "title": "Average Fine Amount (USD)", "type": "quantitative"}, "y": {"field": "paid_fraction", "title": "Repayment Rate", "type": "quantitative"}}, "height": 200, "title": "Relationship Between Fine Amount and Repayment Rate", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-58e75cc895a2191b04c032b4592ab5ce": [{"violation_description": "EXPIRED PLATES OR TEMPORARY REGISTRATION", "paid_fraction": 0.604360536475419, "avg_fine": 54.96886925085359, "total_tickets": 44811}, {"violation_description": "STREET CLEANING", "paid_fraction": 0.8116118696015603, "avg_fine": 54.00424909445528, "total_tickets": 28712}, {"violation_description": "RESIDENTIAL PERMIT PARKING", "paid_fraction": 0.7422623822995398, "avg_fine": 66.33830173542204, "total_tickets": 23683}, {"violation_description": "EXP. METER NON-CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7929126213592232, "avg_fine": 46.59805825242719, "total_tickets": 20600}, {"violation_description": "PARKING/STANDING PROHIBITED ANYTIME", "paid_fraction": 0.705816837948666, "avg_fine": 66.14286437503164, "total_tickets": 19753}, {"violation_description": "EXPIRED METER OR OVERSTAY", "paid_fraction": 0.8063552996374493, "avg_fine": 50.0, "total_tickets": 18756}, {"violation_description": "REAR AND FRONT PLATE REQUIRED", "paid_fraction": 0.5304820266599279, "avg_fine": 54.61052498578558, "total_tickets": 15829}, {"violation_description": "NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.", "paid_fraction": 0.39835743366559034, "avg_fine": 200.0, "total_tickets": 14246}, {"violation_description": "RUSH HOUR PARKING", "paid_fraction": 0.7704137066443795, "avg_fine": 68.20977852068533, "total_tickets": 11965}, {"violation_description": "NO CITY STICKER OR IMPROPER DISPLAY", "paid_fraction": 0.5433027011974381, "avg_fine": 120.0, "total_tickets": 10773}, {"violation_description": "EXPIRED METER CENTRAL BUSINESS DISTRICT", "paid_fraction": 0.7416803615447822, "avg_fine": 62.60836072308957, "total_tickets": 9736}, {"violation_description": "NO STANDING/PARKING TIME RESTRICTED", "paid_fraction": 0.7511574074074074, "avg_fine": 75.03819444444444, "total_tickets": 8640}, {"violation_description": "WITHIN 15' OF FIRE HYDRANT", "paid_fraction": 0.6754587155963303, "avg_fine": 116.07961992136305, "total_tickets": 6104}, {"violation_description": "PARK OR STAND IN BUS/TAXI/CARRIAGE STAND", "paid_fraction": 0.663724183877415, "avg_fine": 98.29447035309794, "total_tickets": 6004}, {"violation_description": "TRUCK,RV,BUS, OR TAXI RESIDENTIAL STREET", "paid_fraction": 0.6949258717895176, "avg_fine": 37.75840467738568, "total_tickets": 4789}, {"violation_description": "STREET CLEANING OR SPECIAL EVENT", "paid_fraction": 0.7875370919881306, "avg_fine": 50.0, "total_tickets": 3370}, {"violation_description": "DOUBLE PARKING OR STANDING", "paid_fraction": 0.5902203856749312, "avg_fine": 100.0, "total_tickets": 2904}, {"violation_description": "EXPIRED PLATE OR TEMPORARY REGISTRATION", "paid_fraction": 0.4077205882352941, "avg_fine": 60.0, "total_tickets": 2720}, {"violation_description": "STOP SIGN OR TRAFFIC SIGNAL", "paid_fraction": 0.8073938840712004, "avg_fine": 57.77955271565495, "total_tickets": 2191}, {"violation_description": "PARK OR BLOCK ALLEY", "paid_fraction": 0.5253658536585366, "avg_fine": 150.0, "total_tickets": 2050}, {"violation_description": "DISABLED PARKING ZONE", "paid_fraction": 0.5417895771878073, "avg_fine": 216.98623402163224, "total_tickets": 2034}, {"violation_description": "PARK OR STAND ON CROSSWALK", "paid_fraction": 0.7112135176651305, "avg_fine": 58.55094726062468, "total_tickets": 1953}, {"violation_description": "NONCOMPLIANT PLATE(S)", "paid_fraction": 0.6088541666666667, "avg_fine": 54.770833333333336, "total_tickets": 1920}, {"violation_description": "SMOKED/TINTED WINDOWS PARKED/STANDING", "paid_fraction": 0.6246317030053035, "avg_fine": 151.0901591043017, "total_tickets": 1697}, {"violation_description": "BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE", "paid_fraction": 0.6421785940468651, "avg_fine": 141.59278024065864, "total_tickets": 1579}, {"violation_description": "OBSTRUCT ROADWAY", "paid_fraction": 0.50285351934052, "avg_fine": 75.0, "total_tickets": 1577}, {"violation_description": "STAND, PARK, OR OTHER USE OF BUS LANE", "paid_fraction": 0.5936739659367397, "avg_fine": 90.0, "total_tickets": 1233}, {"violation_description": "CURB LOADING ZONE", "paid_fraction": 0.7053941908713693, "avg_fine": 58.12448132780083, "total_tickets": 1205}, {"violation_description": "WRONG DIRECTION OR 12'' FROM CURB", "paid_fraction": 0.774977497749775, "avg_fine": 25.0, "total_tickets": 1111}, {"violation_description": "ABANDONED VEH. FOR 7 DAYS OR INOPERABLE", "paid_fraction": 0.2463768115942029, "avg_fine": 72.46376811594203, "total_tickets": 1104}, {"violation_description": "PARK OR STAND ON SIDEWALK", "paid_fraction": 0.6853281853281853, "avg_fine": 58.59073359073359, "total_tickets": 1036}, {"violation_description": "MISSING/NONCOMPLIANT FRONT AND/OR REAR PLATE", "paid_fraction": 0.322265625, "avg_fine": 60.0, "total_tickets": 1024}, {"violation_description": "PARK ALLEY", "paid_fraction": 0.40981963927855714, "avg_fine": 150.0, "total_tickets": 998}, {"violation_description": "SAFETY BELTS REQUIRED", "paid_fraction": 0.7125382262996942, "avg_fine": 25.0, "total_tickets": 981}, {"violation_description": "3-7 AM SNOW ROUTE", "paid_fraction": 0.7115613825983313, "avg_fine": 55.60190703218117, "total_tickets": 839}, {"violation_description": "PARK VEHICLE SOLE PURPOSE OF DISPLAYING FOR SALE", "paid_fraction": 0.1927710843373494, "avg_fine": 100.0, "total_tickets": 664}, {"violation_description": "WINDOWS MISSING OR CRACKED BEYOND 6", "paid_fraction": 0.6059027777777778, "avg_fine": 25.0, "total_tickets": 576}, {"violation_description": "PARK OR STAND ON PARKWAY", "paid_fraction": 0.7232323232323232, "avg_fine": 59.23232323232323, "total_tickets": 495}, {"violation_description": "SPECIAL EVENTS RESTRICTION", "paid_fraction": 0.7748917748917749, "avg_fine": 59.95670995670996, "total_tickets": 462}, {"violation_description": "TRUCK,MOTOR HOME, BUS BUSINESS STREET", "paid_fraction": 0.6907894736842105, "avg_fine": 27.30263157894737, "total_tickets": 456}, {"violation_description": "TWO HEAD LAMPS REQUIRED VISIBLE 1000'", "paid_fraction": 0.5914221218961625, "avg_fine": 25.0, "total_tickets": 443}, {"violation_description": "DISABLED CURB CUT", "paid_fraction": 0.7706422018348624, "avg_fine": 75.0, "total_tickets": 436}, {"violation_description": "IMPROPER DISPLAY OF CITY STICKER", "paid_fraction": 0.7644110275689223, "avg_fine": 30.0, "total_tickets": 399}, {"violation_description": "20'OF CROSSWALK", "paid_fraction": 0.72264631043257, "avg_fine": 58.040712468193384, "total_tickets": 393}, {"violation_description": "NO PARK IN PRIVATE LOT", "paid_fraction": 0.582010582010582, "avg_fine": 25.0, "total_tickets": 378}, {"violation_description": "REAR PLATE REQUIRED MOTORCYCLE/TRAILER", "paid_fraction": 0.5710227272727273, "avg_fine": 59.43181818181818, "total_tickets": 352}, {"violation_description": "HAZARDOUS DILAPITATED VEHICLE", "paid_fraction": 0.23154362416107382, "avg_fine": 69.12751677852349, "total_tickets": 298}, {"violation_description": "PARK OUTSIDE METERED SPACE", "paid_fraction": 0.5935251798561151, "avg_fine": 49.10071942446043, "total_tickets": 278}, {"violation_description": "OBSTRUCTED OR IMPROPERLY TINTED WINDOWS", "paid_fraction": 0.5535055350553506, "avg_fine": 156.18081180811808, "total_tickets": 271}, {"violation_description": "PARK OR STAND IN VIADUCT/UNDERPASS", "paid_fraction": 0.708502024291498, "avg_fine": 75.0, "total_tickets": 247}, {"violation_description": "PARK/STAND ON BICYCLE PATH", "paid_fraction": 0.6567796610169492, "avg_fine": 143.4322033898305, "total_tickets": 236}, {"violation_description": "PARK IN CITY LOT WHEN CLOSED", "paid_fraction": 0.7022222222222222, "avg_fine": 47.0, "total_tickets": 225}, {"violation_description": "PARK OR STAND ON CITY PROPERTY", "paid_fraction": 0.41530054644808745, "avg_fine": 48.36065573770492, "total_tickets": 183}, {"violation_description": "LAMPS BROKEN OR INOPERABLE", "paid_fraction": 0.5987654320987654, "avg_fine": 25.0, "total_tickets": 162}, {"violation_description": "TRUCK TRAILOR/SEMI/TRAILER PROHIBITED", "paid_fraction": 0.4394904458598726, "avg_fine": 125.0, "total_tickets": 157}, {"violation_description": "HAZARDOUS DILAPIDATED VEHICLE", "paid_fraction": 0.24324324324324326, "avg_fine": 75.0, "total_tickets": 148}, {"violation_description": "TRUCK OR SEMI-TRAILER PROHIBITED", "paid_fraction": 0.5310344827586206, "avg_fine": 125.0, "total_tickets": 145}, {"violation_description": "SNOW ROUTE: 2'' OF SNOW OR MORE", "paid_fraction": 0.7083333333333334, "avg_fine": 60.0, "total_tickets": 144}, {"violation_description": "INDUSTRIAL PERMIT PARKING", "paid_fraction": 0.8333333333333334, "avg_fine": 50.0, "total_tickets": 120}, {"violation_description": "NO PARK IN PUBLIC LOT", "paid_fraction": 0.2857142857142857, "avg_fine": 48.319327731092436, "total_tickets": 119}, {"violation_description": "RED REAR LAMP REQUIRED VISIBLE 500'", "paid_fraction": 0.5565217391304348, "avg_fine": 25.0, "total_tickets": 115}, {"violation_description": "OUTSIDE DIAGONAL MARKINGS", "paid_fraction": 0.7363636363636363, "avg_fine": 45.45454545454545, "total_tickets": 110}, {"violation_description": "REAR PLATE LIT AND LEGIBLE FOR 50'", "paid_fraction": 0.5636363636363636, "avg_fine": 25.0, "total_tickets": 110}, {"violation_description": "BURGLAR ALARM SOUNDING OVER 4 MINUTES", "paid_fraction": 0.7549019607843137, "avg_fine": 41.42156862745098, "total_tickets": 102}, {"violation_description": "NON PYMT/NON-COM VEH PARKED IN COM LOADING ZONE", "paid_fraction": 0.45, "avg_fine": 140.0, "total_tickets": 100}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="headline-2" class="level4">
+<h4 class="anchored" data-anchor-id="headline-2">headline:</h4>
+<p>people react to 2-digit fines(under 100) jump to three-digit(100 and above) drastically!</p>
+</section>
+<section id="submessage-2" class="level4">
+<h4 class="anchored" data-anchor-id="submessage-2">submessage:</h4>
+<p>payment rate is pretty noisy around under 100 fines (people’s payment pattern is not predictable)</p>
+</section>
+</section>
+<section id="section-10" class="level3">
+<h3 class="anchored" data-anchor-id="section-10">3.3</h3>
+<p>since they need to see how people react to change in fine amount, I would take the line plot as it shows the drastic changes. justl ike I mentioned one the first digit of the fine changes (jump from 99 to 101 and 199 to 201) people suddenly react. (from a consumer analysis standpoint the psychological reasoning behind pricing something with a 0.99 is also the same. people suddenly react negativly to raise in price if the first digit changes! )</p>
+</section>
+</section>
+<section id="section-four-understanding-the-structure-of-the-data-and-summarizing-it" class="level2">
+<h2 class="anchored" data-anchor-id="section-four-understanding-the-structure-of-the-data-and-summarizing-it">Section Four: Understanding the structure of the data and summarizing it</h2>
+<p>4.1</p>
+<div id="f0cff235" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df.dtypes)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#I wanted to make sure fine amount cols are </span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># numeric which they are!</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Now I am going to create a new column to see the ratio between first and second round of fines, and I am using subset_df since it already ocntains those with more</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#than 100 citations</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(subset_df.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Unnamed: 0                          int64
+ticket_number                     float64
+issue_date                 datetime64[ns]
+violation_location                 object
+license_plate_number               object
+license_plate_state                object
+license_plate_type                 object
+zipcode                            object
+violation_code                     object
+violation_description              object
+unit                              float64
+unit_description                   object
+vehicle_make                       object
+fine_level1_amount                  int64
+fine_level2_amount                  int64
+current_amount_due                float64
+total_payments                    float64
+ticket_queue                       object
+ticket_queue_date                  object
+notice_level                       object
+hearing_disposition                object
+notice_number                     float64
+officer                            object
+address                            object
+sticker_violation_dummy             int64
+month                               int32
+day                                 int32
+year                                int32
+paid_dummy                          int64
+dtype: object
+Index(['violation_description', 'paid_fraction', 'avg_fine', 'total_tickets'], dtype='object')</code></pre>
+</div>
+</div>
 </section>
 
 </main>
