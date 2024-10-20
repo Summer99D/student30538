@@ -124,8 +124,7 @@ print(fine_amounts_lev1)
 ###2.1
 
 ```{python}
-import numpy as np
-import altair as alt
+
 ##so I want to create a dummy variable for sticker
 # violation to make life easier for myself and you!
 print(violation_codes_light)
@@ -138,7 +137,7 @@ parking_df['sticker_violation_dummy'] = parking_df[
 )
 
 print(parking_df[['violation_code', 
-'sticker_violation_dummy']].head(20))
+'sticker_violation_dummy']].head(21))
 
 ##Now I will create three new columns using date column
 # one for showing day, one for showing month and one for
@@ -148,24 +147,171 @@ parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coer
 parking_df['month'] = parking_df['issue_date'].dt.month
 parking_df['day'] = parking_df['issue_date'].dt.day
 parking_df['year'] = parking_df['issue_date'].dt.year
-print(parking_df[['issue_date', 'month', 'day', 'year']].head(20))
+print(parking_df[['issue_date', 'month', 'day', 'year']].head(100))
 sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
+violation_summary = sticker_parking_df.groupby(['year', 'month'])['sticker_violation_dummy'].sum().reset_index()
 
-alt.data_transformers.disable_max_rows()
-##now I am going to plot it I will have 12 months on the 
-# X axis and then use mark_line to create different years!
+print(violation_summary)
 ```
+
 
 ```{python}
-sum_tickets = alt.Chart(sticker_parking_df).mark_line().encode(
-    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 
-    'July', 'August', 'September', 'October', 'November', 'December'], 
-    title='Month'),
-    y=alt.Y('count()', 
-    title='Total Number of Tickets'),
-    color=alt.Color('year:N', title='Year')
+##now I am going to plot it I will have 12 months on the 
+# X axis and then use mark_line to create different years!
+import altair as alt
+
+# Create a line chart for sticker violations over time
+total_ticket_count_month_year = alt.Chart(violation_summary).mark_line().encode(
+    x=alt.X('month:O', axis=alt.Axis(title='Month')),
+    y=alt.Y('sticker_violation_dummy:Q', axis=alt.Axis(
+        title='Number of Sticker Violations')),
+    color='year:N',
+    tooltip=['year', 'month', 'sticker_violation_dummy']
 ).properties(
-    title='Monthly Tickets each month Over Years'
+    title='Monthly Sticker Violations by Year'
 )
-sum_tickets
+
+total_ticket_count_month_year.display()
 ```
+
+### 2.2
+I want to label each quarter so here is what I do:
+
+```{python}
+# I have to create a mark_rule chart with the months 3,6,9 and 12
+quarters = [3, 6, 9, 12]  # End of each quarter
+quarter_lines = alt.Chart(pd.DataFrame({'month': quarters})
+).mark_rule(color='red', strokeDash= [4,4]).encode(
+    x='month:O'
+)
+
+##now we put the two charts on top of each other: 
+guided_chart= total_ticket_count_month_year + quarter_lines
+guided_chart
+```
+
+we can extract from the chart that the highest spike usually happens in the months of March, July to September and occasionally november. it is intersting how july has the largest jump in almost all years!
+Also, I only asked GPT for how to draw a chart with specified vertical lines and then combined that with my original plot!
+
+### 2.3
+
+```{python}
+#I will filter only the year 2011 and find out the sum of veriables
+#with the sticker dummy column equalling 1
+sticker_parking_2011 = parking_df[(
+    parking_df['year'] == 2011) & (parking_df['sticker_violation_dummy'] == 1)
+    ]['sticker_violation_dummy'].sum()
+print(sticker_parking_2011)
+
+total_revenue_before= sticker_parking_2011 * 120
+full_rev_before= total_revenue_before * 100/ 1000000
+# this will give us the total revenue for 100 percent in Million
+total_revenue_after= sticker_parking_2011* 200
+full_rev_after= total_revenue_after * 100/1000000
+#this will give us total revenue after change in Billion
+revenue_increase= full_rev_after - full_rev_before
+print(revenue_increase)
+
+```
+
+It is actually as the predicted so the increase in revenue would be around 15.5 million or 16 million dollars.
+
+### 2.4
+
+```{python}
+#I first want to see what is the payment fraction for 2011
+issued_tickets_pre = parking_df[parking_df['year'] == 2011]
+paid_tickets_pre = issued_tickets_pre[issued_tickets_pre['ticket_queue'] == 'Paid']
+
+payment_fraction = len(paid_tickets_pre) / len(issued_tickets_pre)
+print(f"The fraction of tickets paid in {2011} is: {payment_fraction:.2f}")
+
+#this means that 71% of the 193500 tickets issued were paid! this
+#will bring us at the revenue below:
+paid_fraction_rev_2011= 193500 * 0.71*120
+
+
+#now I want to see how the payment fraction has changed after the
+#new policy
+issued_tickets_post = parking_df[parking_df['year'] == 2012]
+paid_tickets_post = issued_tickets_post[issued_tickets_post['ticket_queue'] == 'Paid']
+
+payment_fraction = len(paid_tickets_post) / len(issued_tickets_post)
+print(f"The fraction of tickets paid in {2012} is: {payment_fraction:.2f}")
+
+#well the fraction of payment has not changed that much but
+#let's calculate the rvenue:
+paid_fraction_rev_2012= 193500 *0.7 *200
+
+total_revenue_paid= (paid_fraction_rev_2012 - paid_fraction_rev_2011) / 1000000
+print(total_revenue_paid)
+#so the actual revenue (supposing the number of tickets issued is 
+#the same) will be 10 M$ not 16!
+
+```
+
+### 2.5
+
+```{python}
+#first, I want to create a paid dummy variable as well!
+sticker_parking_df['paid_dummy'] = sticker_parking_df['ticket_queue'].apply(
+    lambda x: 1 if x == 'Paid' else 0
+)
+#now I calculate the repayment rate using our two dummies:
+filtered_df = sticker_parking_df[sticker_parking_df['sticker_violation_dummy'] == 1]
+repayment_rates = filtered_df.groupby('year')['paid_dummy'].mean().reset_index()
+repayment_rates.rename(columns={'paid_dummy': 'repayment_rate'}, inplace=True)
+print(repayment_rates)
+```
+
+
+```{python}
+#now I will plot this
+payment_rate_trend = alt.Chart(repayment_rates).mark_line(point=True).encode(
+    x=alt.X('year:O', axis=alt.Axis(title='Year')),
+    y=alt.Y('repayment_rate:Q', axis=alt.Axis(title='Repayment Rate', format='.0%'))
+).properties(
+    title='Annual Repayment Rates for "Missing City Sticker" Tickets',
+    width=600,
+    height=300
+)
+#and now I draw another plot for the cutoff line
+policy_cutoff = alt.Chart(pd.DataFrame({'year': [2012]})).mark_rule(color='red', strokeWidth=2, strokeDash= [4,4]).encode(
+    x='year:O'
+)
+
+dif_in_dif= payment_rate_trend + policy_cutoff
+dif_in_dif
+```
+
+So what we can see here is RDD where the payment rate drops upon the introduction of the new policy. since we have a continuous line, we can say that the decrease in payment rate is uniquely as a resault of the introduction of the new policy. the article is also talking about the same issue where with the increase of fine for not having a sticker the percentage of people who can pay it off drops, leaving lower income families in more debt!
+
+### 2.6
+
+```{python}
+#I am oging to find the three most repeated violation_code
+counts = parking_df['violation_code'].value_counts()
+top_three = counts.nlargest(3)
+print(top_three)
+
+top_three_viol= ['0976160F','0964040B' ,'0964090E']
+top3_viol= parking_df[parking_df['violation_code'].isin(top_three_viol)][['violation_code', 'violation_description']]
+print(top3_viol['violation_description'].unique())
+#these three are the highest committed street crimes: 
+##residential permit parking
+##expired plates or temp registration
+##street cleaning!
+
+#now I will group by violation type and calculate the repayment rate
+repayment_rates_by_type = filtered_df.groupby('violation_code')['paid_dummy'].mean().reset_index()
+repayment_rates_by_type.rename(columns={'paid_dummy': 'repayment_rate'}, inplace=True)
+three_highest_payment = repayment_rates_by_type.nlargest(3, 'repayment_rate')
+print(three_highest_payment)
+three_highest_paid_viol_code= ['0976170', '0964125','0964125B']
+top3_paid_viol= parking_df[parking_df['violation_code'].isin(three_highest_paid_viol_code)][['violation_code', 'violation_description']]
+print(top3_paid_viol['violation_description'].unique())
+```
+
+so looking at the three highest paid violations I can see where the decision to raise the sticker ticker comes from as they are all sticker-related. 
+
+$$ARGUMENT LEFT$$

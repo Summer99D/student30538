@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="pset-II_files/libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="pset-II_files/libs/clipboard/clipboard.min.js"></script>
 <script src="pset-II_files/libs/quarto-html/quarto.js"></script>
 <script src="pset-II_files/libs/quarto-html/popper.min.js"></script>
 <script src="pset-II_files/libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,6 +69,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="pset-II_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="pset-II_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="pset-II_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -115,33 +118,225 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“I have uploaded the names of anyone I worked with on the problem set here” <strong>Genevieve Madigan</strong> (2 point)</p></li>
 <li><p>Late coins used this pset: <strong>01</strong> Late coins left after submission: <strong>02</strong></p></li>
 </ol>
-<div id="69b6e772" class="cell" data-execution_count="1">
+<div id="2f21a6a2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>parking_df<span class="op">=</span> pd.read_csv(<span class="st">'data/parking_tickets_one_percent.csv'</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#I am just going to take a brief look at </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># the heads to see whether I imported the </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>parking_df<span class="op">=</span> pd.read_csv(<span class="st">'data/parking_tickets_one_percent.csv'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#I am just going to take a brief look at </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the heads to see whether I imported the </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># right thing or not. </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>parking_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_19701/3115072065.py:5: DtypeWarning:
+
+Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="222">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">ticket_number</th>
+<th data-quarto-table-cell-role="th">issue_date</th>
+<th data-quarto-table-cell-role="th">violation_location</th>
+<th data-quarto-table-cell-role="th">license_plate_number</th>
+<th data-quarto-table-cell-role="th">license_plate_state</th>
+<th data-quarto-table-cell-role="th">license_plate_type</th>
+<th data-quarto-table-cell-role="th">zipcode</th>
+<th data-quarto-table-cell-role="th">violation_code</th>
+<th data-quarto-table-cell-role="th">violation_description</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">fine_level2_amount</th>
+<th data-quarto-table-cell-role="th">current_amount_due</th>
+<th data-quarto-table-cell-role="th">total_payments</th>
+<th data-quarto-table-cell-role="th">ticket_queue</th>
+<th data-quarto-table-cell-role="th">ticket_queue_date</th>
+<th data-quarto-table-cell-role="th">notice_level</th>
+<th data-quarto-table-cell-role="th">hearing_disposition</th>
+<th data-quarto-table-cell-role="th">notice_number</th>
+<th data-quarto-table-cell-role="th">officer</th>
+<th data-quarto-table-cell-role="th">address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>51482901.0</td>
+<td>2007-01-01 01:25:00</td>
+<td>5762 N AVONDALE</td>
+<td>d41ee9a4cb0676e641399ad14aaa20d06f2c6896de6366...</td>
+<td>IL</td>
+<td>PAS</td>
+<td>606184118.0</td>
+<td>0964090E</td>
+<td>RESIDENTIAL PERMIT PARKING</td>
+<td>...</td>
+<td>100</td>
+<td>0.0</td>
+<td>50.0</td>
+<td>Paid</td>
+<td>2007-03-20</td>
+<td>DETR</td>
+<td>Liable</td>
+<td>5.080059e+09</td>
+<td>17266</td>
+<td>5700 n avondale, chicago, il</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>50681501.0</td>
+<td>2007-01-01 01:51:00</td>
+<td>2724 W FARRAGUT</td>
+<td>3395fd3f71f18f9ea4f0a8e1f13bf0aa15052fc8e5605a...</td>
+<td>IL</td>
+<td>PAS</td>
+<td>606454911.0</td>
+<td>0964090E</td>
+<td>RESIDENTIAL PERMIT PARKING</td>
+<td>...</td>
+<td>100</td>
+<td>0.0</td>
+<td>50.0</td>
+<td>Paid</td>
+<td>2007-01-31</td>
+<td>VIOL</td>
+<td>NaN</td>
+<td>5.079876e+09</td>
+<td>10799</td>
+<td>2700 w farragut, chicago, il</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>51579701.0</td>
+<td>2007-01-01 02:22:00</td>
+<td>1748 W ESTES</td>
+<td>302cb9c55f63ff828d7315c5589d97f1f8144904d66eb3...</td>
+<td>IL</td>
+<td>PAS</td>
+<td>604116803.0</td>
+<td>0964150B</td>
+<td>PARKING/STANDING PROHIBITED ANYTIME</td>
+<td>...</td>
+<td>100</td>
+<td>122.0</td>
+<td>0.0</td>
+<td>Notice</td>
+<td>2007-02-28</td>
+<td>SEIZ</td>
+<td>NaN</td>
+<td>5.037862e+09</td>
+<td>17253</td>
+<td>1700 w estes, chicago, il</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>51262201.0</td>
+<td>2007-01-01 02:35:00</td>
+<td>4756 N SHERIDAN</td>
+<td>94d018f52c7990cea326d1810a3278e2c6b1e8b44f3c52...</td>
+<td>IL</td>
+<td>PAS</td>
+<td>606601345.0</td>
+<td>0976160F</td>
+<td>EXPIRED PLATES OR TEMPORARY REGISTRATION</td>
+<td>...</td>
+<td>100</td>
+<td>0.0</td>
+<td>50.0</td>
+<td>Paid</td>
+<td>2007-01-11</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>5.075310e+09</td>
+<td>3307</td>
+<td>4700 n sheridan, chicago, il</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>51898001.0</td>
+<td>2007-01-01 03:50:00</td>
+<td>7134 S CAMPBELL</td>
+<td>876dd3a95179f4f1d720613f6e32a5a7b86b0e6f988bf4...</td>
+<td>IL</td>
+<td>PAS</td>
+<td>606291432.0</td>
+<td>0964100A</td>
+<td>WITHIN 15' OF FIRE HYDRANT</td>
+<td>...</td>
+<td>200</td>
+<td>0.0</td>
+<td>100.0</td>
+<td>Paid</td>
+<td>2007-04-25</td>
+<td>DETR</td>
+<td>NaN</td>
+<td>5.073568e+09</td>
+<td>16820</td>
+<td>7100 s campbell, chicago, il</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 24 columns</p>
+</div>
+</div>
 </div>
 <section id="section-one-data-cleaning" class="level2">
 <h2 class="anchored" data-anchor-id="section-one-data-cleaning">Section One: Data cleaning</h2>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1.1</h3>
-<div id="96d8380f" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NA_counter(df):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    na_counts <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Column Name'</span>: df.columns,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Number of NAs'</span>: df.isna().<span class="bu">sum</span>().values</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> na_counts</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>NA_table <span class="op">=</span> NA_counter(parking_df)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NA_table.to_string(index<span class="op">=</span><span class="va">False</span>)) </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#I removed the index by to_string command</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9c178a72" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> NA_counter(df):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    na_counts <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Column Name'</span>: df.columns,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Number of NAs'</span>: df.isna().<span class="bu">sum</span>().values</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> na_counts</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>NA_table <span class="op">=</span> NA_counter(parking_df)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(NA_table.to_string(index<span class="op">=</span><span class="va">False</span>)) </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#I removed the index by to_string command</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Column Name  Number of NAs
+           Unnamed: 0              0
+        ticket_number              0
+           issue_date              0
+   violation_location              0
+ license_plate_number              0
+  license_plate_state             97
+   license_plate_type           2054
+              zipcode          54115
+       violation_code              0
+violation_description              0
+                 unit             29
+     unit_description              0
+         vehicle_make              0
+   fine_level1_amount              0
+   fine_level2_amount              0
+   current_amount_due              0
+       total_payments              0
+         ticket_queue              0
+    ticket_queue_date              0
+         notice_level          84068
+  hearing_disposition         259899
+        notice_number              0
+              officer              0
+              address              0</code></pre>
+</div>
 </div>
 </section>
 <section id="section-1" class="level3">
@@ -161,51 +356,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="section-2" class="level3">
 <h3 class="anchored" data-anchor-id="section-2">1.3</h3>
-<div id="fa435c97" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">##I could not understand what this question is asking and Genevieve helped me here!</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I am going to find all rows whose in "violation desc" cell I can </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># find the word "sticker"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>city_sticker_violations <span class="op">=</span> parking_df[parking_df[<span class="st">'violation_description'</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>].<span class="bu">str</span>.contains(<span class="st">'city sticker'</span>, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(city_sticker_violations[</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].unique())</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">## so these are the one that involve "sticker" let's see what they each are:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="043ed842" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">##I could not understand what this question is asking and Genevieve helped me here!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I am going to find all rows whose in "violation desc" cell I can </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># find the word "sticker"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>city_sticker_violations <span class="op">=</span> parking_df[parking_df[<span class="st">'violation_description'</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>].<span class="bu">str</span>.contains(<span class="st">'city sticker'</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(city_sticker_violations[</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].unique())</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">## so these are the one that involve "sticker" let's see what they each are:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['0964125' '0976170' '0964125B' '0964125C' '0964125D']</code></pre>
 </div>
-<div id="1df30292" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'issue_date'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ], <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>city_sticker_violations <span class="op">=</span> parking_df[parking_df[<span class="st">'violation_description'</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>].<span class="bu">str</span>.contains(</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'city sticker'</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)]</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>sorted_city_sticker_violations <span class="op">=</span> city_sticker_violations.sort_values(by<span class="op">=</span><span class="st">'issue_date'</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>unique_city_sticker_codes <span class="op">=</span> sorted_city_sticker_violations[</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'violation_code'</span>, <span class="st">'violation_description'</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a> <span class="st">'issue_date'</span>]</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a> ].drop_duplicates(subset<span class="op">=</span><span class="st">'violation_code'</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_city_sticker_codes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="845d544d" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'issue_date'</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    ], <span class="bu">format</span><span class="op">=</span><span class="st">'mixed'</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>city_sticker_violations <span class="op">=</span> parking_df[parking_df[<span class="st">'violation_description'</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>].<span class="bu">str</span>.contains(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'city sticker'</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)]</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>sorted_city_sticker_violations <span class="op">=</span> city_sticker_violations.sort_values(by<span class="op">=</span><span class="st">'issue_date'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>unique_city_sticker_codes <span class="op">=</span> sorted_city_sticker_violations[</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'violation_code'</span>, <span class="st">'violation_description'</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> <span class="st">'issue_date'</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a> ].drop_duplicates(subset<span class="op">=</span><span class="st">'violation_code'</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_city_sticker_codes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       violation_code                              violation_description  \
+14            0964125                NO CITY STICKER OR IMPROPER DISPLAY   
+2838          0976170                NO CITY STICKER OR IMPROPER DISPLAY   
+138604       0964125B  NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 ...   
+138699       0964125C           NO CITY STICKER VEHICLE OVER 16,000 LBS.   
+138839       0964125D                   IMPROPER DISPLAY OF CITY STICKER   
+
+                issue_date  
+14     2007-01-01 10:51:00  
+2838   2007-02-06 17:29:00  
+138604 2012-02-25 02:00:00  
+138699 2012-02-26 08:36:00  
+138839 2012-02-28 08:24:00  </code></pre>
+</div>
 </div>
 <p>the explanation goes like this: for 0964125 and 0976170 there is no weight of vehicle involved(these are the old ones) for 0964125B and 0964125C which are new ones, there is a factor of weight. and 0964125D is for those who have a sticker but they display it improparly. (I am going to eliminate these ones form not having sticker violation!)</p>
 </section>
 <section id="section-3" class="level3">
 <h3 class="anchored" data-anchor-id="section-3">1.4</h3>
-<div id="ee7d8537" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#these will be the codes I will be checking that are less than 16k lbs, </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and only include missing or improper (not improper solely)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>violation_codes_light <span class="op">=</span> [<span class="st">'0964125'</span>, <span class="st">'0976170'</span>, <span class="st">'0964125B'</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame for the specified violation codes</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>sticker_fines <span class="op">=</span> parking_df[parking_df[</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].isin(violation_codes_light)]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>fine_amounts_lev1 <span class="op">=</span> sticker_fines[[<span class="st">'violation_code'</span>, <span class="st">'fine_level1_amount'</span>]].drop_duplicates()</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fine_amounts_lev1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3d218360" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#these will be the codes I will be checking that are less than 16k lbs, </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and only include missing or improper (not improper solely)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>violation_codes_light <span class="op">=</span> [<span class="st">'0964125'</span>, <span class="st">'0976170'</span>, <span class="st">'0964125B'</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame for the specified violation codes</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>sticker_fines <span class="op">=</span> parking_df[parking_df[</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].isin(violation_codes_light)]</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>fine_amounts_lev1 <span class="op">=</span> sticker_fines[[<span class="st">'violation_code'</span>, <span class="st">'fine_level1_amount'</span>]].drop_duplicates()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fine_amounts_lev1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       violation_code  fine_level1_amount
+14            0964125                 120
+2838          0976170                 120
+138604       0964125B                 200</code></pre>
+</div>
 </div>
 <p>#as we can see here, the fine amounts used to be 120$ in the past but is 200 right now(the article also mentioned these numbers)</p>
 </section>
@@ -213,49 +432,489 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="section-two-revenue-increase-from-missing-city-sticker-tickets" class="level2">
 <h2 class="anchored" data-anchor-id="section-two-revenue-increase-from-missing-city-sticker-tickets">Section Two: Revenue increase from “missing city sticker” tickets</h2>
 <p>###2.1</p>
-<div id="eb038797" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">##so I want to create a dummy variable for sticker</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># violation to make life easier for myself and you!</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_codes_light)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using apply to create the dummy column</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'sticker_violation_dummy'</span>] <span class="op">=</span> parking_df[</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].<span class="bu">apply</span>(</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="kw">in</span> </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    violation_codes_light <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'violation_code'</span>, </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="st">'sticker_violation_dummy'</span>]].head(<span class="dv">20</span>))</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">##Now I will create three new columns using date column</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># one for showing day, one for showing month and one for</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#showing year!</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(parking_df[<span class="st">'issue_date'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'month'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.month</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'day'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.day</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'year'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.year</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'issue_date'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]].head(<span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre class="{Python}"><code>sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
+<div id="a6176d0f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">##so I want to create a dummy variable for sticker</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># violation to make life easier for myself and you!</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_codes_light)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using apply to create the dummy column</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'sticker_violation_dummy'</span>] <span class="op">=</span> parking_df[</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'violation_code'</span>].<span class="bu">apply</span>(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="kw">in</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    violation_codes_light <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'violation_code'</span>, </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="st">'sticker_violation_dummy'</span>]].head(<span class="dv">21</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">##Now I will create three new columns using date column</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># one for showing day, one for showing month and one for</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#showing year!</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'issue_date'</span>] <span class="op">=</span> pd.to_datetime(parking_df[<span class="st">'issue_date'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'month'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.month</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'day'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.day</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>parking_df[<span class="st">'year'</span>] <span class="op">=</span> parking_df[<span class="st">'issue_date'</span>].dt.year</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parking_df[[<span class="st">'issue_date'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'year'</span>]].head(<span class="dv">100</span>))</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>sticker_parking_df<span class="op">=</span> parking_df[parking_df[<span class="st">'sticker_violation_dummy'</span>]<span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>violation_summary <span class="op">=</span> sticker_parking_df.groupby([<span class="st">'year'</span>, <span class="st">'month'</span>])[<span class="st">'sticker_violation_dummy'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(violation_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['0964125', '0976170', '0964125B']
+   violation_code  sticker_violation_dummy
+0        0964090E                        0
+1        0964090E                        0
+2        0964150B                        0
+3        0976160F                        0
+4        0964100A                        0
+5         0964060                        0
+6        0976160A                        0
+7        0964140B                        0
+8         0964060                        0
+9        0964150B                        0
+10       0976160F                        0
+11       0976160F                        0
+12       0976160F                        0
+13       0964050J                        0
+14        0964125                        1
+15       0964100A                        0
+16       0976160A                        0
+17       0964200B                        0
+18       0964020B                        0
+19       0976160F                        0
+20       0964150B                        0
+            issue_date  month  day  year
+0  2007-01-01 01:25:00      1    1  2007
+1  2007-01-01 01:51:00      1    1  2007
+2  2007-01-01 02:22:00      1    1  2007
+3  2007-01-01 02:35:00      1    1  2007
+4  2007-01-01 03:50:00      1    1  2007
+..                 ...    ...  ...   ...
+95 2007-01-02 11:55:00      1    2  2007
+96 2007-01-02 11:57:00      1    2  2007
+97 2007-01-02 12:12:00      1    2  2007
+98 2007-01-02 12:13:00      1    2  2007
+99 2007-01-02 13:10:00      1    2  2007
 
-alt.data_transformers.disable_max_rows()
-##now I am going to plot it I will have 12 months on the 
-# X axis and then use mark_line to create different years!
-sum_tickets = alt.Chart(sticker_parking_df).mark_line().encode(
-    x=alt.X('month:O', sort=['January', 'February', 'March', 'April', 'May', 'June', 
-    'July', 'August', 'September', 'October', 'November', 'December'], 
-    title='Month'),
-    y=alt.Y('count()', 
-    title='Total Number of Tickets'),
-    color=alt.Color('year:N', title='Year')
-).properties(
-    title='Monthly Tickets each month Over Years'
-)
-sum_tickets</code></pre>
+[100 rows x 4 columns]
+     year  month  sticker_violation_dummy
+0    2007      1                      160
+1    2007      2                      105
+2    2007      3                      161
+3    2007      4                      158
+4    2007      5                      126
+..    ...    ...                      ...
+132  2018      1                      168
+133  2018      2                      119
+134  2018      3                      171
+135  2018      4                      153
+136  2018      5                       79
+
+[137 rows x 3 columns]</code></pre>
+</div>
+</div>
+<div id="76f3d74b" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">##now I am going to plot it I will have 12 months on the </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X axis and then use mark_line to create different years!</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a line chart for sticker violations over time</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>total_ticket_count_month_year <span class="op">=</span> alt.Chart(violation_summary).mark_line().encode(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'month:O'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Month'</span>)),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'sticker_violation_dummy:Q'</span>, axis<span class="op">=</span>alt.Axis(</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">'Number of Sticker Violations'</span>)),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'year:N'</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'sticker_violation_dummy'</span>]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Monthly Sticker Violations by Year'</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>total_ticket_count_month_year.display()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed details,
+  #altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669") {
+      outputDiv = document.getElementById("altair-viz-5f1d1e7c696e4cc9bd0a02f2411c0669");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-31aecf367a8d6d9bd7cd9f3a9a8f4607"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "year", "type": "nominal"}, "tooltip": [{"field": "year", "type": "quantitative"}, {"field": "month", "type": "quantitative"}, {"field": "sticker_violation_dummy", "type": "quantitative"}], "x": {"axis": {"title": "Month"}, "field": "month", "type": "ordinal"}, "y": {"axis": {"title": "Number of Sticker Violations"}, "field": "sticker_violation_dummy", "type": "quantitative"}}, "title": "Monthly Sticker Violations by Year", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-31aecf367a8d6d9bd7cd9f3a9a8f4607": [{"year": 2007, "month": 1, "sticker_violation_dummy": 160}, {"year": 2007, "month": 2, "sticker_violation_dummy": 105}, {"year": 2007, "month": 3, "sticker_violation_dummy": 161}, {"year": 2007, "month": 4, "sticker_violation_dummy": 158}, {"year": 2007, "month": 5, "sticker_violation_dummy": 126}, {"year": 2007, "month": 6, "sticker_violation_dummy": 80}, {"year": 2007, "month": 7, "sticker_violation_dummy": 401}, {"year": 2007, "month": 8, "sticker_violation_dummy": 345}, {"year": 2007, "month": 9, "sticker_violation_dummy": 225}, {"year": 2007, "month": 10, "sticker_violation_dummy": 223}, {"year": 2007, "month": 11, "sticker_violation_dummy": 169}, {"year": 2007, "month": 12, "sticker_violation_dummy": 118}, {"year": 2008, "month": 1, "sticker_violation_dummy": 133}, {"year": 2008, "month": 2, "sticker_violation_dummy": 149}, {"year": 2008, "month": 3, "sticker_violation_dummy": 192}, {"year": 2008, "month": 4, "sticker_violation_dummy": 166}, {"year": 2008, "month": 5, "sticker_violation_dummy": 139}, {"year": 2008, "month": 6, "sticker_violation_dummy": 72}, {"year": 2008, "month": 7, "sticker_violation_dummy": 382}, {"year": 2008, "month": 8, "sticker_violation_dummy": 342}, {"year": 2008, "month": 9, "sticker_violation_dummy": 213}, {"year": 2008, "month": 10, "sticker_violation_dummy": 197}, {"year": 2008, "month": 11, "sticker_violation_dummy": 148}, {"year": 2008, "month": 12, "sticker_violation_dummy": 80}, {"year": 2009, "month": 1, "sticker_violation_dummy": 81}, {"year": 2009, "month": 2, "sticker_violation_dummy": 121}, {"year": 2009, "month": 3, "sticker_violation_dummy": 171}, {"year": 2009, "month": 4, "sticker_violation_dummy": 151}, {"year": 2009, "month": 5, "sticker_violation_dummy": 132}, {"year": 2009, "month": 6, "sticker_violation_dummy": 90}, {"year": 2009, "month": 7, "sticker_violation_dummy": 392}, {"year": 2009, "month": 8, "sticker_violation_dummy": 347}, {"year": 2009, "month": 9, "sticker_violation_dummy": 211}, {"year": 2009, "month": 10, "sticker_violation_dummy": 188}, {"year": 2009, "month": 11, "sticker_violation_dummy": 170}, {"year": 2009, "month": 12, "sticker_violation_dummy": 98}, {"year": 2010, "month": 1, "sticker_violation_dummy": 156}, {"year": 2010, "month": 2, "sticker_violation_dummy": 130}, {"year": 2010, "month": 3, "sticker_violation_dummy": 153}, {"year": 2010, "month": 4, "sticker_violation_dummy": 138}, {"year": 2010, "month": 5, "sticker_violation_dummy": 140}, {"year": 2010, "month": 6, "sticker_violation_dummy": 99}, {"year": 2010, "month": 7, "sticker_violation_dummy": 26}, {"year": 2010, "month": 8, "sticker_violation_dummy": 425}, {"year": 2010, "month": 9, "sticker_violation_dummy": 237}, {"year": 2010, "month": 10, "sticker_violation_dummy": 198}, {"year": 2010, "month": 11, "sticker_violation_dummy": 168}, {"year": 2010, "month": 12, "sticker_violation_dummy": 117}, {"year": 2011, "month": 1, "sticker_violation_dummy": 153}, {"year": 2011, "month": 2, "sticker_violation_dummy": 87}, {"year": 2011, "month": 3, "sticker_violation_dummy": 147}, {"year": 2011, "month": 4, "sticker_violation_dummy": 135}, {"year": 2011, "month": 5, "sticker_violation_dummy": 134}, {"year": 2011, "month": 6, "sticker_violation_dummy": 78}, {"year": 2011, "month": 7, "sticker_violation_dummy": 318}, {"year": 2011, "month": 8, "sticker_violation_dummy": 313}, {"year": 2011, "month": 9, "sticker_violation_dummy": 172}, {"year": 2011, "month": 10, "sticker_violation_dummy": 136}, {"year": 2011, "month": 11, "sticker_violation_dummy": 139}, {"year": 2011, "month": 12, "sticker_violation_dummy": 123}, {"year": 2012, "month": 1, "sticker_violation_dummy": 114}, {"year": 2012, "month": 2, "sticker_violation_dummy": 138}, {"year": 2012, "month": 3, "sticker_violation_dummy": 181}, {"year": 2012, "month": 4, "sticker_violation_dummy": 142}, {"year": 2012, "month": 5, "sticker_violation_dummy": 115}, {"year": 2012, "month": 6, "sticker_violation_dummy": 100}, {"year": 2012, "month": 7, "sticker_violation_dummy": 414}, {"year": 2012, "month": 8, "sticker_violation_dummy": 319}, {"year": 2012, "month": 9, "sticker_violation_dummy": 179}, {"year": 2012, "month": 10, "sticker_violation_dummy": 171}, {"year": 2012, "month": 11, "sticker_violation_dummy": 157}, {"year": 2012, "month": 12, "sticker_violation_dummy": 162}, {"year": 2013, "month": 1, "sticker_violation_dummy": 196}, {"year": 2013, "month": 2, "sticker_violation_dummy": 158}, {"year": 2013, "month": 3, "sticker_violation_dummy": 199}, {"year": 2013, "month": 4, "sticker_violation_dummy": 187}, {"year": 2013, "month": 5, "sticker_violation_dummy": 179}, {"year": 2013, "month": 6, "sticker_violation_dummy": 140}, {"year": 2013, "month": 7, "sticker_violation_dummy": 499}, {"year": 2013, "month": 8, "sticker_violation_dummy": 355}, {"year": 2013, "month": 9, "sticker_violation_dummy": 221}, {"year": 2013, "month": 10, "sticker_violation_dummy": 208}, {"year": 2013, "month": 11, "sticker_violation_dummy": 127}, {"year": 2013, "month": 12, "sticker_violation_dummy": 98}, {"year": 2014, "month": 1, "sticker_violation_dummy": 100}, {"year": 2014, "month": 2, "sticker_violation_dummy": 147}, {"year": 2014, "month": 3, "sticker_violation_dummy": 155}, {"year": 2014, "month": 4, "sticker_violation_dummy": 144}, {"year": 2014, "month": 5, "sticker_violation_dummy": 178}, {"year": 2014, "month": 6, "sticker_violation_dummy": 116}, {"year": 2014, "month": 7, "sticker_violation_dummy": 267}, {"year": 2014, "month": 8, "sticker_violation_dummy": 245}, {"year": 2014, "month": 9, "sticker_violation_dummy": 178}, {"year": 2014, "month": 10, "sticker_violation_dummy": 165}, {"year": 2014, "month": 11, "sticker_violation_dummy": 153}, {"year": 2014, "month": 12, "sticker_violation_dummy": 177}, {"year": 2015, "month": 1, "sticker_violation_dummy": 179}, {"year": 2015, "month": 2, "sticker_violation_dummy": 142}, {"year": 2015, "month": 3, "sticker_violation_dummy": 223}, {"year": 2015, "month": 4, "sticker_violation_dummy": 191}, {"year": 2015, "month": 5, "sticker_violation_dummy": 191}, {"year": 2015, "month": 6, "sticker_violation_dummy": 198}, {"year": 2015, "month": 7, "sticker_violation_dummy": 217}, {"year": 2015, "month": 8, "sticker_violation_dummy": 210}, {"year": 2015, "month": 9, "sticker_violation_dummy": 225}, {"year": 2015, "month": 10, "sticker_violation_dummy": 245}, {"year": 2015, "month": 11, "sticker_violation_dummy": 226}, {"year": 2015, "month": 12, "sticker_violation_dummy": 220}, {"year": 2016, "month": 1, "sticker_violation_dummy": 202}, {"year": 2016, "month": 2, "sticker_violation_dummy": 206}, {"year": 2016, "month": 3, "sticker_violation_dummy": 241}, {"year": 2016, "month": 4, "sticker_violation_dummy": 203}, {"year": 2016, "month": 5, "sticker_violation_dummy": 185}, {"year": 2016, "month": 6, "sticker_violation_dummy": 175}, {"year": 2016, "month": 7, "sticker_violation_dummy": 160}, {"year": 2016, "month": 8, "sticker_violation_dummy": 151}, {"year": 2016, "month": 9, "sticker_violation_dummy": 183}, {"year": 2016, "month": 10, "sticker_violation_dummy": 220}, {"year": 2016, "month": 11, "sticker_violation_dummy": 182}, {"year": 2016, "month": 12, "sticker_violation_dummy": 156}, {"year": 2017, "month": 1, "sticker_violation_dummy": 238}, {"year": 2017, "month": 2, "sticker_violation_dummy": 190}, {"year": 2017, "month": 3, "sticker_violation_dummy": 211}, {"year": 2017, "month": 4, "sticker_violation_dummy": 191}, {"year": 2017, "month": 5, "sticker_violation_dummy": 192}, {"year": 2017, "month": 6, "sticker_violation_dummy": 177}, {"year": 2017, "month": 7, "sticker_violation_dummy": 166}, {"year": 2017, "month": 8, "sticker_violation_dummy": 173}, {"year": 2017, "month": 9, "sticker_violation_dummy": 188}, {"year": 2017, "month": 10, "sticker_violation_dummy": 169}, {"year": 2017, "month": 11, "sticker_violation_dummy": 202}, {"year": 2017, "month": 12, "sticker_violation_dummy": 159}, {"year": 2018, "month": 1, "sticker_violation_dummy": 168}, {"year": 2018, "month": 2, "sticker_violation_dummy": 119}, {"year": 2018, "month": 3, "sticker_violation_dummy": 171}, {"year": 2018, "month": 4, "sticker_violation_dummy": 153}, {"year": 2018, "month": 5, "sticker_violation_dummy": 79}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">2.2</h3>
+<p>I want to label each quarter so here is what I do:</p>
+<div id="c83594ff" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I have to create a mark_rule chart with the months 3,6,9 and 12</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quarters <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">12</span>]  <span class="co"># End of each quarter</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>quarter_lines <span class="op">=</span> alt.Chart(pd.DataFrame({<span class="st">'month'</span>: quarters})</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>).mark_rule(color<span class="op">=</span><span class="st">'red'</span>, strokeDash<span class="op">=</span> [<span class="dv">4</span>,<span class="dv">4</span>]).encode(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'month:O'</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">##now we put the two charts on top of each other: </span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>guided_chart<span class="op">=</span> total_ticket_count_month_year <span class="op">+</span> quarter_lines</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>guided_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="229">
+
+<style>
+  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed details,
+  #altair-viz-647683a4e4704679b5e2158ebd6d07ae.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-647683a4e4704679b5e2158ebd6d07ae"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-647683a4e4704679b5e2158ebd6d07ae") {
+      outputDiv = document.getElementById("altair-viz-647683a4e4704679b5e2158ebd6d07ae");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-31aecf367a8d6d9bd7cd9f3a9a8f4607"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "year", "type": "nominal"}, "tooltip": [{"field": "year", "type": "quantitative"}, {"field": "month", "type": "quantitative"}, {"field": "sticker_violation_dummy", "type": "quantitative"}], "x": {"axis": {"title": "Month"}, "field": "month", "type": "ordinal"}, "y": {"axis": {"title": "Number of Sticker Violations"}, "field": "sticker_violation_dummy", "type": "quantitative"}}, "title": "Monthly Sticker Violations by Year"}, {"data": {"name": "data-85b463f451939ca3854424e9a3dd23b4"}, "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4]}, "encoding": {"x": {"field": "month", "type": "ordinal"}}}], "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-31aecf367a8d6d9bd7cd9f3a9a8f4607": [{"year": 2007, "month": 1, "sticker_violation_dummy": 160}, {"year": 2007, "month": 2, "sticker_violation_dummy": 105}, {"year": 2007, "month": 3, "sticker_violation_dummy": 161}, {"year": 2007, "month": 4, "sticker_violation_dummy": 158}, {"year": 2007, "month": 5, "sticker_violation_dummy": 126}, {"year": 2007, "month": 6, "sticker_violation_dummy": 80}, {"year": 2007, "month": 7, "sticker_violation_dummy": 401}, {"year": 2007, "month": 8, "sticker_violation_dummy": 345}, {"year": 2007, "month": 9, "sticker_violation_dummy": 225}, {"year": 2007, "month": 10, "sticker_violation_dummy": 223}, {"year": 2007, "month": 11, "sticker_violation_dummy": 169}, {"year": 2007, "month": 12, "sticker_violation_dummy": 118}, {"year": 2008, "month": 1, "sticker_violation_dummy": 133}, {"year": 2008, "month": 2, "sticker_violation_dummy": 149}, {"year": 2008, "month": 3, "sticker_violation_dummy": 192}, {"year": 2008, "month": 4, "sticker_violation_dummy": 166}, {"year": 2008, "month": 5, "sticker_violation_dummy": 139}, {"year": 2008, "month": 6, "sticker_violation_dummy": 72}, {"year": 2008, "month": 7, "sticker_violation_dummy": 382}, {"year": 2008, "month": 8, "sticker_violation_dummy": 342}, {"year": 2008, "month": 9, "sticker_violation_dummy": 213}, {"year": 2008, "month": 10, "sticker_violation_dummy": 197}, {"year": 2008, "month": 11, "sticker_violation_dummy": 148}, {"year": 2008, "month": 12, "sticker_violation_dummy": 80}, {"year": 2009, "month": 1, "sticker_violation_dummy": 81}, {"year": 2009, "month": 2, "sticker_violation_dummy": 121}, {"year": 2009, "month": 3, "sticker_violation_dummy": 171}, {"year": 2009, "month": 4, "sticker_violation_dummy": 151}, {"year": 2009, "month": 5, "sticker_violation_dummy": 132}, {"year": 2009, "month": 6, "sticker_violation_dummy": 90}, {"year": 2009, "month": 7, "sticker_violation_dummy": 392}, {"year": 2009, "month": 8, "sticker_violation_dummy": 347}, {"year": 2009, "month": 9, "sticker_violation_dummy": 211}, {"year": 2009, "month": 10, "sticker_violation_dummy": 188}, {"year": 2009, "month": 11, "sticker_violation_dummy": 170}, {"year": 2009, "month": 12, "sticker_violation_dummy": 98}, {"year": 2010, "month": 1, "sticker_violation_dummy": 156}, {"year": 2010, "month": 2, "sticker_violation_dummy": 130}, {"year": 2010, "month": 3, "sticker_violation_dummy": 153}, {"year": 2010, "month": 4, "sticker_violation_dummy": 138}, {"year": 2010, "month": 5, "sticker_violation_dummy": 140}, {"year": 2010, "month": 6, "sticker_violation_dummy": 99}, {"year": 2010, "month": 7, "sticker_violation_dummy": 26}, {"year": 2010, "month": 8, "sticker_violation_dummy": 425}, {"year": 2010, "month": 9, "sticker_violation_dummy": 237}, {"year": 2010, "month": 10, "sticker_violation_dummy": 198}, {"year": 2010, "month": 11, "sticker_violation_dummy": 168}, {"year": 2010, "month": 12, "sticker_violation_dummy": 117}, {"year": 2011, "month": 1, "sticker_violation_dummy": 153}, {"year": 2011, "month": 2, "sticker_violation_dummy": 87}, {"year": 2011, "month": 3, "sticker_violation_dummy": 147}, {"year": 2011, "month": 4, "sticker_violation_dummy": 135}, {"year": 2011, "month": 5, "sticker_violation_dummy": 134}, {"year": 2011, "month": 6, "sticker_violation_dummy": 78}, {"year": 2011, "month": 7, "sticker_violation_dummy": 318}, {"year": 2011, "month": 8, "sticker_violation_dummy": 313}, {"year": 2011, "month": 9, "sticker_violation_dummy": 172}, {"year": 2011, "month": 10, "sticker_violation_dummy": 136}, {"year": 2011, "month": 11, "sticker_violation_dummy": 139}, {"year": 2011, "month": 12, "sticker_violation_dummy": 123}, {"year": 2012, "month": 1, "sticker_violation_dummy": 114}, {"year": 2012, "month": 2, "sticker_violation_dummy": 138}, {"year": 2012, "month": 3, "sticker_violation_dummy": 181}, {"year": 2012, "month": 4, "sticker_violation_dummy": 142}, {"year": 2012, "month": 5, "sticker_violation_dummy": 115}, {"year": 2012, "month": 6, "sticker_violation_dummy": 100}, {"year": 2012, "month": 7, "sticker_violation_dummy": 414}, {"year": 2012, "month": 8, "sticker_violation_dummy": 319}, {"year": 2012, "month": 9, "sticker_violation_dummy": 179}, {"year": 2012, "month": 10, "sticker_violation_dummy": 171}, {"year": 2012, "month": 11, "sticker_violation_dummy": 157}, {"year": 2012, "month": 12, "sticker_violation_dummy": 162}, {"year": 2013, "month": 1, "sticker_violation_dummy": 196}, {"year": 2013, "month": 2, "sticker_violation_dummy": 158}, {"year": 2013, "month": 3, "sticker_violation_dummy": 199}, {"year": 2013, "month": 4, "sticker_violation_dummy": 187}, {"year": 2013, "month": 5, "sticker_violation_dummy": 179}, {"year": 2013, "month": 6, "sticker_violation_dummy": 140}, {"year": 2013, "month": 7, "sticker_violation_dummy": 499}, {"year": 2013, "month": 8, "sticker_violation_dummy": 355}, {"year": 2013, "month": 9, "sticker_violation_dummy": 221}, {"year": 2013, "month": 10, "sticker_violation_dummy": 208}, {"year": 2013, "month": 11, "sticker_violation_dummy": 127}, {"year": 2013, "month": 12, "sticker_violation_dummy": 98}, {"year": 2014, "month": 1, "sticker_violation_dummy": 100}, {"year": 2014, "month": 2, "sticker_violation_dummy": 147}, {"year": 2014, "month": 3, "sticker_violation_dummy": 155}, {"year": 2014, "month": 4, "sticker_violation_dummy": 144}, {"year": 2014, "month": 5, "sticker_violation_dummy": 178}, {"year": 2014, "month": 6, "sticker_violation_dummy": 116}, {"year": 2014, "month": 7, "sticker_violation_dummy": 267}, {"year": 2014, "month": 8, "sticker_violation_dummy": 245}, {"year": 2014, "month": 9, "sticker_violation_dummy": 178}, {"year": 2014, "month": 10, "sticker_violation_dummy": 165}, {"year": 2014, "month": 11, "sticker_violation_dummy": 153}, {"year": 2014, "month": 12, "sticker_violation_dummy": 177}, {"year": 2015, "month": 1, "sticker_violation_dummy": 179}, {"year": 2015, "month": 2, "sticker_violation_dummy": 142}, {"year": 2015, "month": 3, "sticker_violation_dummy": 223}, {"year": 2015, "month": 4, "sticker_violation_dummy": 191}, {"year": 2015, "month": 5, "sticker_violation_dummy": 191}, {"year": 2015, "month": 6, "sticker_violation_dummy": 198}, {"year": 2015, "month": 7, "sticker_violation_dummy": 217}, {"year": 2015, "month": 8, "sticker_violation_dummy": 210}, {"year": 2015, "month": 9, "sticker_violation_dummy": 225}, {"year": 2015, "month": 10, "sticker_violation_dummy": 245}, {"year": 2015, "month": 11, "sticker_violation_dummy": 226}, {"year": 2015, "month": 12, "sticker_violation_dummy": 220}, {"year": 2016, "month": 1, "sticker_violation_dummy": 202}, {"year": 2016, "month": 2, "sticker_violation_dummy": 206}, {"year": 2016, "month": 3, "sticker_violation_dummy": 241}, {"year": 2016, "month": 4, "sticker_violation_dummy": 203}, {"year": 2016, "month": 5, "sticker_violation_dummy": 185}, {"year": 2016, "month": 6, "sticker_violation_dummy": 175}, {"year": 2016, "month": 7, "sticker_violation_dummy": 160}, {"year": 2016, "month": 8, "sticker_violation_dummy": 151}, {"year": 2016, "month": 9, "sticker_violation_dummy": 183}, {"year": 2016, "month": 10, "sticker_violation_dummy": 220}, {"year": 2016, "month": 11, "sticker_violation_dummy": 182}, {"year": 2016, "month": 12, "sticker_violation_dummy": 156}, {"year": 2017, "month": 1, "sticker_violation_dummy": 238}, {"year": 2017, "month": 2, "sticker_violation_dummy": 190}, {"year": 2017, "month": 3, "sticker_violation_dummy": 211}, {"year": 2017, "month": 4, "sticker_violation_dummy": 191}, {"year": 2017, "month": 5, "sticker_violation_dummy": 192}, {"year": 2017, "month": 6, "sticker_violation_dummy": 177}, {"year": 2017, "month": 7, "sticker_violation_dummy": 166}, {"year": 2017, "month": 8, "sticker_violation_dummy": 173}, {"year": 2017, "month": 9, "sticker_violation_dummy": 188}, {"year": 2017, "month": 10, "sticker_violation_dummy": 169}, {"year": 2017, "month": 11, "sticker_violation_dummy": 202}, {"year": 2017, "month": 12, "sticker_violation_dummy": 159}, {"year": 2018, "month": 1, "sticker_violation_dummy": 168}, {"year": 2018, "month": 2, "sticker_violation_dummy": 119}, {"year": 2018, "month": 3, "sticker_violation_dummy": 171}, {"year": 2018, "month": 4, "sticker_violation_dummy": 153}, {"year": 2018, "month": 5, "sticker_violation_dummy": 79}], "data-85b463f451939ca3854424e9a3dd23b4": [{"month": 3}, {"month": 6}, {"month": 9}, {"month": 12}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>we can extract from the chart that the highest spike usually happens in the months of March, July to September and occasionally november. it is intersting how july has the largest jump in almost all years! Also, I only asked GPT for how to draw a chart with specified vertical lines and then combined that with my original plot!</p>
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">2.3</h3>
+<div id="4ec48730" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I will filter only the year 2011 and find out the sum of veriables</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with the sticker dummy column equalling 1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sticker_parking_2011 <span class="op">=</span> parking_df[(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    parking_df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">2011</span>) <span class="op">&amp;</span> (parking_df[<span class="st">'sticker_violation_dummy'</span>] <span class="op">==</span> <span class="dv">1</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    ][<span class="st">'sticker_violation_dummy'</span>].<span class="bu">sum</span>()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sticker_parking_2011)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>total_revenue_before<span class="op">=</span> sticker_parking_2011 <span class="op">*</span> <span class="dv">120</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>full_rev_before<span class="op">=</span> total_revenue_before <span class="op">*</span> <span class="dv">100</span><span class="op">/</span> <span class="dv">1000000</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># this will give us the total revenue for 100 percent in Million</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>total_revenue_after<span class="op">=</span> sticker_parking_2011<span class="op">*</span> <span class="dv">200</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>full_rev_after<span class="op">=</span> total_revenue_after <span class="op">*</span> <span class="dv">100</span><span class="op">/</span><span class="dv">1000000</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#this will give us total revenue after change in Billion</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>revenue_increase<span class="op">=</span> full_rev_after <span class="op">-</span> full_rev_before</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(revenue_increase)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1935
+15.480000000000004</code></pre>
+</div>
+</div>
+<p>It is actually as the predicted so the increase in revenue would be around 15.5 million or 16 million dollars.</p>
+</section>
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">2.4</h3>
+<div id="ec1fc029" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I first want to see what is the payment fraction for 2011</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>issued_tickets_pre <span class="op">=</span> parking_df[parking_df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">2011</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>paid_tickets_pre <span class="op">=</span> issued_tickets_pre[issued_tickets_pre[<span class="st">'ticket_queue'</span>] <span class="op">==</span> <span class="st">'Paid'</span>]</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>payment_fraction <span class="op">=</span> <span class="bu">len</span>(paid_tickets_pre) <span class="op">/</span> <span class="bu">len</span>(issued_tickets_pre)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The fraction of tickets paid in </span><span class="sc">{</span><span class="dv">2011</span><span class="sc">}</span><span class="ss"> is: </span><span class="sc">{</span>payment_fraction<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#this means that 71% of the 193500 tickets issued were paid! this</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#will bring us at the revenue below:</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>paid_fraction_rev_2011<span class="op">=</span> <span class="dv">193500</span> <span class="op">*</span> <span class="fl">0.71</span><span class="op">*</span><span class="dv">120</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">#now I want to see how the payment fraction has changed after the</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co">#new policy</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>issued_tickets_post <span class="op">=</span> parking_df[parking_df[<span class="st">'year'</span>] <span class="op">==</span> <span class="dv">2012</span>]</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>paid_tickets_post <span class="op">=</span> issued_tickets_post[issued_tickets_post[<span class="st">'ticket_queue'</span>] <span class="op">==</span> <span class="st">'Paid'</span>]</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>payment_fraction <span class="op">=</span> <span class="bu">len</span>(paid_tickets_post) <span class="op">/</span> <span class="bu">len</span>(issued_tickets_post)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The fraction of tickets paid in </span><span class="sc">{</span><span class="dv">2012</span><span class="sc">}</span><span class="ss"> is: </span><span class="sc">{</span>payment_fraction<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co">#well the fraction of payment has not changed that much but</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co">#let's calculate the rvenue:</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>paid_fraction_rev_2012<span class="op">=</span> <span class="dv">193500</span> <span class="op">*</span><span class="fl">0.7</span> <span class="op">*</span><span class="dv">200</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>total_revenue_paid<span class="op">=</span> (paid_fraction_rev_2012 <span class="op">-</span> paid_fraction_rev_2011) <span class="op">/</span> <span class="dv">1000000</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(total_revenue_paid)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co">#so the actual revenue (supposing the number of tickets issued is </span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="co">#the same) will be 10 M$ not 16!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The fraction of tickets paid in 2011 is: 0.71
+The fraction of tickets paid in 2012 is: 0.70
+10.6038</code></pre>
+</div>
+</div>
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">2.5</h3>
+<div id="2d3928d2" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first, I want to create a paid dummy variable as well!</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>sticker_parking_df[<span class="st">'paid_dummy'</span>] <span class="op">=</span> sticker_parking_df[<span class="st">'ticket_queue'</span>].<span class="bu">apply</span>(</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'Paid'</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#now I calculate the repayment rate using our two dummies:</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> sticker_parking_df[sticker_parking_df[<span class="st">'sticker_violation_dummy'</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>repayment_rates <span class="op">=</span> filtered_df.groupby(<span class="st">'year'</span>)[<span class="st">'paid_dummy'</span>].mean().reset_index()</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>repayment_rates.rename(columns<span class="op">=</span>{<span class="st">'paid_dummy'</span>: <span class="st">'repayment_rate'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(repayment_rates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    year  repayment_rate
+0   2007        0.550859
+1   2008        0.578852
+2   2009        0.531134
+3   2010        0.519879
+4   2011        0.539535
+5   2012        0.482208
+6   2013        0.405921
+7   2014        0.384198
+8   2015        0.406161
+9   2016        0.407686
+10  2017        0.370124
+11  2018        0.201449</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/j5/rv933w1173s068kbzq0kp2xh0000gn/T/ipykernel_19701/3313706562.py:2: SettingWithCopyWarning:
+
+
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+</code></pre>
+</div>
+</div>
+<div id="dfd35f10" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now I will plot this</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>payment_rate_trend <span class="op">=</span> alt.Chart(repayment_rates).mark_line(point<span class="op">=</span><span class="va">True</span>).encode(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'year:O'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Year'</span>)),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'repayment_rate:Q'</span>, axis<span class="op">=</span>alt.Axis(title<span class="op">=</span><span class="st">'Repayment Rate'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'.0%'</span>))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>).properties(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Annual Repayment Rates for "Missing City Sticker" Tickets'</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span><span class="dv">600</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">300</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">#and now I draw another plot for the cutoff line</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>policy_cutoff <span class="op">=</span> alt.Chart(pd.DataFrame({<span class="st">'year'</span>: [<span class="dv">2012</span>]})).mark_rule(color<span class="op">=</span><span class="st">'red'</span>, strokeWidth<span class="op">=</span><span class="dv">2</span>, strokeDash<span class="op">=</span> [<span class="dv">4</span>,<span class="dv">4</span>]).encode(</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'year:O'</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>dif_in_dif<span class="op">=</span> payment_rate_trend <span class="op">+</span> policy_cutoff</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>dif_in_dif</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="233">
+
+<style>
+  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed details,
+  #altair-viz-a294298772a7496abce35ce5076cb8f7.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a294298772a7496abce35ce5076cb8f7"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a294298772a7496abce35ce5076cb8f7") {
+      outputDiv = document.getElementById("altair-viz-a294298772a7496abce35ce5076cb8f7");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-c1b98d4523c3924c9e81bc9eacc04369"}, "mark": {"type": "line", "point": true}, "encoding": {"x": {"axis": {"title": "Year"}, "field": "year", "type": "ordinal"}, "y": {"axis": {"format": ".0%", "title": "Repayment Rate"}, "field": "repayment_rate", "type": "quantitative"}}, "title": "Annual Repayment Rates for \"Missing City Sticker\" Tickets"}, {"data": {"name": "data-28a050bc0b66a3c0655a7da2862de66e"}, "mark": {"type": "rule", "color": "red", "strokeDash": [4, 4], "strokeWidth": 2}, "encoding": {"x": {"field": "year", "type": "ordinal"}}}], "height": 300, "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-c1b98d4523c3924c9e81bc9eacc04369": [{"year": 2007, "repayment_rate": 0.5508586525759577}, {"year": 2008, "repayment_rate": 0.578852236782648}, {"year": 2009, "repayment_rate": 0.5311338289962825}, {"year": 2010, "repayment_rate": 0.5198792148968294}, {"year": 2011, "repayment_rate": 0.5395348837209303}, {"year": 2012, "repayment_rate": 0.4822080291970803}, {"year": 2013, "repayment_rate": 0.4059213089209194}, {"year": 2014, "repayment_rate": 0.38419753086419756}, {"year": 2015, "repayment_rate": 0.4061613295500608}, {"year": 2016, "repayment_rate": 0.4076855123674912}, {"year": 2017, "repayment_rate": 0.3701241134751773}, {"year": 2018, "repayment_rate": 0.20144927536231885}], "data-28a050bc0b66a3c0655a7da2862de66e": [{"year": 2012}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+<p>So what we can see here is RDD where the payment rate drops upon the introduction of the new policy. since we have a continuous line, we can say that the decrease in payment rate is uniquely as a resault of the introduction of the new policy. the article is also talking about the same issue where with the increase of fine for not having a sticker the percentage of people who can pay it off drops, leaving lower income families in more debt!</p>
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">2.6</h3>
+<div id="950301d0" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I am oging to find the three most repeated violation_code</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> parking_df[<span class="st">'violation_code'</span>].value_counts()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>top_three <span class="op">=</span> counts.nlargest(<span class="dv">3</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top_three)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>top_three_viol<span class="op">=</span> [<span class="st">'0976160F'</span>,<span class="st">'0964040B'</span> ,<span class="st">'0964090E'</span>]</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>top3_viol<span class="op">=</span> parking_df[parking_df[<span class="st">'violation_code'</span>].isin(top_three_viol)][[<span class="st">'violation_code'</span>, <span class="st">'violation_description'</span>]]</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top3_viol[<span class="st">'violation_description'</span>].unique())</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#these three are the highest committed street crimes: </span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">##residential permit parking</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">##expired plates or temp registration</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">##street cleaning!</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#now I will group by violation type and calculate the repayment rate</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>repayment_rates_by_type <span class="op">=</span> filtered_df.groupby(<span class="st">'violation_code'</span>)[<span class="st">'paid_dummy'</span>].mean().reset_index()</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>repayment_rates_by_type.rename(columns<span class="op">=</span>{<span class="st">'paid_dummy'</span>: <span class="st">'repayment_rate'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>three_highest_payment <span class="op">=</span> repayment_rates_by_type.nlargest(<span class="dv">3</span>, <span class="st">'repayment_rate'</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(three_highest_payment)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>three_highest_paid_viol_code<span class="op">=</span> [<span class="st">'0976170'</span>, <span class="st">'0964125'</span>,<span class="st">'0964125B'</span>]</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>top3_paid_viol<span class="op">=</span> parking_df[parking_df[<span class="st">'violation_code'</span>].isin(three_highest_paid_viol_code)][[<span class="st">'violation_code'</span>, <span class="st">'violation_description'</span>]]</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top3_paid_viol[<span class="st">'violation_description'</span>].unique())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>violation_code
+0976160F    44811
+0964040B    32082
+0964090E    23683
+Name: count, dtype: int64
+['RESIDENTIAL PERMIT PARKING' 'EXPIRED PLATES OR TEMPORARY REGISTRATION'
+ 'STREET CLEANING OR SPECIAL EVENT' 'STREET CLEANING']
+  violation_code  repayment_rate
+2        0976170        0.666667
+0        0964125        0.543131
+1       0964125B        0.398357
+['NO CITY STICKER OR IMPROPER DISPLAY'
+ 'NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.']</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>
