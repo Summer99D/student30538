@@ -9,3 +9,7 @@ jupyter: python3
 ---
 ### Solo project
 
+```{python}
+rm -rf ~/.config/Code/Service\ Worker/
+
+```
