@@ -1,7 +1,11 @@
 ---
-title: "ps3"
+title: "problem set III"
+author: "Summer Negahdar"
+date: "10/25/2024"
+format:
+  html:
+    code-fold: False
+jupyter: python3
 ---
+### Solo project
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
