@@ -1,0 +1,44 @@
+---
+title: "practice"
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{python}
+import altair as alt
+from vega_datasets import data
+from palmerpenguins import load_penguins
+from plotnine import *
+from plotnine.data import diamonds, mpg
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+diamond_cut= diamonds.groupby('cut').size()
+diamond_cut
+diamond_cut_df=diamond_cut.reset_index(name='count')
+Dchart=alt.Chart(diamond_cut_df).mark_bar().encode(
+   alt.X('cut'),
+   alt.Y('count')
+)
+Dchart
+```
+movies:
+
+```{python}
+movies_url = 'https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json'
+movies= pd.read_json(movies_url)
+alt.Chart(movies).mark_circle().encode(
+    alt.X('Rotten_Tomatoes_Rating:Q', bin=alt.BinParams(maxbins=20)),
+    alt.Y('IMDB_Rating:Q')
+)
+
+```
+```{python}
+
+```
+```{python}
+
+```
