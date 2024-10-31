@@ -1,0 +1,2196 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={30538 Problem Set 2: Parking Tickets Solutions},
+  pdfauthor={Peter Ganong, Maggie Shi, and Ozzy Houck},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{30538 Problem Set 2: Parking Tickets Solutions}
+\author{Peter Ganong, Maggie Shi, and Ozzy Houck}
+\date{2024-09-30}
+
+\begin{document}
+\maketitle
+
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+  showspaces = false,
+  showtabs = false,
+  breaksymbolleft={},
+  breaklines
+}
+
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{PS2:} Due Sat Oct 19 at 5:00PM Central. Worth 100 points.
+\end{enumerate}
+
+We use (\texttt{*}) to indicate a problem that we think might be time
+consuming.
+
+Steps to submit (10 points on PS2)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ``This submission is my work alone and complies with the 30538
+  integrity policy.'' Add your initials to indicate your agreement:
+  **\_\_**
+\item
+  ``I have uploaded the names of anyone I worked with on the problem set
+  \textbf{\href{https://docs.google.com/forms/d/185usrCREQaUbvAXpWhChkjghdGgmAZXA3lPWpXLLsts/edit}{here}}''
+  **\_\_** (2 point)
+\item
+  Late coins used this pset: **\_\_** Late coins left after submission:
+  **\_\_**
+\item
+  Knit your \texttt{ps2.qmd} as an html document and print to a pdf to
+  make \texttt{ps2.pdf}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The PDF should not be more than 25 pages. Use \texttt{head()} and
+    re-size figures when appropriate.
+  \end{itemize}
+\item
+  Push \texttt{ps2.qmd} and \texttt{ps2.pdf} to your github repo. It is
+  fine to use Github Desktop.
+\item
+  Submit \texttt{ps2.pdf} via Gradescope (8 points)
+\item
+  Tag your submission in Gradescope
+\end{enumerate}
+
+\section{Background Recap}\label{background-recap}
+
+Read
+\textbf{\href{https://features.propublica.org/driven-into-debt/chicago-ticket-debt-bankruptcy/}{this}}
+article and
+\textbf{\href{https://www.propublica.org/article/chicago-vehicle-sticker-law-ticket-price-hike-black-drivers-debt}{this}}
+shorter article. If you are curious to learn more,
+\textbf{\href{https://www.propublica.org/series/driven-into-debt}{this}}
+page has all of the articles that ProPublica has done on this topic.
+This problem set is a continuation of PS1 using the same data. Please
+start by loading the data in the same way as PS1.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ altair }\ImportTok{as}\NormalTok{ alt}
+\ImportTok{import}\NormalTok{ unittest}
+\ImportTok{import}\NormalTok{ time}
+
+\ImportTok{import}\NormalTok{ warnings }
+\NormalTok{warnings.filterwarnings(}\StringTok{\textquotesingle{}ignore\textquotesingle{}}\NormalTok{)}
+\NormalTok{alt.renderers.enable(}\StringTok{"png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+RendererRegistry.enable('png')
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the data in the same way as ps1}
+\KeywordTok{def}\NormalTok{ read\_parking\_tickets(file\_path):}
+\NormalTok{    start\_time }\OperatorTok{=}\NormalTok{ time.time()}
+\NormalTok{    df }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path)}
+\NormalTok{    end\_time }\OperatorTok{=}\NormalTok{ time.time()}
+\NormalTok{    elapsed\_time }\OperatorTok{=}\NormalTok{ end\_time }\OperatorTok{{-}}\NormalTok{ start\_time}
+    \ControlFlowTok{assert} \BuiltInTok{len}\NormalTok{(df) }\OperatorTok{==} \DecValTok{287458}\NormalTok{, }\StringTok{"The number of rows is not as expected."}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Time taken to read the file: }\SpecialCharTok{\{}\NormalTok{elapsed\_time}\SpecialCharTok{:.2f\}}\SpecialStringTok{ seconds"}\NormalTok{)}
+\NormalTok{    df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{])}
+    \ControlFlowTok{return}\NormalTok{ df}
+
+\CommentTok{\# Example usage}
+\NormalTok{file\_path }\OperatorTok{=} \StringTok{\textquotesingle{}data/parking\_tickets\_one\_percent.csv\textquotesingle{}}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ read\_parking\_tickets(file\_path)}
+
+\CommentTok{\# make issue\_date a datetime}
+\NormalTok{df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Time taken to read the file: 0.68 seconds
+\end{verbatim}
+
+\subsection{Data cleaning continued (15
+points)}\label{data-cleaning-continued-15-points}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For each column, how many rows are \texttt{NA}? Write a function which
+  returns a two column data frame where each row is a variable, the
+  first column of the data frame is the name of each variable, and the
+  second column of the data frame is the number of times that the column
+  is NA. Test your function. Then, report the results applied to the
+  parking tickets data frame. There are several ways to do this, but we
+  haven't covered them yet in class, so you will need to work
+  independently to set this up.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# adding typing to the function signature for clarity}
+\CommentTok{\# and to demonstrate how to use type hints}
+\ImportTok{from}\NormalTok{ pandas }\ImportTok{import}\NormalTok{ DataFrame, Series}
+\KeywordTok{def}\NormalTok{ get\_number\_of\_NAs(df: DataFrame) }\OperatorTok{{-}\textgreater{}}\NormalTok{ Series:}
+    \CommentTok{"""}
+\CommentTok{    Takes in a pandas dataframe and returns a pandas series with the}
+\CommentTok{    number of missing values in each column."""}
+
+\NormalTok{    na\_df }\OperatorTok{=}\NormalTok{ df.isna().}\BuiltInTok{sum}\NormalTok{()}
+
+    \ControlFlowTok{return}\NormalTok{ na\_df}
+
+\CommentTok{\# multiple ways to do this does not need to be a full unittest class}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np }\CommentTok{\# used for nan values can use other methods}
+\KeywordTok{class}\NormalTok{ TestGetNumberOfNAs(unittest.TestCase):}
+    \KeywordTok{def}\NormalTok{ test\_mixed\_nan\_values(}\VariableTok{self}\NormalTok{):}
+\NormalTok{        data }\OperatorTok{=}\NormalTok{ \{}
+            \StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, np.nan, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{],}
+            \StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: [np.nan, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, np.nan, }\DecValTok{5}\NormalTok{],}
+            \StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{],}
+            \StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{: [np.nan, np.nan, np.nan, np.nan, np.nan]}
+\NormalTok{        \}}
+\NormalTok{        df }\OperatorTok{=}\NormalTok{ pd.DataFrame(data)}
+\NormalTok{        result }\OperatorTok{=}\NormalTok{ get\_number\_of\_NAs(df)}
+\NormalTok{        expected }\OperatorTok{=}\NormalTok{ pd.Series(\{}\StringTok{\textquotesingle{}A\textquotesingle{}}\NormalTok{: }\DecValTok{1}\NormalTok{, }\StringTok{\textquotesingle{}B\textquotesingle{}}\NormalTok{: }\DecValTok{2}\NormalTok{, }\StringTok{\textquotesingle{}C\textquotesingle{}}\NormalTok{: }\DecValTok{0}\NormalTok{, }\StringTok{\textquotesingle{}D\textquotesingle{}}\NormalTok{: }\DecValTok{5}\NormalTok{\})}
+\NormalTok{        pd.testing.assert\_series\_equal(result, expected)}
+
+    \KeywordTok{def}\NormalTok{ test\_empty\_dataframe(}\VariableTok{self}\NormalTok{):}
+\NormalTok{        empty\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame()}
+\NormalTok{        result }\OperatorTok{=}\NormalTok{ get\_number\_of\_NAs(empty\_df)}
+        \VariableTok{self}\NormalTok{.assertTrue(result.empty)}
+
+    \KeywordTok{def}\NormalTok{ test\_no\_nan\_values(}\VariableTok{self}\NormalTok{):}
+\NormalTok{        no\_nan\_df }\OperatorTok{=}\NormalTok{ pd.DataFrame(\{}\StringTok{\textquotesingle{}X\textquotesingle{}}\NormalTok{: [}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{], }\StringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{: [}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{]\})}
+\NormalTok{        result }\OperatorTok{=}\NormalTok{ get\_number\_of\_NAs(no\_nan\_df)}
+\NormalTok{        expected }\OperatorTok{=}\NormalTok{ pd.Series(\{}\StringTok{\textquotesingle{}X\textquotesingle{}}\NormalTok{: }\DecValTok{0}\NormalTok{, }\StringTok{\textquotesingle{}Y\textquotesingle{}}\NormalTok{: }\DecValTok{0}\NormalTok{\})}
+\NormalTok{        pd.testing.assert\_series\_equal(result, expected)}
+
+\CommentTok{\# Run the tests}
+\NormalTok{test\_suite }\OperatorTok{=}\NormalTok{ unittest.TestLoader().loadTestsFromTestCase(TestGetNumberOfNAs)}
+\NormalTok{test\_runner }\OperatorTok{=}\NormalTok{ unittest.TextTestRunner(verbosity}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{test\_result }\OperatorTok{=}\NormalTok{ test\_runner.run(test\_suite)}
+
+\CommentTok{\# Print summary}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Failures: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(test\_result.failures)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Errors: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(test\_result.errors)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+test_empty_dataframe (__main__.TestGetNumberOfNAs.test_empty_dataframe) ... ok
+test_mixed_nan_values (__main__.TestGetNumberOfNAs.test_mixed_nan_values) ... ok
+test_no_nan_values (__main__.TestGetNumberOfNAs.test_no_nan_values) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK
+\end{verbatim}
+
+\begin{verbatim}
+Failures: 0
+Errors: 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Run the function on the parking tickets data}
+\NormalTok{na\_df }\OperatorTok{=}\NormalTok{ get\_number\_of\_NAs(df)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Number of missing values in each column:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(na\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Number of missing values in each column:
+Unnamed: 0                    0
+ticket_number                 0
+issue_date                    0
+violation_location            0
+license_plate_number          0
+license_plate_state          97
+license_plate_type         2054
+zipcode                   54115
+violation_code                0
+violation_description         0
+unit                         29
+unit_description              0
+vehicle_make                  0
+fine_level1_amount            0
+fine_level2_amount            0
+current_amount_due            0
+total_payments                0
+ticket_queue                  0
+ticket_queue_date             0
+notice_level              84068
+hearing_disposition      259899
+notice_number                 0
+officer                       0
+address                       0
+dtype: int64
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Three variables are missing much more frequently than the others. Why?
+  (Hint: look at some rows and read the data dictionary written by
+  ProPublica)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution}: The three columns with the most missing values are
+  \texttt{zipcode}, \texttt{hearing\_disposition}, and
+  \texttt{notice\_level}. ZIP is matched to a car registration and so is
+  missing if there is no car regestration. Notice level is messing if no
+  notice was sent and hearing disposition is missing if there was no
+  hearing
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Some of the other articles on the propublica website discuss an
+  increase in the dollar amount of the ticket for not having a city
+  sticker. What was the old violation code and what is the new violation
+  code?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Keep only the rows with violation descriptions that contain \textquotesingle{}STICKER\textquotesingle{}}
+\NormalTok{sticker\_violations }\OperatorTok{=}\NormalTok{ df[df[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{\textquotesingle{}STICKER\textquotesingle{}}\NormalTok{)]}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"All descriptions containing \textquotesingle{}STICKER\textquotesingle{}:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(sticker\_violations[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].unique())}
+
+\CommentTok{\# drop rows for over 16,000 pounds}
+\NormalTok{sticker\_violations }\OperatorTok{=}\NormalTok{ sticker\_violations[}\OperatorTok{\textasciitilde{}}\NormalTok{sticker\_violations[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{\textquotesingle{}OVER 16,000 LBS.\textquotesingle{}}\NormalTok{)]}
+
+\CommentTok{\# drop rows for improper display of city sticker}
+\NormalTok{sticker\_violations }\OperatorTok{=}\NormalTok{ sticker\_violations[}\OperatorTok{\textasciitilde{}}\NormalTok{sticker\_violations[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{\textquotesingle{}IMPROPER DISPLAY OF CITY STICKER\textquotesingle{}}\NormalTok{)]}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Remaining descriptions containing \textquotesingle{}STICKER\textquotesingle{}:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(sticker\_violations[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].unique())}
+
+\NormalTok{grouped }\OperatorTok{=}\NormalTok{ sticker\_violations.groupby([}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{]).size().reset\_index(name}\OperatorTok{=}\StringTok{\textquotesingle{}n\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Comparing violation description and violation code:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(grouped)}
+
+\CommentTok{\# take the second index because the first is just the start of the data}
+\NormalTok{date\_of\_change }\OperatorTok{=}\NormalTok{ sticker\_violations.groupby(}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{)[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{].}\BuiltInTok{min}\NormalTok{().iloc[}\DecValTok{1}\NormalTok{]}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Date the fine changed:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(date\_of\_change)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+All descriptions containing 'STICKER':
+['NO CITY STICKER OR IMPROPER DISPLAY'
+ 'NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.'
+ 'NO CITY STICKER VEHICLE OVER 16,000 LBS.'
+ 'IMPROPER DISPLAY OF CITY STICKER']
+Remaining descriptions containing 'STICKER':
+['NO CITY STICKER OR IMPROPER DISPLAY'
+ 'NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 LBS.']
+Comparing violation description and violation code:
+                               violation_description violation_code      n
+0                NO CITY STICKER OR IMPROPER DISPLAY        0964125  10758
+1                NO CITY STICKER OR IMPROPER DISPLAY        0976170     15
+2  NO CITY STICKER VEHICLE UNDER/EQUAL TO 16,000 ...       0964125B  14246
+Date the fine changed:
+2012-02-25 02:00:00
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} From the output above, we can see the three
+  violation codes that are associated with not having a city sticker.
+  While there are three, one has very few observations and so the focus
+  of this question is on the other two. We can see that the code changed
+  if Feb 2012 from ``0964125'' to ``0964125B''. We will also give you
+  full credit if you discuss the very rare codes ``0964125C'' and
+  ``0964125D''.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  How much was the cost of an initial offense under each code? (You can
+  ignore the ticket for a missing city sticker on vehicles over 16,000
+  pounds.)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# use output from table above}
+\NormalTok{sticker\_codes }\OperatorTok{=}\NormalTok{ [}\StringTok{"0964125"}\NormalTok{, }\StringTok{"0976170"}\NormalTok{, }\StringTok{"0964125B"}\NormalTok{]}
+
+\CommentTok{\# get fine amount for first violation by violation code}
+\NormalTok{grouped }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    sticker\_violations[sticker\_violations[}\StringTok{"violation\_code"}\NormalTok{].isin(sticker\_codes)]}
+\NormalTok{    .groupby(}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{)[}\StringTok{\textquotesingle{}fine\_level1\_amount\textquotesingle{}}\NormalTok{]}
+\NormalTok{    .mean()}
+\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Fine amount by code:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(grouped)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Fine amount by code:
+violation_code
+0964125     120.0
+0964125B    200.0
+0976170     120.0
+Name: fine_level1_amount, dtype: float64
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} The city switched codes which increased the fine
+  from \$120 to \$200 for a first offense of not having a city sticker.
+\end{itemize}
+
+\subsection{Revenue increase from ``missing city sticker'' tickets (35
+Points)}\label{revenue-increase-from-missing-city-sticker-tickets-35-points}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Using pandas, create a new value for violation codes which combines
+  the two codes that you found in the previous question. Again using
+  pandas, collapse the data to capture the number of missing city
+  sticker tickets by month. Then, using Altair, plot the number of
+  tickets over time.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# defined above but also here for clarity}
+\NormalTok{sticker\_codes }\OperatorTok{=}\NormalTok{ [}\StringTok{"0964125"}\NormalTok{, }\StringTok{"0976170"}\NormalTok{, }\StringTok{"0964125B"}\NormalTok{]}
+
+\CommentTok{\# create new violation\_code variable with all the sticker codes being the same}
+\NormalTok{df.loc[df[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{].isin(sticker\_codes), }\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{"0976170"}
+\NormalTok{df.loc[}\OperatorTok{\textasciitilde{}}\NormalTok{df[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{].isin(sticker\_codes), }\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Aggregate data by month}
+\NormalTok{df[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{].dt.to\_period(}\StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{).astype(}\BuiltInTok{str}\NormalTok{)}
+\NormalTok{df\_monthly }\OperatorTok{=}\NormalTok{ df[df[}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{"0976170"}\NormalTok{].groupby(}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{).size().reset\_index(name}\OperatorTok{=}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{)}
+
+
+\CommentTok{\# Create the plot}
+\NormalTok{chart }\OperatorTok{=}\NormalTok{ alt.Chart(df\_monthly).mark\_line().encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}yearmonth:T\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}count:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Number of Tickets per Month\textquotesingle{}}\NormalTok{)}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Number of "Missing City Sticker" Tickets Over Time\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Suppose that your reader wants to be able to use the plot to deduce
+  when the price increase occurred. Add frequent or custom date labels
+  on the x-axis of your plot such that the date of the price increase is
+  readily apparent. We haven't covered Altair's date labeling features
+  in class so you'll first need to find the relevant help page in the
+  documentation. Which help page did you use?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Convert month\_of\_change to a string in the format that matches your data}
+\NormalTok{df\_monthly[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(df\_monthly[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{], }\BuiltInTok{format}\OperatorTok{=}\StringTok{\textquotesingle{}\%Y{-}\%m\textquotesingle{}}\NormalTok{)}
+\NormalTok{df\_monthly[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ df\_monthly[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{].dt.to\_period(}\StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{).astype(}\BuiltInTok{str}\NormalTok{)}
+\NormalTok{month\_of\_change\_str }\OperatorTok{=}\NormalTok{ date\_of\_change.strftime(}\StringTok{\textquotesingle{}\%Y{-}\%m\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Create the annotation}
+\NormalTok{annotation }\OperatorTok{=}\NormalTok{ alt.Chart(df\_monthly[df\_monthly[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{] }\OperatorTok{==}\NormalTok{ month\_of\_change\_str]).mark\_text(}
+\NormalTok{    align}\OperatorTok{=}\StringTok{\textquotesingle{}left\textquotesingle{}}\NormalTok{,}
+\NormalTok{    baseline}\OperatorTok{=}\StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,}
+\NormalTok{    dy}\OperatorTok{=} \DecValTok{50}\NormalTok{, }
+\NormalTok{    dx}\OperatorTok{=}\DecValTok{5}\NormalTok{,}
+\NormalTok{    fontSize}\OperatorTok{=}\DecValTok{14}\NormalTok{,}
+\NormalTok{).encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}yearmonth:T\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}count:Q\textquotesingle{}}\NormalTok{),}
+\NormalTok{    text}\OperatorTok{=}\NormalTok{alt.value(}\StringTok{\textquotesingle{}Fine Increase\textquotesingle{}}\NormalTok{),}
+\NormalTok{    color }\OperatorTok{=}\NormalTok{ alt.value(}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Create the vertical line}
+\NormalTok{vertical\_line }\OperatorTok{=}\NormalTok{ alt.Chart(pd.DataFrame(\{}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{: [month\_of\_change\_str]\})).mark\_rule(}
+\NormalTok{    color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}
+\NormalTok{    strokeWidth}\OperatorTok{=}\DecValTok{2}
+\NormalTok{).encode(}
+\NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}yearmonth:T\textquotesingle{}}
+\NormalTok{)}
+
+\CommentTok{\# Combine the chart, annotation, and vertical line}
+\NormalTok{final\_chart }\OperatorTok{=}\NormalTok{ chart }\OperatorTok{+}\NormalTok{ annotation }\OperatorTok{+}\NormalTok{ vertical\_line}
+
+\NormalTok{final\_chart}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.LayerChart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} The
+  \textbf{{[}Text{]}\{https://altair-viz.github.io/user\_guide/marks/text.html\}}
+  page on the documentation is useful
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The City Clerk said the price increase would raise revenue by \$16
+  million per year. For now, ignore the fact that many tickets are not
+  paid and assume that the number of tickets issued is the same before
+  and after the policy change. Using only the data available in the
+  calendar year prior to the increase, how much of a revenue increase
+  should they have projected? Remember that you are working with a one
+  percent sample of the data.
+\end{enumerate}
+
+Assume that the number of tickets of this type issued afterward would be
+constant and you can assume that there are no late fees or collection
+fees, so a ticket is either paid at its face value or is never paid.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get the number of sticker tickets given in 2011}
+\NormalTok{sticker\_ticket\_count\_2011}\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{].dt.year }\OperatorTok{==} \DecValTok{2011}\NormalTok{]}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}0976170\textquotesingle{}}\NormalTok{]}
+\NormalTok{    [}\StringTok{\textquotesingle{}ticket\_number\textquotesingle{}}\NormalTok{].count()}
+\NormalTok{)}
+\CommentTok{\# remember to mulitply by 100 to get full sample}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Number of sticker tickets in 2011: }\SpecialCharTok{\{}\NormalTok{sticker\_ticket\_count\_2011 }\OperatorTok{*} \DecValTok{100}\SpecialCharTok{:,.0f\}}\SpecialStringTok{"}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Naive Estimate for Increased Revenue: $}\SpecialCharTok{\{}\NormalTok{(sticker\_ticket\_count\_2011 }\OperatorTok{*} \DecValTok{100} \OperatorTok{*} \DecValTok{80}\NormalTok{)}\SpecialCharTok{:,.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Number of sticker tickets in 2011: 193,500
+Naive Estimate for Increased Revenue: $15,480,000.00
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} There were a bit under 200k sticker tickets issued
+  in 2011. Increasing the ticket cost from 120 to 200 would have
+  increased revenue by about \$15.5M which is close to \$16M.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  What happened to repayment rates (percentage of tickets issued that
+  had payments made) on this type of ticket in the calendar year after
+  the price increase went into effect? Suppose for a moment that the
+  number of tickets issued was unchanged after the price increase. Using
+  the new repayment rates in the year after the price increase occurred,
+  what would the change in revenue have been?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df\_2011 }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    df}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{].dt.year }\OperatorTok{==} \DecValTok{2011}\NormalTok{]}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}0976170\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+\NormalTok{df\_2013 }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{    df}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}issue\_date\textquotesingle{}}\NormalTok{].dt.year }\OperatorTok{==} \DecValTok{2013}\NormalTok{]}
+\NormalTok{    .loc[df[}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}0976170\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+
+\NormalTok{repayment\_rate\_2011 }\OperatorTok{=}\NormalTok{ df\_2011[df\_2011[}\StringTok{\textquotesingle{}ticket\_queue\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Paid\textquotesingle{}}\NormalTok{].shape[}\DecValTok{0}\NormalTok{] }\OperatorTok{/} \BuiltInTok{len}\NormalTok{(df\_2011)}
+\NormalTok{repayment\_rate\_2013 }\OperatorTok{=}\NormalTok{ df\_2013[df\_2013[}\StringTok{\textquotesingle{}ticket\_queue\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Paid\textquotesingle{}}\NormalTok{].shape[}\DecValTok{0}\NormalTok{] }\OperatorTok{/} \BuiltInTok{len}\NormalTok{(df\_2013)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Repayment rate in 2011: }\SpecialCharTok{\{}\BuiltInTok{round}\NormalTok{(repayment\_rate\_2011, }\DecValTok{2}\NormalTok{)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Repayment rate in 2013: }\SpecialCharTok{\{}\BuiltInTok{round}\NormalTok{(repayment\_rate\_2013, }\DecValTok{2}\NormalTok{)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Assuming the number of tickets issued was unchanged}
+\NormalTok{naive\_revenue\_2011 }\OperatorTok{=}\NormalTok{ sticker\_ticket\_count\_2011 }\OperatorTok{*} \DecValTok{100} \OperatorTok{*} \DecValTok{120} \OperatorTok{*}\NormalTok{ repayment\_rate\_2011}
+\NormalTok{naive\_revenue\_2013 }\OperatorTok{=}\NormalTok{ sticker\_ticket\_count\_2011 }\OperatorTok{*} \DecValTok{100} \OperatorTok{*} \DecValTok{200} \OperatorTok{*}\NormalTok{ repayment\_rate\_2013}
+
+\NormalTok{change\_in\_revenue }\OperatorTok{=}\NormalTok{ naive\_revenue\_2013 }\OperatorTok{{-}}\NormalTok{ naive\_revenue\_2011}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Change in revenue: $}\SpecialCharTok{\{}\NormalTok{change\_in\_revenue}\SpecialCharTok{:,.0f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Repayment rate in 2011: 0.54
+Repayment rate in 2013: 0.41
+Change in revenue: $3,181,155
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} After the new rule went into effect, the repayment
+  rate for these tickets fropped from 54\% to 41\%. If we recalcuate the
+  increase in revenue taking into account the fact that not all tickets
+  are paid, we find that revenue increases by about \$6M.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Make a plot with the repayment rates on ``missing city sticker''
+  tickets and a vertical line at when the new policy was introduced.
+  Interpret.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# calculate repayment rates by year}
+
+\NormalTok{repayment\_rates }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    [df[}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}0976170\textquotesingle{}}\NormalTok{]}
+\NormalTok{    .assign(ticket\_paied }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}ticket\_queue\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Paid\textquotesingle{}}\NormalTok{)}
+\NormalTok{    .groupby(df[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{])}
+\NormalTok{    .agg(repayment\_rate}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}ticket\_paied\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{))}
+\NormalTok{    .reset\_index()}
+\NormalTok{)}
+
+\NormalTok{repayment\_rates[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(repayment\_rates[}\StringTok{\textquotesingle{}yearmonth\textquotesingle{}}\NormalTok{], }\BuiltInTok{format}\OperatorTok{=}\StringTok{\textquotesingle{}\%Y{-}\%m\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# make a bar chart of repayment rates by year and add a vertical line at the year of the policy change}
+\NormalTok{chart }\OperatorTok{=}\NormalTok{ alt.Chart(repayment\_rates).mark\_bar().encode(}
+\NormalTok{    alt.X(}\StringTok{\textquotesingle{}yearmonth:T\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Year\textquotesingle{}}\NormalTok{),}
+\NormalTok{    alt.Y(}\StringTok{\textquotesingle{}repayment\_rate:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Repayment Rate\textquotesingle{}}\NormalTok{),}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Repayment Rates on "Missing City Sticker" Tickets Over Time\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{vertical\_line }\OperatorTok{=}\NormalTok{ alt.Chart(pd.DataFrame(\{}\StringTok{\textquotesingle{}date\textquotesingle{}}\NormalTok{: [date\_of\_change]\})).mark\_rule(}
+\NormalTok{    color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{,}
+\NormalTok{    strokeWidth}\OperatorTok{=}\DecValTok{2}
+\NormalTok{).encode(}
+\NormalTok{    alt.X(}\StringTok{\textquotesingle{}yearmonth(date):T\textquotesingle{}}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{chart }\OperatorTok{+}\NormalTok{ vertical\_line}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.LayerChart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} Repayment rates were falling a bit over time but
+  appear to have fallen more sharply during the two years after the
+  price increase.
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Suppose that the City Clerk were committed to getting more revenue
+  from tickets. What three violation types would you as an analyst have
+  recommended they increase the price of? Consider both the number of
+  tickets issued for each violation type and the repayment rate for each
+  violation type. You may assume there is no behavioral response to
+  price changes (ie. people continue to commit violations at the same
+  rate and repay at the same rate). Make a plot to support your argument
+  and explain in writing why it supports your argument.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# get revenue generated per year for each violation code}
+\NormalTok{revenue\_by\_code }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    [df[}\StringTok{\textquotesingle{}ticket\_queue\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Paid\textquotesingle{}}\NormalTok{]}
+\NormalTok{    .groupby([}\StringTok{\textquotesingle{}new\_violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{])}
+\NormalTok{    .agg(revenue}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}total\_payments\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}sum\textquotesingle{}}\NormalTok{))}
+\NormalTok{    .sort\_values(}\StringTok{\textquotesingle{}revenue\textquotesingle{}}\NormalTok{, ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{    .reset\_index()}
+\NormalTok{    .head(}\DecValTok{5}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Create a new column \textquotesingle{}revenue\_millions\textquotesingle{} which is \textquotesingle{}revenue\textquotesingle{} divided by 1,000,000}
+\NormalTok{revenue\_by\_code[}\StringTok{\textquotesingle{}revenue\_millions\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ revenue\_by\_code[}\StringTok{\textquotesingle{}revenue\textquotesingle{}}\NormalTok{] }\OperatorTok{/} \DecValTok{1\_000\_000}
+
+\CommentTok{\# Create the horizontal bar chart}
+\NormalTok{chart }\OperatorTok{=}\NormalTok{ alt.Chart(revenue\_by\_code).mark\_bar().encode(}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}violation\_description:N\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Violation Type\textquotesingle{}}\NormalTok{, sort}\OperatorTok{=}\StringTok{\textquotesingle{}{-}x\textquotesingle{}}\NormalTok{),}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}revenue\_millions:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Total Revenue (Millions $)\textquotesingle{}}\NormalTok{)}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Top 5 Violation Types by Revenue\textquotesingle{}}\NormalTok{,}
+\NormalTok{    width}\OperatorTok{=}\DecValTok{400}\NormalTok{,}
+\NormalTok{    height}\OperatorTok{=}\DecValTok{200} 
+\NormalTok{).configure\_axis( }\CommentTok{\# Configure the axis so that the labels are not cut off}
+\NormalTok{    labelFontSize}\OperatorTok{=}\DecValTok{6}\NormalTok{,}
+\NormalTok{    labelLimit}\OperatorTok{=}\DecValTok{400}
+\NormalTok{)}
+
+\NormalTok{chart}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} The plot shows the five types of tickets that
+  generate the most revenue. The top three are for expired plates, no
+  stickers, and no street cleaning. These revenue measures are a
+  function of both the number of tickets issued and the repayment rate.
+  Therefore, if we assume repayment rate and the number of of tickets
+  issued are constant, then we would expect the revenue generated by
+  these tickets to increase the most if the price of the tickets were
+  increased.
+\end{itemize}
+
+\subsection{Headlines and sub-messages (20
+points)}\label{headlines-and-sub-messages-20-points}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The City Clerk has now begun to wonder\ldots{} maybe raising ticket
+  prices will lead to a decline in repayment rates after all. Make a
+  data frame where each row is a violation description, the fraction of
+  time that the ticket is paid, and the average level 1 fine. Sort this
+  dataframe based on how many total tickets of each type have been
+  issued. Print the rows for the 5 most common violation descriptions.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{repayment\_rate\_by\_code }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    .assign(ticket\_paid }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}ticket\_queue\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \StringTok{\textquotesingle{}Paid\textquotesingle{}}\NormalTok{)}
+\NormalTok{    .groupby([}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{])}
+\NormalTok{    .agg(fraction\_paid}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}ticket\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{), }
+\NormalTok{        average\_level1\_fine}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}fine\_level1\_amount\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{),}
+\NormalTok{        n\_tickets}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}ticket\_number\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{))}
+\NormalTok{    .sort\_values(}\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{    .reset\_index()}
+\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(repayment\_rate\_by\_code.head(}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                      violation_description  fraction_paid  \
+0  EXPIRED PLATES OR TEMPORARY REGISTRATION       0.604361   
+1                           STREET CLEANING       0.811612   
+2                RESIDENTIAL PERMIT PARKING       0.742262   
+3  EXP. METER NON-CENTRAL BUSINESS DISTRICT       0.792913   
+4       PARKING/STANDING PROHIBITED ANYTIME       0.705817   
+
+   average_level1_fine  n_tickets  
+0            54.968869      44811  
+1            54.004249      28712  
+2            66.338302      23683  
+3            46.598058      20600  
+4            66.142864      19753  
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Make a scatter plot which shows the relationship between fine amount
+  and the fraction of tickets that are paid. Focus only on violations
+  that appear at least 100 times. There will be one outlier with a high
+  fine and you can exclude that ticket type from the plot. Then make two
+  other plots which show the same relationship in different ways. For
+  all three plots, write out what are the headlines and what are
+  sub-messages.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# filter to only include violation descriptions that appear at least 100 times}
+\NormalTok{filtered\_result }\OperatorTok{=}\NormalTok{ repayment\_rate\_by\_code[repayment\_rate\_by\_code[}\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{100}\NormalTok{]}
+
+\CommentTok{\# Create a scatter plot of the fraction of tickets paid versus the fine level}
+\NormalTok{scatter\_plot }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle(size}\OperatorTok{=}\DecValTok{60}\NormalTok{).encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine\textquotesingle{}}
+\NormalTok{).interactive()}
+
+\NormalTok{scatter\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# drop the outlier with fine over 400}
+\NormalTok{filtered\_result }\OperatorTok{=}\NormalTok{ filtered\_result[filtered\_result[}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{] }\OperatorTok{\textless{}} \DecValTok{400}\NormalTok{]    }
+
+\NormalTok{binned\_scatter\_plot }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_bar().encode(}
+\NormalTok{    alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{, }\BuiltInTok{bin}\OperatorTok{=}\NormalTok{alt.Bin(maxbins}\OperatorTok{=}\DecValTok{20}\NormalTok{)),}
+\NormalTok{    alt.Y(}\StringTok{\textquotesingle{}fraction\_paid:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{, }\BuiltInTok{bin}\OperatorTok{=}\NormalTok{alt.Bin(maxbins}\OperatorTok{=}\DecValTok{20}\NormalTok{)),}
+\NormalTok{    alt.Color(}\StringTok{\textquotesingle{}n\_tickets:Q\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Number of Tickets\textquotesingle{}}\NormalTok{,}
+\NormalTok{        scale}\OperatorTok{=}\NormalTok{alt.Scale(domain}\OperatorTok{=}\NormalTok{[}\DecValTok{100}\NormalTok{, }\DecValTok{20000}\NormalTok{])),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine (Binned)\textquotesingle{}}
+\NormalTok{).interactive()}
+
+\NormalTok{binned\_scatter\_plot}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create geom\_smooth type plot}
+
+\CommentTok{\# Create a scatter plot of the fraction of tickets paid versus the fine level with a regression line}
+\NormalTok{scatter\_plot\_with\_regression }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle(size}\OperatorTok{=}\DecValTok{60}\NormalTok{).encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine with Regression Line\textquotesingle{}}
+\NormalTok{).interactive()}
+
+\NormalTok{scatter\_plot\_with\_regression }\OperatorTok{+}\NormalTok{ scatter\_plot\_with\_regression.transform\_regression(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{).mark\_line()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.LayerChart(...)
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The City Clerk doesn't understand regressions and only has time to
+  look at one plot. Which plot are you going to bring to them and why?
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} The binned scatter plot does the best job of
+  showing the loose negative relationship between fine size and
+  repayment rate. Unlike the regression plot, it also gives a sense of
+  which points are the most important (the ones with the most tickets
+  issued) instead of treating all violation types equally. (note this
+  the answer to this question is subjective and other thoughtout answers
+  are possible)
+\end{itemize}
+
+\subsection{Understanding the structure of the data and summarizing it
+(Lecture 5, 20
+Points)}\label{understanding-the-structure-of-the-data-and-summarizing-it-lecture-5-20-points}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Most violation types double in price if unpaid.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Does this hold for all violations?
+  \item
+    If not, find all violations with at least 100 citations that do not
+    double. How much does each ticket increase if unpaid?
+  \end{itemize}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# create a data frame that is the realtive increase in fine if unpaid}
+\NormalTok{increase\_in\_fine }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    .assign(increase\_in\_fine }\OperatorTok{=}\NormalTok{ df[}\StringTok{\textquotesingle{}fine\_level2\_amount\textquotesingle{}}\NormalTok{] }\OperatorTok{/}\NormalTok{ df[}\StringTok{\textquotesingle{}fine\_level1\_amount\textquotesingle{}}\NormalTok{])}
+\NormalTok{    .groupby(}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{)}
+\NormalTok{    .agg(increase\_in\_fine}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}increase\_in\_fine\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}mean\textquotesingle{}}\NormalTok{),}
+\NormalTok{        n\_tickets}\OperatorTok{=}\NormalTok{(}\StringTok{\textquotesingle{}ticket\_number\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{))}
+\NormalTok{    .reset\_index()}
+\NormalTok{)}
+\CommentTok{\# get number that double}
+\NormalTok{double\_fine }\OperatorTok{=}\NormalTok{ increase\_in\_fine[increase\_in\_fine[}\StringTok{\textquotesingle{}increase\_in\_fine\textquotesingle{}}\NormalTok{] }\OperatorTok{==} \DecValTok{2}\NormalTok{].shape[}\DecValTok{0}\NormalTok{]}
+
+\CommentTok{\# get number that do not double}
+\NormalTok{not\_double\_fine }\OperatorTok{=}\NormalTok{ increase\_in\_fine[increase\_in\_fine[}\StringTok{\textquotesingle{}increase\_in\_fine\textquotesingle{}}\NormalTok{] }\OperatorTok{!=} \DecValTok{2}\NormalTok{].shape[}\DecValTok{0}\NormalTok{]}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Number of violations that double: }\SpecialCharTok{\{}\NormalTok{double\_fine}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Number of violations that do not double: }\SpecialCharTok{\{}\NormalTok{not\_double\_fine}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\NormalTok{not\_doubled\_violations }\OperatorTok{=}\NormalTok{ (increase\_in\_fine}
+\NormalTok{    .loc[increase\_in\_fine[}\StringTok{\textquotesingle{}increase\_in\_fine\textquotesingle{}}\NormalTok{] }\OperatorTok{!=} \DecValTok{2}\NormalTok{]}
+\NormalTok{    .loc[increase\_in\_fine[}\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{100}\NormalTok{]}
+\NormalTok{    .sort\_values(}\StringTok{"increase\_in\_fine"}\NormalTok{, ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{    .reset\_index()}
+\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Violations that do not double with \textgreater{}100 tickets:"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(not\_doubled\_violations)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Number of violations that double: 109
+Number of violations that do not double: 10
+Violations that do not double with >100 tickets:
+   index                     violation_description  increase_in_fine  \
+0     79                PARK/STAND ON BICYCLE PATH          1.944915   
+1     42  NO CITY STICKER VEHICLE OVER 16,000 LBS.          1.910687   
+2      5      BLOCK ACCESS/ALLEY/DRIVEWAY/FIRELANE          1.890437   
+3     62                       PARK OR BLOCK ALLEY          1.732846   
+4     54   OBSTRUCTED OR IMPROPERLY TINTED WINDOWS          1.653137   
+5     95     SMOKED/TINTED WINDOWS PARKED/STANDING          1.629346   
+6     15                     DISABLED PARKING ZONE          1.621681   
+
+   n_tickets  
+0        236  
+1        131  
+2       1579  
+3       2050  
+4        271  
+5       1697  
+6       2034  
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Many datasets implicitly contain information about how a case can
+  progress. Draw a diagram explaining the process of moving between the
+  different values of \texttt{notice\_level} (if you draw it on paper,
+  take a picture and include the image in your write up). Draw a second
+  diagram explaining the different values of \texttt{ticket\_queue}. If
+  someone contests their ticket and is found not liable, what happens to
+  \texttt{notice\_level} and to \texttt{ticket\_queue}? Include this in
+  your tree drawings above.
+\end{enumerate}
+
+\begin{itemize}
+\item
+  \textbf{Solution:} The progression through notice\_level is obvious
+  for the first two steps and then it becomes less clear how cases
+  progress. We have tools at our disposal however. First we can look at
+  counts. For example, if we make an assumption that at each step of the
+  process some people pay, we can roughly order the levels based on how
+  frequent they are. Further we can make a crosstab with ticket\_queue;
+  This gives a sense of how long people remain in a level. Particularly,
+  looking at `Notice' is helpful, since it represents a phase that is
+  not final (as opposed to `Paid' or `Dismissed'). Nearly half of `SEIZ'
+  are on `Notice', compared to less than 5 percent of `DETR'. With these
+  in mind, I made this tree:
+  \includegraphics{figures/progression_process.png}
+\item
+  \textbf{Solution:} The ticket\_queue provides a more satisfactory
+  story. I guessed at the size of the flows from one value to another
+  using the context from hearing\_disposition and notice\_level. There
+  are people who skip some steps (e.g.~8 people in the subsample go
+  directly to bankruptcy), but these are exceptions to the normal
+  progressions through the system. As a correction, I should have an
+  arrow from get\_ticket to hearing. It appears about 6k go directly to
+  a hearing.
+  \includegraphics{figures/different_values_of_ticket_queue.png}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Go back to your scatter plot from the previous section. We want to add
+  labels to each dot (which conveniently you constructed in the previous
+  step). Implement this in two ways: (a) label every dot with adjacent
+  text or (b) put the text in a legend. Either way, you will find the
+  same problem -- there are too many labels and the plot is illegible.
+  Revise the plots. First, do this the easy way, which is to pick the
+  ten most commonly used violation descriptions and mark all the other
+  dots as ``Other''. Second, for (b), try to construct meaningful
+  categories by marking violation descriptions which sound similar with
+  a common label and a common color.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# (a) Scatter plot with adjacent text labels for all dots}
+\NormalTok{plot\_a }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle().encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    color}\OperatorTok{=}\NormalTok{alt.Color(}\StringTok{\textquotesingle{}violation\_description:N\textquotesingle{}}\NormalTok{, legend}\OperatorTok{=}\VariableTok{None}\NormalTok{),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+
+\NormalTok{text\_a }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_text(align}\OperatorTok{=}\StringTok{\textquotesingle{}left\textquotesingle{}}\NormalTok{, dx}\OperatorTok{=}\DecValTok{5}\NormalTok{, dy}\OperatorTok{=}\DecValTok{5}\NormalTok{).encode(}
+\NormalTok{    x}\OperatorTok{=}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{,}
+\NormalTok{    y}\OperatorTok{=}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{,}
+\NormalTok{    text}\OperatorTok{=}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart\_a }\OperatorTok{=}\NormalTok{ (plot\_a }\OperatorTok{+}\NormalTok{ text\_a).properties(}
+\NormalTok{    width}\OperatorTok{=}\DecValTok{400}\NormalTok{,}
+\NormalTok{    height}\OperatorTok{=}\DecValTok{300}\NormalTok{,}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine (with labels)\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart\_a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.LayerChart(...)
+\end{verbatim}
+
+\textbf{Solution:} Unreadable!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# (b) Scatter plot with legend for all dots}
+\NormalTok{chart\_b }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle().encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    color}\OperatorTok{=}\NormalTok{alt.Color(}\StringTok{\textquotesingle{}violation\_description:N\textquotesingle{}}\NormalTok{),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    width}\OperatorTok{=}\DecValTok{400}\NormalTok{,}
+\NormalTok{    height}\OperatorTok{=}\DecValTok{300}\NormalTok{,}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine (with legend)\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart\_b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} Better but still not useful!
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1. Easy way: Pick the ten most commonly used violation descriptions}
+\NormalTok{top\_10\_violations }\OperatorTok{=}\NormalTok{ filtered\_result.nlargest(}\DecValTok{10}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{)[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].tolist()}
+\NormalTok{filtered\_result[}\StringTok{\textquotesingle{}category\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \StringTok{\textquotesingle{}Other\textquotesingle{}}
+\NormalTok{filtered\_result.loc[filtered\_result[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].isin(top\_10\_violations), }\StringTok{\textquotesingle{}category\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ filtered\_result[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{]}
+
+\NormalTok{chart\_top\_10 }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle().encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    color}\OperatorTok{=}\NormalTok{alt.Color(}\StringTok{\textquotesingle{}category\textquotesingle{}}\NormalTok{, scale}\OperatorTok{=}\NormalTok{alt.Scale(scheme}\OperatorTok{=}\StringTok{\textquotesingle{}category20\textquotesingle{}}\NormalTok{)),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    width}\OperatorTok{=}\DecValTok{400}\NormalTok{,}
+\NormalTok{    height}\OperatorTok{=}\DecValTok{300}\NormalTok{,}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Top 10 Violations and Others\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart\_top\_10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} Better but too many dots labeled ``Other'' to be
+  super useful!
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ categorize\_violation(description):}
+    \ControlFlowTok{if} \BuiltInTok{any}\NormalTok{(word }\KeywordTok{in}\NormalTok{ description }\ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}PARK\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}STAND\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}METER\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}RESIDENTIAL\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}INDUSTRIAL\textquotesingle{}}\NormalTok{]):}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Parking and Standing\textquotesingle{}}
+    \ControlFlowTok{elif} \StringTok{\textquotesingle{}STREET CLEAN\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}SNOW ROUTE\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}SPECIAL EVENT\textquotesingle{}} \KeywordTok{in}\NormalTok{ description:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Street Maintenance and Events\textquotesingle{}}
+    \ControlFlowTok{elif} \BuiltInTok{any}\NormalTok{(word }\KeywordTok{in}\NormalTok{ description }\ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}PLATE\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}REGISTRATION\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}STICKER\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}DISPLAY\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}EXPIRED\textquotesingle{}}\NormalTok{]):}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Vehicle Registration and Permits\textquotesingle{}}
+    \ControlFlowTok{elif} \StringTok{\textquotesingle{}DISABLED\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}HANDICAP\textquotesingle{}} \KeywordTok{in}\NormalTok{ description:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Accessibility Violations\textquotesingle{}}
+    \ControlFlowTok{elif} \BuiltInTok{any}\NormalTok{(word }\KeywordTok{in}\NormalTok{ description }\ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}LAMP\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}LIGHT\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}REFLECTOR\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}WINDOW\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}MIRROR\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}BRAKE\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}HORN\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}MUFFLER\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}SAFETY BELT\textquotesingle{}}\NormalTok{]):}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Vehicle Equipment and Safety\textquotesingle{}}
+    \ControlFlowTok{elif} \StringTok{\textquotesingle{}ABANDONED\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}HAZARDOUS\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}DILAPIDATED\textquotesingle{}} \KeywordTok{in}\NormalTok{ description:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Abandoned or Hazardous Vehicles\textquotesingle{}}
+    \ControlFlowTok{elif} \BuiltInTok{any}\NormalTok{(word }\KeywordTok{in}\NormalTok{ description }\ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}TRUCK\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}BUS\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}TAXI\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}RV\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}TRAILER\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}LOAD\textquotesingle{}}\NormalTok{]):}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Commercial and Oversized Vehicles\textquotesingle{}}
+    \ControlFlowTok{elif} \StringTok{\textquotesingle{}ALLEY\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}SIDEWALK\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}CROSSWALK\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}FIRE\textquotesingle{}} \KeywordTok{in}\NormalTok{ description }\KeywordTok{or} \StringTok{\textquotesingle{}HYDRANT\textquotesingle{}} \KeywordTok{in}\NormalTok{ description:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Obstruction and Safety Hazards\textquotesingle{}}
+    \ControlFlowTok{elif} \BuiltInTok{any}\NormalTok{(word }\KeywordTok{in}\NormalTok{ description }\ControlFlowTok{for}\NormalTok{ word }\KeywordTok{in}\NormalTok{ [}\StringTok{\textquotesingle{}SMOKE\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}FUME\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}ENGINE RUNNING\textquotesingle{}}\NormalTok{]):}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Environmental Violations\textquotesingle{}}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}Other\textquotesingle{}}
+
+\NormalTok{filtered\_result[}\StringTok{\textquotesingle{}meaningful\_category\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ filtered\_result[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(categorize\_violation)}
+
+\NormalTok{chart\_categories }\OperatorTok{=}\NormalTok{ alt.Chart(filtered\_result).mark\_circle().encode(}
+\NormalTok{    x}\OperatorTok{=}\NormalTok{alt.X(}\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Average Level 1 Fine\textquotesingle{}}\NormalTok{),}
+\NormalTok{    y}\OperatorTok{=}\NormalTok{alt.Y(}\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid\textquotesingle{}}\NormalTok{),}
+\NormalTok{    color}\OperatorTok{=}\NormalTok{alt.Color(}\StringTok{\textquotesingle{}meaningful\_category\textquotesingle{}}\NormalTok{, scale}\OperatorTok{=}\NormalTok{alt.Scale(scheme}\OperatorTok{=}\StringTok{\textquotesingle{}tableau10\textquotesingle{}}\NormalTok{)),}
+\NormalTok{    tooltip}\OperatorTok{=}\NormalTok{[}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}n\_tickets\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}fraction\_paid\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}average\_level1\_fine\textquotesingle{}}\NormalTok{]}
+\NormalTok{).properties(}
+\NormalTok{    width}\OperatorTok{=}\DecValTok{400}\NormalTok{,}
+\NormalTok{    height}\OperatorTok{=}\DecValTok{300}\NormalTok{,}
+\NormalTok{    title}\OperatorTok{=}\StringTok{\textquotesingle{}Fraction of Tickets Paid vs. Average Level 1 Fine (with 10 meaningful categories)\textquotesingle{}}
+\NormalTok{)}
+
+\NormalTok{chart\_categories}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ValueError: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/IPython/core/formatters.py:974[0m, in [0;36mMimeBundleFormatter.__call__[0;34m(self, obj, include, exclude)[0m
+[1;32m    971[0m     method [38;5;241m=[39m get_real_method(obj, [38;5;28mself[39m[38;5;241m.[39mprint_method)
+[1;32m    973[0m     [38;5;28;01mif[39;00m method [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 974[0m         [38;5;28;01mreturn[39;00m method(include[38;5;241m=[39minclude, exclude[38;5;241m=[39mexclude)
+[1;32m    975[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[1;32m    976[0m [38;5;28;01melse[39;00m:
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/api.py:3417[0m, in [0;36mTopLevelMixin._repr_mimebundle_[0;34m(self, *args, **kwds)[0m
+[1;32m   3415[0m [38;5;28;01melse[39;00m:
+[1;32m   3416[0m     [38;5;28;01mif[39;00m renderer [38;5;241m:=[39m renderers[38;5;241m.[39mget():
+[0;32m-> 3417[0m         [38;5;28;01mreturn[39;00m renderer(dct)
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/vegalite/v5/display.py:67[0m, in [0;36mpng_renderer[0;34m(spec, **metadata)[0m
+[1;32m     64[0m [38;5;28;01mdef[39;00m [38;5;21mpng_renderer[39m(spec: [38;5;28mdict[39m, [38;5;241m*[39m[38;5;241m*[39mmetadata) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mdict[39m[[38;5;28mstr[39m, [38;5;28mbytes[39m]:
+[1;32m     65[0m     [38;5;66;03m# To get proper return value type, would need to write complex[39;00m
+[1;32m     66[0m     [38;5;66;03m# overload signatures for spec_to_mimebundle based on `format`[39;00m
+[0;32m---> 67[0m     [38;5;28;01mreturn[39;00m spec_to_mimebundle(  [38;5;66;03m# type: ignore[return-value][39;00m
+[1;32m     68[0m         spec,
+[1;32m     69[0m         [38;5;28mformat[39m[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m,
+[1;32m     70[0m         mode[38;5;241m=[39m[38;5;124m"[39m[38;5;124mvega-lite[39m[38;5;124m"[39m,
+[1;32m     71[0m         vega_version[38;5;241m=[39mVEGA_VERSION,
+[1;32m     72[0m         vegaembed_version[38;5;241m=[39mVEGAEMBED_VERSION,
+[1;32m     73[0m         vegalite_version[38;5;241m=[39mVEGALITE_VERSION,
+[1;32m     74[0m         [38;5;241m*[39m[38;5;241m*[39mmetadata,
+[1;32m     75[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:134[0m, in [0;36mspec_to_mimebundle[0;34m(spec, format, mode, vega_version, vegaembed_version, vegalite_version, embed_options, engine, **kwargs)[0m
+[1;32m    131[0m embed_options [38;5;241m=[39m preprocess_embed_options(final_embed_options)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mformat[39m [38;5;129;01min[39;00m {[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m}:
+[0;32m--> 134[0m     [38;5;28;01mreturn[39;00m _spec_to_mimebundle_with_engine(
+[1;32m    135[0m         spec,
+[1;32m    136[0m         cast(Literal[[38;5;124m"[39m[38;5;124mpng[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msvg[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpdf[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mvega[39m[38;5;124m"[39m], [38;5;28mformat[39m),
+[1;32m    137[0m         internal_mode,
+[1;32m    138[0m         engine[38;5;241m=[39mengine,
+[1;32m    139[0m         format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mformatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    140[0m         time_format_locale[38;5;241m=[39membed_options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mtimeFormatLocale[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m),
+[1;32m    141[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    142[0m     )
+[1;32m    143[0m [38;5;28;01melif[39;00m [38;5;28mformat[39m [38;5;241m==[39m [38;5;124m"[39m[38;5;124mhtml[39m[38;5;124m"[39m:
+[1;32m    144[0m     html [38;5;241m=[39m spec_to_html(
+[1;32m    145[0m         spec,
+[1;32m    146[0m         mode[38;5;241m=[39minternal_mode,
+[0;32m   (...)[0m
+[1;32m    151[0m         [38;5;241m*[39m[38;5;241m*[39mkwargs,
+[1;32m    152[0m     )
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:204[0m, in [0;36m_spec_to_mimebundle_with_engine[0;34m(spec, format, mode, format_locale, time_format_locale, **kwargs)[0m
+[1;32m    201[0m [38;5;66;03m# Normalize the engine string (if any) by lower casing[39;00m
+[1;32m    202[0m [38;5;66;03m# and removing underscores and hyphens[39;00m
+[1;32m    203[0m engine [38;5;241m=[39m kwargs[38;5;241m.[39mpop([38;5;124m"[39m[38;5;124mengine[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[0;32m--> 204[0m normalized_engine [38;5;241m=[39m _validate_normalize_engine(engine, [38;5;28mformat[39m)
+[1;32m    206[0m [38;5;28;01mif[39;00m normalized_engine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mvlconvert[39m[38;5;124m"[39m:
+[1;32m    207[0m     vlc [38;5;241m=[39m import_vl_convert()
+
+File [0;32m/opt/anaconda3/lib/python3.11/site-packages/altair/utils/mimebundle.py:323[0m, in [0;36m_validate_normalize_engine[0;34m(engine, format)[0m
+[1;32m    318[0m     [38;5;28;01melse[39;00m:
+[1;32m    319[0m         msg [38;5;241m=[39m (
+[1;32m    320[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSaving charts in [39m[38;5;132;01m{[39;00m[38;5;28mformat[39m[38;5;132;01m!r}[39;00m[38;5;124m format requires the vl-convert-python package: [39m[38;5;124m"[39m
+[1;32m    321[0m             [38;5;124m"[39m[38;5;124msee https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format[39m[38;5;124m"[39m
+[1;32m    322[0m         )
+[0;32m--> 323[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg)
+[1;32m    324[0m [38;5;28;01melse[39;00m:
+[1;32m    325[0m     msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mInvalid conversion engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m!r}[39;00m[38;5;124m. Expected vl-convert[39m[38;5;124m"[39m
+
+[0;31mValueError[0m: Saving charts in 'png' format requires the vl-convert-python package: see https://altair-viz.github.io/user_guide/saving_charts.html#png-svg-and-pdf-format
+\end{verbatim}
+
+\begin{verbatim}
+alt.Chart(...)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Solution:} Much better!
+\end{itemize}
+
+\subsection{extra credit (max 5
+points)}\label{extra-credit-max-5-points}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Which violation codes, if any, are associated with multiple violation
+  descriptions? In these cases, using pandas, create a new column which
+  records the most common violation description associated with this
+  code. If there are any with multiple descriptions print the three
+  codes with the most observations.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{violation\_code\_description\_count }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{[[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{]] }
+\NormalTok{.drop\_duplicates()}
+\NormalTok{.groupby(}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{)}
+\NormalTok{.size()}
+\NormalTok{.sort\_values(ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{.reset\_index(name}\OperatorTok{=}\StringTok{\textquotesingle{}n\_descriptions\textquotesingle{}}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{multiple\_codes }\OperatorTok{=}\NormalTok{ violation\_code\_description\_count[violation\_code\_description\_count[}\StringTok{\textquotesingle{}n\_descriptions\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{][}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Create a new dataframe with the most common description for each code}
+\NormalTok{most\_common\_description }\OperatorTok{=}\NormalTok{ (df}
+\NormalTok{    .groupby([}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{])}
+\NormalTok{    .size()}
+\NormalTok{    .reset\_index(name}\OperatorTok{=}\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{)}
+\NormalTok{    .sort\_values([}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{], ascending}\OperatorTok{=}\NormalTok{[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{])}
+\NormalTok{    .groupby(}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{)}
+\NormalTok{    .first()}
+\NormalTok{    .reset\_index()}
+\NormalTok{    [[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{]]}
+\NormalTok{    .rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{\textquotesingle{}violation\_description\textquotesingle{}}\NormalTok{: }\StringTok{\textquotesingle{}most\_common\_description\textquotesingle{}}\NormalTok{\})}
+\NormalTok{)}
+
+\CommentTok{\# Merge this information back into the original dataframe}
+\NormalTok{df}\OperatorTok{=}\NormalTok{ df.merge(most\_common\_description, on}\OperatorTok{=}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, how}\OperatorTok{=}\StringTok{\textquotesingle{}left\textquotesingle{}}\NormalTok{)}
+
+
+\CommentTok{\# Count how many codes have multiple descriptions}
+\NormalTok{codes\_with\_multiple\_descriptions }\OperatorTok{=}\NormalTok{ violation\_code\_description\_count[violation\_code\_description\_count[}\StringTok{\textquotesingle{}n\_descriptions\textquotesingle{}}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{Number of violation codes with multiple descriptions: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(codes\_with\_multiple\_descriptions)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\CommentTok{\# Filter the main dataframe to only include codes with multiple descriptions}
+\NormalTok{df\_multiple }\OperatorTok{=}\NormalTok{ df[df[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{].isin(codes\_with\_multiple\_descriptions[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{])]}
+
+\CommentTok{\# Count the number of observations for each code}
+\NormalTok{code\_counts }\OperatorTok{=}\NormalTok{ df\_multiple[}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{].value\_counts().reset\_index()}
+\NormalTok{code\_counts.columns }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}violation\_code\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{]}
+
+\CommentTok{\# Get the top 3 most frequent codes}
+\NormalTok{top\_3\_codes }\OperatorTok{=}\NormalTok{ code\_counts.head(}\DecValTok{3}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Top 3 codes with multiple descriptions:"}\NormalTok{) }
+
+\BuiltInTok{print}\NormalTok{(top\_3\_codes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Number of violation codes with multiple descriptions: 8
+Top 3 codes with multiple descriptions:
+  violation_code  count
+0       0964040B  32082
+1       0976160A  16853
+2       0976160B   3072
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Above you made a diagram on paper to show how a case can progress.
+  Although Vega-Lite cannot support tree layout plots like this,
+  \href{https://vega.github.io/vega/examples/tree-layout/}{Vega can!}.
+  Make the digital version of your diagram using Vega. You can use the
+  (online Vega console{]}(https://vega.github.io/editor/\#/custom/vega).
+  Submit your \texttt{JSON} as a separate file and submit your plot
+  alongside your pset as a \texttt{.png}.
+\end{enumerate}
+
+\begin{itemize}
+\item
+  No solution provided
+\item
+  No solution provided for the cut problem
+\end{itemize}
+
+
+
+
+\end{document}
