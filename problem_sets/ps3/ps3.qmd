@@ -1,0 +1,15 @@
+---
+title: "problem set III"
+author: "Summer Negahdar"
+date: "10/25/2024"
+format:
+  html:
+    code-fold: False
+jupyter: python3
+---
+### Solo project
+
+```{python}
+rm -rf ~/.config/Code/Service\ Worker/
+
+```

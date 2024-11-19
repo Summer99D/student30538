@@ -1,0 +1,587 @@
+---
+title: "problem set II"
+author: "Summer Negahdar"
+date: "10/19/2024"
+format:
+  html:
+    code-fold: False
+jupyter: python3
+---
+
+
+This submission is my work alone and complies with the 30538 integrity policy.” Add
+your initials to indicate your agreement: **SN**
+
+2. “I have uploaded the names of anyone I worked with on the problem set here” **Genevieve Madigan**
+(2 point)
+
+3. Late coins used this pset: **01** Late coins left after submission: **02**
+
+
+```{python}
+import time
+import pandas as pd
+import numpy as np
+import altair as alt
+parking_df= pd.read_csv('data/parking_tickets_one_percent.csv')
+#I am just going to take a brief look at 
+# the heads to see whether I imported the 
+# right thing or not. 
+parking_df.head()
+```
+
+## Section One: Data cleaning
+### 1.1
+
+```{python}
+
+def NA_counter(df):
+    na_counts = pd.DataFrame({
+        'Column Name': df.columns,
+        'Number of NAs': df.isna().sum().values
+    })
+
+    return na_counts
+
+
+NA_table = NA_counter(parking_df)
+print(NA_table.to_string(index=False)) 
+#I removed the index by to_string command
+```
+
+### 1.2
+
+#### Zipcode:
+this might be due to the fact that many car plat numbers are out-of state (which was discussed in the essay) or it might be an error of manually entering the zip codes!
+
+#### Hearing Disposition: 
+If the ticket was not contested this field is blank. this also makes sense since 
+
+#### Notice Level: 
+the cells that have no notice level(NAs) mean there was no notice sent! this means that a huge majority of ticket receivers were not even notified(which is in accordance with the argument propublica is making)
+
+
+
+### 1.3
+
+```{python}
+
+
+##I could not understand what this question is asking and Genevieve helped me here!
+# I am going to find all rows whose in "violation desc" cell I can 
+# find the word "sticker"
+city_sticker_violations = parking_df[parking_df['violation_description'
+].str.contains('city sticker', 
+case=False, na=False)]
+print(city_sticker_violations[
+    'violation_code'].unique())
+## so these are the one that involve "sticker" let's see what they each are:
+```
+
+```{python}
+parking_df['issue_date'] = pd.to_datetime(
+    parking_df['issue_date'
+    ], format='mixed', 
+    errors='coerce')
+
+city_sticker_violations = parking_df[parking_df['violation_description'
+].str.contains(
+    'city sticker', case=False, na=False)]
+
+sorted_city_sticker_violations = city_sticker_violations.sort_values(by='issue_date')
+
+unique_city_sticker_codes = sorted_city_sticker_violations[
+    ['violation_code', 'violation_description',
+ 'issue_date']
+ ].drop_duplicates(subset='violation_code')
+
+print(unique_city_sticker_codes)
+```
+
+the explanation goes like this: 
+for 0964125 and 0976170 there is no weight of vehicle involved(these are the old ones)
+for 0964125B and 0964125C which are new ones, there is a factor of weight. and 0964125D is for those who have a sticker but they display it improparly. (I am going to eliminate these ones form not having sticker violation!)
+
+### 1.4
+
+```{python}
+#these will be the codes I will be checking that are less than 16k lbs, 
+# and only include missing or improper (not improper solely)
+violation_codes_light = ['0964125', '0976170', '0964125B']
+
+# Filter the DataFrame for the specified violation codes
+sticker_fines = parking_df[parking_df[
+    'violation_code'].isin(violation_codes_light)]
+
+fine_amounts_lev1 = sticker_fines[['violation_code', 'fine_level1_amount']].drop_duplicates()
+print(fine_amounts_lev1)
+```
+
+#as we can see here, the fine amounts used to be 120$ in the past but is 200 right now(the article also mentioned these numbers)
+
+## Section Two: Revenue increase from “missing city sticker” tickets
+
+###2.1
+
+```{python}
+
+##so I want to create a dummy variable for sticker
+# violation to make life easier for myself and you!
+print(violation_codes_light)
+
+# Using apply to create the dummy column
+parking_df['sticker_violation_dummy'] = parking_df[
+    'violation_code'].apply(
+    lambda x: 1 if x in 
+    violation_codes_light else 0
+)
+
+print(parking_df[['violation_code', 
+'sticker_violation_dummy']].head(21))
+
+##Now I will create three new columns using date column
+# one for showing day, one for showing month and one for
+#showing year!
+parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coerce')
+
+parking_df['month'] = parking_df['issue_date'].dt.month
+parking_df['day'] = parking_df['issue_date'].dt.day
+parking_df['year'] = parking_df['issue_date'].dt.year
+print(parking_df[['issue_date', 'month', 'day', 'year']].head(100))
+sticker_parking_df= parking_df[parking_df['sticker_violation_dummy']== 1]
+violation_summary = sticker_parking_df.groupby(['year', 'month'])['sticker_violation_dummy'].sum().reset_index()
+
+print(violation_summary)
+```
+
+
+```{python}
+##now I am going to plot it I will have 12 months on the 
+# X axis and then use mark_line to create different years!
+import altair as alt
+
+# Create a line chart for sticker violations over time
+total_ticket_count_month_year = alt.Chart(violation_summary).mark_line().encode(
+    x=alt.X('month:O', axis=alt.Axis(title='Month')),
+    y=alt.Y('sticker_violation_dummy:Q', axis=alt.Axis(
+        title='Number of Sticker Violations')),
+    color='year:N',
+    tooltip=['year', 'month', 'sticker_violation_dummy']
+).properties(
+    title='Monthly Sticker Violations by Year'
+)
+
+total_ticket_count_month_year.display()
+```
+
+### 2.2
+I want to label each quarter so here is what I do:
+
+```{python}
+# I have to create a mark_rule chart with the months 3,6,9 and 12
+quarters = [3, 6, 9, 12]  # End of each quarter
+quarter_lines = alt.Chart(pd.DataFrame({'month': quarters})
+).mark_rule(color='red', strokeDash= [4,4]).encode(
+    x='month:O'
+)
+
+##now we put the two charts on top of each other: 
+guided_chart= total_ticket_count_month_year + quarter_lines
+guided_chart
+```
+
+we can extract from the chart that the highest spike usually happens in the months of March, July to September and occasionally november. it is intersting how july has the largest jump in almost all years!
+Also, I only asked GPT for how to draw a chart with specified vertical lines and then combined that with my original plot!
+
+### 2.3
+
+```{python}
+#I will filter only the year 2011 and find out the sum of veriables
+#with the sticker dummy column equalling 1
+sticker_parking_2011 = parking_df[(
+    parking_df['year'] == 2011) & (parking_df['sticker_violation_dummy'] == 1)
+    ]['sticker_violation_dummy'].sum()
+print(sticker_parking_2011)
+
+total_revenue_before= sticker_parking_2011 * 120
+full_rev_before= total_revenue_before * 100/ 1000000
+# this will give us the total revenue for 100 percent in Million
+total_revenue_after= sticker_parking_2011* 200
+full_rev_after= total_revenue_after * 100/1000000
+#this will give us total revenue after change in Billion
+revenue_increase= full_rev_after - full_rev_before
+print(revenue_increase)
+
+```
+
+It is actually as the predicted so the increase in revenue would be around 15.5 million or 16 million dollars.
+
+### 2.4
+
+```{python}
+#I first want to see what is the payment fraction for 2011
+issued_tickets_pre = parking_df[parking_df['year'] == 2011]
+paid_tickets_pre = issued_tickets_pre[issued_tickets_pre['ticket_queue'] == 'Paid']
+
+payment_fraction = len(paid_tickets_pre) / len(issued_tickets_pre)
+print(f"The fraction of tickets paid in {2011} is: {payment_fraction:.2f}")
+
+#this means that 71% of the 193500 tickets issued were paid! this
+#will bring us at the revenue below:
+paid_fraction_rev_2011= 193500 * 0.71*120
+
+
+#now I want to see how the payment fraction has changed after the
+#new policy
+issued_tickets_post = parking_df[parking_df['year'] == 2012]
+paid_tickets_post = issued_tickets_post[issued_tickets_post['ticket_queue'] == 'Paid']
+
+payment_fraction = len(paid_tickets_post) / len(issued_tickets_post)
+print(f"The fraction of tickets paid in {2012} is: {payment_fraction:.2f}")
+
+#well the fraction of payment has not changed that much but
+#let's calculate the rvenue:
+paid_fraction_rev_2012= 193500 *0.7 *200
+
+total_revenue_paid= (paid_fraction_rev_2012 - paid_fraction_rev_2011) / 1000000
+print(total_revenue_paid)
+#so the actual revenue (supposing the number of tickets issued is 
+#the same) will be 10 M$ not 16!
+
+```
+
+### 2.5
+
+```{python}
+#first, I want to create a paid dummy variable as well!
+sticker_parking_df['paid_dummy'] = sticker_parking_df['ticket_queue'].apply(
+    lambda x: 1 if x == 'Paid' else 0
+)
+#now I calculate the repayment rate using our two dummies:
+filtered_df = sticker_parking_df[sticker_parking_df['sticker_violation_dummy'] == 1]
+repayment_rates = filtered_df.groupby('year')['paid_dummy'].mean().reset_index()
+repayment_rates.rename(columns={'paid_dummy': 'repayment_rate'}, inplace=True)
+print(repayment_rates)
+```
+
+
+```{python}
+#now I will plot this
+payment_rate_trend = alt.Chart(repayment_rates).mark_line(point=True).encode(
+    x=alt.X('year:O', axis=alt.Axis(title='Year')),
+    y=alt.Y('repayment_rate:Q', axis=alt.Axis(title='Repayment Rate', format='.0%'))
+).properties(
+    title='Annual Repayment Rates for "Missing City Sticker" Tickets',
+    width=600,
+    height=300
+)
+#and now I draw another plot for the cutoff line
+policy_cutoff = alt.Chart(pd.DataFrame({'year': [2012]})).mark_rule(color='red', strokeWidth=2, strokeDash= [4,4]).encode(
+    x='year:O'
+)
+
+dif_in_dif= payment_rate_trend + policy_cutoff
+dif_in_dif
+```
+
+So what we can see here is RDD where the payment rate drops upon the introduction of the new policy. since we have a continuous line, we can say that the decrease in payment rate is uniquely as a resault of the introduction of the new policy. the article is also talking about the same issue where with the increase of fine for not having a sticker the percentage of people who can pay it off drops, leaving lower income families in more debt!
+
+### 2.6
+
+```{python}
+#I am oging to find the three most repeated violation_code
+counts = parking_df['violation_code'].value_counts()
+top_three = counts.nlargest(3)
+print(top_three)
+
+top_three_viol= ['0976160F','0964040B' ,'0964090E']
+top3_viol= parking_df[parking_df['violation_code'].isin(top_three_viol)][['violation_code', 'violation_description']]
+print(top3_viol['violation_description'].unique())
+#these three are the highest committed street crimes: 
+##residential permit parking
+##expired plates or temp registration
+##street cleaning!
+
+#now I will group by violation type and calculate the repayment rate
+repayment_rates_by_type = filtered_df.groupby('violation_code')['paid_dummy'].mean().reset_index()
+repayment_rates_by_type.rename(columns={'paid_dummy': 'repayment_rate'}, inplace=True)
+three_highest_payment = repayment_rates_by_type.nlargest(3, 'repayment_rate')
+print(three_highest_payment)
+three_highest_paid_viol_code= ['0976170', '0964125','0964125B']
+top3_paid_viol= parking_df[parking_df['violation_code'].isin(three_highest_paid_viol_code)][['violation_code', 'violation_description']]
+print(top3_paid_viol['violation_description'].unique())
+```
+
+so looking at the three highest paid violations I can see where the decision to raise the sticker ticket comes from as they are all sticker-related. 
+
+
+```{python}
+import pandas as pd
+
+# Ensure 'issue_date' is parsed as datetime
+parking_df['issue_date'] = pd.to_datetime(parking_df['issue_date'], errors='coerce')
+
+# Group by 'violation_code' and 'ticket_queue', counting occurrences
+viol_rating = parking_df.groupby(["violation_description", "ticket_queue"])["Unnamed: 0"].count().reset_index()
+
+# Rename the count column for clarity
+viol_rating = viol_rating.rename(columns={"Unnamed: 0": "violation_count"})
+
+# Pivot the table to have 'ticket_queue' values as columns
+viol_rating = viol_rating.pivot(
+    index='violation_description',
+    columns='ticket_queue',
+    values='violation_count'
+).reset_index()
+
+# Fill NaN values with 0
+viol_rating = viol_rating.fillna(0)
+
+# Calculating the total number of tickets across all statuses
+viol_rating["total_ticket"] = viol_rating[
+    ["Bankruptcy", "Court", "Define", "Dismissed", "Hearing Req", "Notice", "Paid"]
+].sum(axis=1)
+viol_rating["repayment_rate"] = viol_rating["Paid"] / viol_rating["total_ticket"]
+
+viol_rating['repayment_rate'] = viol_rating['repayment_rate'].fillna(0)
+print(viol_rating.head(5))
+top_ten_violations = viol_rating.nlargest(10, 'total_ticket')
+
+# Bar plot for total tickets
+ticket_plot = alt.Chart(top_ten_violations).mark_bar(
+    color='green', opacity=1).encode(
+    x=alt.X('violation_description:N', sort=alt.EncodingSortField(field='total_ticket', order='descending')),
+    y=alt.Y('total_ticket:Q', axis=alt.Axis(title='Total Tickets'))
+).properties(
+    width=600, height=400
+)
+
+# Bar plot for paid tickets
+paid_plot = alt.Chart(top_ten_violations).mark_bar(
+    color='orange', opacity=0.8).encode(
+    x=alt.X('violation_description:N', sort=alt.EncodingSortField(field='total_ticket', order='descending')),
+    y=alt.Y('Paid:Q', axis=alt.Axis(title='Paid Tickets'))
+)
+comparison_chart = ticket_plot + paid_plot
+
+comparison_chart
+```
+
+following a conversation I had with a friend, I realized we have got two different things for this question and thus I tried it myself as well. when looking at this, we can conclude that "expired or temporary plate" has the highest number of tickets while the payment rate is also relatively higher.(I think the city officials did it my way and therefore thought of charging more for sticker biolations!)
+
+
+## Section Three: Headlines and sub-message
+
+### 3.1
+
+```{python}
+#I had created paid dummy for sticker partking, 
+#now I am going to do it for the whole df
+import pandas as pd
+
+# Create the 'paid_dummy' column: 1 if 'PAID', else 0
+parking_df['paid_dummy'] = parking_df['ticket_queue'].apply(lambda x: 1 if x == 'Paid' else 0)
+
+# Group by 'violation_description' to calculate metrics
+violation_summary = parking_df.groupby('violation_description').agg(
+    paid_fraction=('paid_dummy', 'mean'),  # Fraction of paid tickets
+    avg_fine=('fine_level1_amount', 'mean'),  # Average fine (level 1)
+    total_tickets=('violation_code', 'count')  # Total tickets issued
+).reset_index()
+# Sort by 'total_tickets' in descending order
+violation_summary = violation_summary.sort_values(by='total_tickets', ascending=False)
+
+# Display the top 6 most common violation descriptions
+print(violation_summary.head(6))
+```
+
+
+###3.2
+
+```{python}
+#first I will subset a df with at least 100 tickets:
+import altair as alt
+
+# Subset the DataFrame for violation types with at least 100 tickets
+subset_df = violation_summary[violation_summary['total_tickets'] >= 100]
+##I have to remove the outlier, I plotted the 
+# scatterplot and then saw the outlier, I can subset my 
+# df for all fines less than 400 and be safe, but I 
+# asked GPT for a general way to do it without 
+# running a plot once
+subset_df = subset_df[subset_df['avg_fine'] < subset_df['avg_fine'].quantile(0.99)]
+##it got rid of all fines that are above 
+# the 0.99 quartile
+scatter_plot = alt.Chart(subset_df).mark_point(color='green').encode(
+    x=alt.X('avg_fine:Q', title="Average Fine Amount (USD)"),
+    y=alt.Y('paid_fraction:Q', title="Repayment Rate"),
+    tooltip=['violation_description', 'total_tickets', 'avg_fine', 'paid_fraction']
+).properties(
+    width=500,
+    height=200,
+    title="Relationship Between Fine Amount and Repayment Rate"
+)
+scatter_plot
+```
+
+#### headline: 
+the highest payment rate is for fines less than 80$
+
+#### submessage: 
+the repayment rate has no solid patterns as fine amount increases!
+
+
+```{python}
+##now a box plot!
+box_plot = alt.Chart(subset_df).mark_boxplot(color='green').encode(
+    x=alt.X('avg_fine:Q', title="Average Fine Amount (USD)"),
+    y=alt.Y('paid_fraction:Q', title="Repayment Rate"),
+    tooltip=['violation_description', 'total_tickets', 'avg_fine', 'paid_fraction']
+).properties(
+    width=500,
+    height=200,
+    title="Relationship Between Fine Amount and Repayment Rate"
+)
+box_plot
+```
+
+#### headline: 
+the fines around 75 USD vary a lot in their payment rate(people react very differently to this amount)
+
+#### submessage: 
+by using the box plot we can see how variant the payment rate reacts to fine amount. for examply for higher fine rates(around 200) there isn't much divergence in payment rate and it stays pretty ocnstant (more predictable)
+
+```{python}
+##and finally a line plot
+line_plot = alt.Chart(subset_df).mark_line(color='green').encode(
+    x=alt.X('avg_fine:Q', title="Average Fine Amount (USD)"),
+    y=alt.Y('paid_fraction:Q', title="Repayment Rate"),
+    tooltip=['violation_description', 'total_tickets', 'avg_fine', 'paid_fraction']
+).properties(
+    width=500,
+    height=200,
+    title="Relationship Between Fine Amount and Repayment Rate"
+)
+line_plot
+```
+
+#### headline: 
+people react to 2-digit fines(under 100) jump to three-digit(100 and above) drastically!
+
+#### submessage: 
+payment rate is pretty noisy around under 100 fines (people's payment pattern is not predictable)
+
+### 3.3
+
+since they need to see how people react to change in fine amount, I would take the line plot as it shows the drastic changes. justl ike I mentioned one the first digit of the fine changes (jump from 99 to 101 and 199 to 201) people suddenly react. (from a consumer analysis standpoint the psychological reasoning behind pricing something with a 0.99 is also the same. people suddenly react negativly to raise in price if the first digit changes! )
+
+
+## Section Four: Understanding the structure of the data and summarizing it
+
+### 4.1.
+
+```{python}
+print(parking_df.dtypes)
+#I wanted to make sure fine amount cols are 
+# numeric which they are!
+
+#Now I am going to create a new column to see the ratio between first and second round of fines, and I am using subset_df since it already ocntains those with more
+#than 100 citations
+# Create the 'total_ticket' column with ticket counts for each violation code
+parking_df['total_ticket'] = parking_df['violation_description'].map(parking_df['violation_description'].value_counts())
+print(parking_df.head())
+subset_df_Q3= parking_df[parking_df['total_ticket'] >= 100]
+
+subset_df_Q3['fine_ratio']= subset_df_Q3['fine_level2_amount'] / subset_df_Q3['fine_level1_amount']
+#Now I will see if there are any rows where 
+# fine ratio !=2
+non_double= subset_df_Q3[subset_df_Q3['fine_ratio'] !=2]
+non_double_sorted = non_double.sort_values(
+    by='fine_level1_amount', ascending=False
+)
+print(non_double_sorted[['violation_description', 'fine_level1_amount', 
+                         'fine_level2_amount', 'fine_ratio']].head(5))
+```
+
+
+```{python}
+non_double_sorted['fine_increase']= non_double_sorted['fine_level2_amount'] - non_double_sorted['fine_level1_amount']
+
+subset_df = parking_df.groupby('violation_code').filter(lambda x: len(x) >= 100)
+subset_df['fine_ratio'] = subset_df['fine_level2_amount'] / subset_df['fine_level1_amount']
+
+non_double_fines = subset_df[subset_df['fine_ratio'] != 2]
+
+non_double_fines['fine_increase'] = non_double_fines['fine_level2_amount'] - non_double_fines['fine_level1_amount']
+fine_increase_summary = non_double_sorted.groupby('violation_description').agg(
+    avg_fine_level1=('fine_level1_amount', 'mean'),
+    avg_fine_level2=('fine_level2_amount', 'mean'),
+    avg_fine_increase=('fine_increase', 'mean')
+)
+fine_increase_summary
+```
+
+### 4.2
+
+```{python}
+from PIL import Image
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Load the images
+image1 = Image.open("1.png")
+image2 = Image.open("2.png")
+
+# Create a figure and display the images side-by-side
+fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+# Plot the first image
+axes[0].imshow(image1)
+axes[0].axis('off')  # Hide the axis
+axes[0].set_title("Image 1")
+
+# Plot the second image
+axes[1].imshow(image2)
+axes[1].axis('off')  # Hide the axis
+axes[1].set_title("Image 2")
+
+# Display the plot
+plt.show()
+```
+
+### 4.3
+
+```{python}
+
+aggregated_df_4 = subset_df_Q3.groupby('violation_description').agg(
+    paid_fraction=('paid_dummy', 'mean'),  # Fraction of paid tickets
+    avg_fine=('fine_level1_amount', 'mean'),  # Average fine (level 1)
+    total_ticket=('violation_code', 'count')  # Total tickets issued
+).reset_index()
+
+# Create the 'non_common_viol' column for grouping less common violations
+aggregated_df_4['non_common_viol'] = np.where(
+    aggregated_df_4['total_ticket'] < aggregated_df_4['total_ticket'].nlargest(11).min(),
+    'Other',
+    aggregated_df_4['violation_description']
+)
+
+# Disable Altair's row limit restriction
+alt.data_transformers.disable_max_rows()
+
+# Create the scatter plot
+scatter_plot_Q4 = alt.Chart(aggregated_df_4).mark_point().encode(
+    x=alt.X('avg_fine:Q', title="Average Fine Amount (USD)"),
+    y=alt.Y('paid_fraction:Q', title="Repayment Rate"),
+    color=alt.Color(
+        'non_common_viol:N', 
+        legend=alt.Legend(title="Violation Description")
+    )
+).properties(
+    width=500,
+    height=200,
+    title="Relationship Between Fine Amount and Repayment Rate"
+)
+
+scatter_plot_Q4
+```
